@@ -1,293 +1,64 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Subscribe — The Kid Reporter</title>
-  <meta name="description" content="Subscribe to The Kid Reporter for just $1 a month and support youth journalism." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/tokens.css" />
-  <link rel="stylesheet" href="css/base.css" />
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%23c8162a'/><text y='24' x='4' font-size='22' font-family='serif' font-weight='900' fill='white'>K</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script async src="https://js.stripe.com/v3/pricing-table.js"></script>
 </head>
 <body>
-
-  <!-- Minimal Header -->
-  <header class="masthead" role="banner">
-    <div class="masthead__topbar">
-      <div class="container masthead__topbar-inner">
-        <span class="masthead__date" id="js-date"></span>
-        <nav class="masthead__topnav" aria-label="Utility navigation">
-          <a href="index.html" class="topnav-link">← Back to News</a>
-          <a href="donate.html" class="topnav-link">Donate Instead</a>
-        </nav>
-        <button class="theme-toggle" data-theme-toggle aria-label="Switch to dark mode">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-        </button>
-      </div>
+  <nav class="site-nav">
+    <a href="index.html" class="nav-logo">📰 The Kid Reporter</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="subscribe.html">Subscribe</a></li>
+      <li><a href="donate.html">Donate</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-toggle" data-theme-toggle aria-label="Toggle theme"></button>
     </div>
-    <div class="masthead__brand">
-      <div class="container masthead__brand-inner">
-        <a href="index.html" class="logo-link" aria-label="The Kid Reporter — Home">
-          <svg class="logo-svg" viewBox="0 0 480 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g transform="translate(0,10)">
-              <rect x="0" y="18" width="8" height="36" rx="2" fill="currentColor"/>
-              <polygon points="0,54 8,54 4,64" fill="var(--color-accent)"/>
-              <rect x="0" y="14" width="8" height="6" rx="1" fill="var(--color-text-muted)"/>
-            </g>
-            <text x="24" y="58" font-family="'Playfair Display', Georgia, serif" font-size="52" font-weight="900" fill="currentColor" letter-spacing="-1">The Kid Reporter</text>
-          </svg>
-        </a>
-      </div>
-      <div class="masthead__rule"></div>
+  </nav>
+  <div class="subscribe-hero">
+    <p class="eyebrow">Join The Kid Reporter</p>
+    <h1>News Written By Kids, For Everyone</h1>
+    <p>Support young journalists and get full access to every story, interview, and investigation — for just $1 a month.</p>
+  </div>
+  <div class="pricing-wrapper">
+    <stripe-pricing-table
+      pricing-table-id="prctbl_1TLRswEPTZTyM2Zi9nqUAzCl"
+      publishable-key="pk_test_51TLRfpEPTZTyM2ZipqyA4yHK7jTfn7NdcVmHhFNJDcRSTOgSqLk7H7trmJ43NxtE4wsc3XPKDujgAFN0fCx4byMD00OdQ40jEA">
+    </stripe-pricing-table>
+  </div>
+  <div class="perks">
+    <h3>What's included with every subscription</h3>
+    <div class="perks-grid">
+      <div class="perk"><span class="perk-icon">📖</span><div><strong>Full article access</strong><span>Read every story we publish, no limits</span></div></div>
+      <div class="perk"><span class="perk-icon">🗞️</span><div><strong>Weekly newsletter</strong><span>Top stories delivered to your inbox</span></div></div>
+      <div class="perk"><span class="perk-icon">🏅</span><div><strong>Supporter badge</strong><span>Recognized as a founding supporter</span></div></div>
+      <div class="perk"><span class="perk-icon">💬</span><div><strong>Community access</strong><span>Comment and engage with our reporters</span></div></div>
     </div>
-  </header>
-
-  <!-- Page Hero -->
-  <section class="page-hero">
-    <div class="container">
-      <p class="page-hero__kicker">Support Youth Journalism</p>
-      <h1 class="page-hero__title">Subscribe for $1 a Month</h1>
-      <p class="page-hero__subtitle">Your support keeps our young reporters equipped with notebooks, cameras, and the confidence to tell stories that matter.</p>
-    </div>
-  </section>
-
-  <!-- Benefits + Form -->
-  <main id="main-content">
-    <section style="padding-block: clamp(var(--space-10), 6vw, var(--space-24));">
-      <div class="container">
-        <div style="display:grid; grid-template-columns: 1fr; gap: var(--space-12); align-items: start; max-width: var(--content-default); margin-inline: auto;">
-
-          <!-- Benefits panel -->
-          <div style="order: 2;">
-            <h2 style="font-size: var(--text-xl); font-weight: 900; margin-bottom: var(--space-6);">What Your $1 Gets You</h2>
-            <ul style="list-style: none; display: flex; flex-direction: column; gap: var(--space-4);">
-              <li style="display: flex; gap: var(--space-4); align-items: flex-start;">
-                <span style="font-size: 1.4rem; flex-shrink: 0; margin-top: 2px;">📰</span>
-                <div>
-                  <strong style="display: block; font-size: var(--text-base); margin-bottom: var(--space-1);">Unlimited Article Access</strong>
-                  <span style="font-size: var(--text-sm); color: var(--color-text-muted);">Read every story published by our kid reporters, including exclusive subscriber-only features.</span>
-                </div>
-              </li>
-              <li style="display: flex; gap: var(--space-4); align-items: flex-start;">
-                <span style="font-size: 1.4rem; flex-shrink: 0; margin-top: 2px;">📬</span>
-                <div>
-                  <strong style="display: block; font-size: var(--text-base); margin-bottom: var(--space-1);">Weekly Newsletter</strong>
-                  <span style="font-size: var(--text-sm); color: var(--color-text-muted);">A roundup of the week's best stories, written and curated by our junior editors.</span>
-                </div>
-              </li>
-              <li style="display: flex; gap: var(--space-4); align-items: flex-start;">
-                <span style="font-size: 1.4rem; flex-shrink: 0; margin-top: 2px;">🏅</span>
-                <div>
-                  <strong style="display: block; font-size: var(--text-base); margin-bottom: var(--space-1);">Subscriber Badge</strong>
-                  <span style="font-size: var(--text-sm); color: var(--color-text-muted);">Show your support with a digital supporter badge you can use in your profile and emails.</span>
-                </div>
-              </li>
-              <li style="display: flex; gap: var(--space-4); align-items: flex-start;">
-                <span style="font-size: 1.4rem; flex-shrink: 0; margin-top: 2px;">✉️</span>
-                <div>
-                  <strong style="display: block; font-size: var(--text-base); margin-bottom: var(--space-1);">Write to Our Reporters</strong>
-                  <span style="font-size: var(--text-sm); color: var(--color-text-muted);">Subscribers can submit letters, story tips, and feedback directly to our team.</span>
-                </div>
-              </li>
-              <li style="display: flex; gap: var(--space-4); align-items: flex-start;">
-                <span style="font-size: 1.4rem; flex-shrink: 0; margin-top: 2px;">💛</span>
-                <div>
-                  <strong style="display: block; font-size: var(--text-base); margin-bottom: var(--space-1);">You Support a Kid</strong>
-                  <span style="font-size: var(--text-sm); color: var(--color-text-muted);">Every dollar directly funds reporting equipment, journalism workshops, and field trips for our student reporters.</span>
-                </div>
-              </li>
-            </ul>
-
-            <div style="margin-top: var(--space-8); padding: var(--space-5); background: var(--color-surface-offset); border-radius: var(--radius-lg); border-left: 4px solid var(--color-primary);">
-              <p style="font-size: var(--text-sm); font-style: italic; color: var(--color-text-muted); line-height: 1.7;">
-                "Writing for The Kid Reporter taught me that my voice matters. When people subscribe, they're saying our stories matter too."
-              </p>
-              <strong style="font-size: var(--text-xs); color: var(--color-text); font-family: var(--font-mono); display: block; margin-top: var(--space-3);">— Maya Johnson, Age 11, Science Reporter</strong>
-            </div>
-          </div>
-
-          <!-- Subscription Form -->
-          <div style="order: 1;">
-            <div class="form-card">
-              <h2 style="font-size: var(--text-lg); font-weight: 900; margin-bottom: var(--space-2);">Start Your Subscription</h2>
-              <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin-bottom: var(--space-6);">$1 per month — cancel anytime. No hidden fees.</p>
-
-              <!-- Success state (hidden until form submits) -->
-              <div class="form-success" id="sub-success">
-                🎉 Thank you for subscribing! Check your email for a confirmation and welcome note from our editors.
-              </div>
-
-              <form id="subscribe-form" novalidate>
-                <div style="display: flex; flex-direction: column; gap: var(--space-5);">
-
-                  <div class="form-group">
-                    <label for="sub-name">Your Name</label>
-                    <input type="text" id="sub-name" name="name" placeholder="Jane Smith" autocomplete="name" required />
-                  </div>
-
-                  <div class="form-group">
-                    <label for="sub-email">Email Address</label>
-                    <input type="email" id="sub-email" name="email" placeholder="you@example.com" autocomplete="email" required />
-                    <span class="form-hint">We'll send your receipt and newsletter here.</span>
-                  </div>
-
-                  <!-- Stripe Payment Element placeholder -->
-                  <div class="form-group">
-                    <label>Card Details</label>
-                    <div id="stripe-card-element" style="
-                      border: 1.5px solid var(--color-border);
-                      border-radius: var(--radius-md);
-                      padding: var(--space-3) var(--space-4);
-                      background: var(--color-surface-2);
-                      min-height: 44px;
-                      display: flex;
-                      align-items: center;
-                      color: var(--color-text-muted);
-                      font-size: var(--text-sm);
-                      font-family: var(--font-mono);
-                    ">
-                      <!-- Stripe.js injects the Card Element here in production -->
-                      <span style="opacity:0.6;">💳 &nbsp;Card number &nbsp; MM/YY &nbsp; CVC</span>
-                    </div>
-                    <span class="form-hint">Powered by Stripe. Your card info is never stored on our servers.</span>
-                  </div>
-
-                  <div style="background: var(--color-primary-highlight); border-radius: var(--radius-md); padding: var(--space-4); display: flex; justify-content: space-between; align-items: center;">
-                    <div>
-                      <strong style="font-size: var(--text-base); display: block;">Monthly Subscription</strong>
-                      <span style="font-size: var(--text-xs); color: var(--color-text-muted);">Billed monthly · Cancel anytime</span>
-                    </div>
-                    <strong style="font-size: var(--text-xl); font-family: var(--font-display); color: var(--color-primary);">$1</strong>
-                  </div>
-
-                  <button type="submit" class="btn btn--red btn--full btn--lg" id="sub-btn">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                    Subscribe for $1/month
-                  </button>
-
-                  <div class="stripe-note">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                    Secured by <strong>Stripe</strong> · 256-bit SSL encryption
-                  </div>
-                </div>
-              </form>
-
-              <!-- Cloudflare Pages + Stripe integration note -->
-              <div style="margin-top: var(--space-6); padding: var(--space-4); border: 1px dashed var(--color-border); border-radius: var(--radius-md); background: var(--color-surface-offset);">
-                <p style="font-size: var(--text-xs); color: var(--color-text-muted); font-family: var(--font-mono); line-height: 1.7;">
-                  <strong style="color: var(--color-text);">🛠 DEVELOPER NOTE</strong><br/>
-                  To activate payments, replace this form with Stripe's embedded Checkout or Payment Element.<br/>
-                  1. Create a <code>$1/month</code> Subscription Price in your Stripe Dashboard.<br/>
-                  2. Deploy a Cloudflare Worker (or Pages Function) at <code>/api/create-checkout-session</code> that calls <code>stripe.checkout.sessions.create()</code>.<br/>
-                  3. Load <code>stripe.js</code> and call <code>redirectToCheckout()</code> on submit.<br/>
-                  See <a href="https://stripe.com/docs/billing/subscriptions/build-subscriptions" target="_blank" rel="noopener" style="color: var(--color-primary);">Stripe Subscriptions docs</a>.
-                </p>
-              </div>
-            </div>
-          </div>
-
-        </div>
+  </div>
+  <footer>
+    <div class="site-footer">
+      <div>
+        <div class="footer-brand">📰 The Kid Reporter</div>
+        <div class="footer-tagline">Written by kids. Read by everyone.</div>
       </div>
-    </section>
-  </main>
-
-  <footer class="site-footer" role="contentinfo">
-    <div class="container site-footer__inner">
-      <div class="footer-brand">
-        <span class="footer-logo-text">The Kid Reporter</span>
-        <p class="footer-tagline">Written by kids. Read by everyone.</p>
-      </div>
-      <nav class="footer-nav" aria-label="Footer navigation">
-        <ul role="list">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="donate.html">Donate</a></li>
-          <li><a href="mailto:editor@kidreporter.example.com">Contact</a></li>
-        </ul>
-      </nav>
-      <p class="footer-legal">&copy; 2026 The Kid Reporter. All rights reserved.</p>
+      <ul class="footer-links">
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="donate.html">Donate</a></li>
+        <li><a href="mailto:editor@kidreporter.example.com">Contact</a></li>
+      </ul>
+      <div class="footer-copy">© 2026 The Kid Reporter. Payments securely processed by Stripe. Cancel anytime.</div>
     </div>
   </footer>
-
   <script src="js/main.js"></script>
-  <script>
-    // Demo form handler (replace with real Stripe integration)
-    document.getElementById('subscribe-form').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const btn = document.getElementById('sub-btn');
-      btn.disabled = true;
-      btn.textContent = 'Processing…';
-      setTimeout(function() {
-        document.getElementById('subscribe-form').style.display = 'none';
-        const success = document.getElementById('sub-success');
-        success.style.display = 'block';
-      }, 1400);
-    });
-  </script>
-<script data-pplx-inline-edit>
-(function(){
-  if(window===window.top)return;
-  function inlineAll(orig,clone){
-    if(orig.nodeType!==1)return;
-    try{
-      var cs=getComputedStyle(orig);
-      var t='';
-      for(var i=0;i<cs.length;i++){t+=cs[i]+':'+cs.getPropertyValue(cs[i])+';';}
-      clone.style.cssText=t;
-    }catch(e){}
-    var oc=orig.children,cc=clone.children;
-    for(var j=0;j<oc.length&&j<cc.length;j++){inlineAll(oc[j],cc[j]);}
-  }
-  function stripExternal(clone){
-    var imgs=clone.querySelectorAll('img');
-    for(var i=0;i<imgs.length;i++){
-      var s=imgs[i].getAttribute('src');
-      if(s&&!s.startsWith('data:'))imgs[i].removeAttribute('src');
-    }
-    var all=clone.querySelectorAll('*');
-    for(var i=0;i<all.length;i++){
-      var st=all[i].style.cssText;
-      if(st&&st.indexOf('url(')>=0){
-        all[i].style.cssText=st.replace(/url\(["']?(?!data:)[^)"']*["']?\)/gi,'none');
-      }
-    }
-  }
-  window.addEventListener('message',function(e){
-    if(!e.data||e.data.type!=='INLINE_EDIT_CAPTURE_REQUEST')return;
-    var scrollX=window.scrollX||window.pageXOffset||0;
-    var scrollY=window.scrollY||window.pageYOffset||0;
-    var w=window.innerWidth,h=window.innerHeight;
-    try{
-      var clone=document.documentElement.cloneNode(true);
-      var rm=clone.querySelectorAll('script,link[rel="stylesheet"],style');
-      for(var i=0;i<rm.length;i++){rm[i].remove();}
-      inlineAll(document.documentElement,clone);
-      stripExternal(clone);
-      var html=new XMLSerializer().serializeToString(clone);
-      var svg='<svg xmlns="http://www.w3.org/2000/svg" width="'+w+'" height="'+h+'">'
-        +'<foreignObject width="100%" height="100%">'
-        +'<div xmlns="http://www.w3.org/1999/xhtml" style="width:'+w+'px;height:'+h+'px;overflow:hidden">'
-        +'<div style="transform:translate(-'+scrollX+'px,-'+scrollY+'px);transform-origin:top left">'
-        +html+'</div></div></foreignObject></svg>';
-      var svgUrl='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
-      var img=new Image();
-      img.onload=function(){
-        var c=document.createElement('canvas');c.width=w;c.height=h;
-        c.getContext('2d').drawImage(img,0,0);
-        window.parent.postMessage({type:'INLINE_EDIT_SCREENSHOT_RESULT',dataUrl:c.toDataURL('image/png'),scrollX:scrollX,scrollY:scrollY},'*');
-      };
-      img.onerror=function(){
-        window.parent.postMessage({type:'INLINE_EDIT_SCREENSHOT_RESULT',dataUrl:null,scrollX:scrollX,scrollY:scrollY},'*');
-      };
-      img.src=svgUrl;
-    }catch(err){
-      window.parent.postMessage({type:'INLINE_EDIT_SCREENSHOT_RESULT',dataUrl:null,scrollX:scrollX,scrollY:scrollY},'*');
-    }
-  });
-})();
-</script></body>
+</body>
 </html>
