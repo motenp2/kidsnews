@@ -7,13 +7,34 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/tokens.css">
-  <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/style.css">
   <script async src="https://js.stripe.com/v3/pricing-table.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Source Sans 3', Arial, sans-serif; background: #fdfaf5; color: #1a1008; min-height: 100dvh; -webkit-font-smoothing: antialiased; }
+    nav { display: flex; align-items: center; justify-content: space-between; padding: 0.75rem 2rem; border-bottom: 2px solid #1a1008; background: #fdfaf5; position: sticky; top: 0; z-index: 100; gap: 1rem; }
+    .nav-logo { font-family: 'Playfair Display', Georgia, serif; font-weight: 900; font-size: 1.4rem; color: #d44000; text-decoration: none; }
+    .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+    .nav-links a { font-size: 0.9rem; font-weight: 600; color: #1a1008; text-decoration: none; text-transform: uppercase; letter-spacing: 0.06em; }
+    .nav-links a:hover { color: #d44000; }
+    .hero { text-align: center; padding: 4rem 2rem 3rem; max-width: 700px; margin: 0 auto; }
+    .eyebrow { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: #d44000; margin-bottom: 1rem; }
+    h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; margin-bottom: 1.5rem; line-height: 1.1; }
+    .hero p { font-size: 1.1rem; color: #6b5c3e; max-width: 52ch; margin: 0 auto; line-height: 1.7; }
+    .pricing-wrapper { max-width: 960px; margin: 2.5rem auto; padding: 0 2rem; }
+    .perks { max-width: 700px; margin: 0 auto 4rem; padding: 2rem; background: #fff8ee; border: 1px solid rgba(100,60,0,0.12); border-radius: 1rem; }
+    .perks h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 1.2rem; margin-bottom: 1.5rem; text-align: center; }
+    .perks-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; }
+    .perk { display: flex; align-items: flex-start; gap: 0.75rem; font-size: 0.95rem; }
+    .perk-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 2px; }
+    .perk strong { display: block; margin-bottom: 2px; }
+    .perk span { color: #6b5c3e; font-size: 0.85rem; }
+    footer { border-top: 2px solid #1a1008; padding: 2rem; text-align: center; font-size: 0.85rem; color: #6b5c3e; }
+    footer a { color: #d44000; text-decoration: none; }
+    @media (max-width: 480px) { .nav-links { display: none; } nav { padding: 0.75rem 1rem; } }
+  </style>
 </head>
 <body>
-  <nav class="site-nav">
+  <nav>
     <a href="index.html" class="nav-logo">📰 The Kid Reporter</a>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
@@ -21,11 +42,8 @@
       <li><a href="donate.html">Donate</a></li>
       <li><a href="about.html">About</a></li>
     </ul>
-    <div class="nav-right">
-      <button class="theme-toggle" data-theme-toggle aria-label="Toggle theme"></button>
-    </div>
   </nav>
-  <div class="subscribe-hero">
+  <div class="hero">
     <p class="eyebrow">Join The Kid Reporter</p>
     <h1>News Written By Kids, For Everyone</h1>
     <p>Support young journalists and get full access to every story, interview, and investigation — for just $1 a month.</p>
@@ -39,26 +57,15 @@
   <div class="perks">
     <h3>What's included with every subscription</h3>
     <div class="perks-grid">
-      <div class="perk"><span class="perk-icon">📖</span><div><strong>Full article access</strong><span>Read every story we publish, no limits</span></div></div>
-      <div class="perk"><span class="perk-icon">🗞️</span><div><strong>Weekly newsletter</strong><span>Top stories delivered to your inbox</span></div></div>
-      <div class="perk"><span class="perk-icon">🏅</span><div><strong>Supporter badge</strong><span>Recognized as a founding supporter</span></div></div>
-      <div class="perk"><span class="perk-icon">💬</span><div><strong>Community access</strong><span>Comment and engage with our reporters</span></div></div>
+      <div class="perk"><span class="perk-icon">📖</span><div><strong>Full article access</strong><span>Read every story, no limits</span></div></div>
+      <div class="perk"><span class="perk-icon">🗞️</span><div><strong>Weekly newsletter</strong><span>Top stories to your inbox</span></div></div>
+      <div class="perk"><span class="perk-icon">🏅</span><div><strong>Supporter badge</strong><span>Founding supporter recognition</span></div></div>
+      <div class="perk"><span class="perk-icon">💬</span><div><strong>Community access</strong><span>Engage with our reporters</span></div></div>
     </div>
   </div>
   <footer>
-    <div class="site-footer">
-      <div>
-        <div class="footer-brand">📰 The Kid Reporter</div>
-        <div class="footer-tagline">Written by kids. Read by everyone.</div>
-      </div>
-      <ul class="footer-links">
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="donate.html">Donate</a></li>
-        <li><a href="mailto:editor@kidreporter.example.com">Contact</a></li>
-      </ul>
-      <div class="footer-copy">© 2026 The Kid Reporter. Payments securely processed by Stripe. Cancel anytime.</div>
-    </div>
+    <p>© 2026 The Kid Reporter · <a href="about.html">About</a> · <a href="donate.html">Donate</a> · <a href="mailto:editor@kidreporter.example.com">Contact</a></p>
+    <p style="margin-top:0.5rem;font-size:0.78rem;">Payments securely processed by Stripe. Cancel anytime.</p>
   </footer>
-  <script src="js/main.js"></script>
 </body>
 </html>
