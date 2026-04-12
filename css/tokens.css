@@ -1,0 +1,141 @@
+/* === KIDS NEWSPAPER — Design Tokens === */
+/* Art direction: playful broadsheet — bright primaries on cream newsprint,
+   bold display type, editorial structure, fun and trustworthy */
+
+:root,
+[data-theme='light'] {
+  /* Type scale — fluid */
+  --text-xs:   clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+  --text-sm:   clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+  --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  --text-lg:   clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
+  --text-xl:   clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
+  --text-2xl:  clamp(2rem, 1.2rem + 2.5vw, 3.5rem);
+  --text-3xl:  clamp(2.5rem, 1rem + 4vw, 5rem);
+  --text-hero: clamp(3rem, 0.5rem + 7vw, 8rem);
+
+  /* 4px spacing system */
+  --space-1:  0.25rem;
+  --space-2:  0.5rem;
+  --space-3:  0.75rem;
+  --space-4:  1rem;
+  --space-5:  1.25rem;
+  --space-6:  1.5rem;
+  --space-8:  2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
+
+  /* Color palette — newsprint cream + bold primaries */
+  --color-bg:              #fdf8f0;   /* warm cream newsprint */
+  --color-surface:         #fffcf5;
+  --color-surface-2:       #ffffff;
+  --color-surface-offset:  #f5ede0;
+  --color-divider:         #ddd0b8;
+  --color-border:          #c9b898;
+
+  --color-text:            #1a1208;   /* rich near-black */
+  --color-text-muted:      #6b5c3e;
+  --color-text-faint:      #b0a08a;
+  --color-text-inverse:    #fffcf5;
+
+  /* Primary — bold red (newspaper masthead energy) */
+  --color-primary:          #c8162a;
+  --color-primary-hover:    #a01020;
+  --color-primary-active:   #7a0018;
+  --color-primary-highlight:#fde8eb;
+
+  /* Accent — sunny yellow */
+  --color-accent:           #f5c800;
+  --color-accent-hover:     #d4a900;
+  --color-accent-text:      #1a1208;
+
+  /* Secondary — sky blue */
+  --color-blue:             #1565c0;
+  --color-blue-hover:       #0d47a1;
+
+  /* Success */
+  --color-success:          #2e7d32;
+  --color-success-hover:    #1b5e20;
+
+  /* UI */
+  --radius-sm:   0.25rem;
+  --radius-md:   0.5rem;
+  --radius-lg:   0.75rem;
+  --radius-xl:   1rem;
+  --radius-full: 9999px;
+
+  --transition-interactive: 180ms cubic-bezier(0.16, 1, 0.3, 1);
+
+  --shadow-sm: 0 1px 3px rgba(26,18,8,0.08);
+  --shadow-md: 0 4px 12px rgba(26,18,8,0.10);
+  --shadow-lg: 0 12px 32px rgba(26,18,8,0.14);
+
+  --content-narrow:  640px;
+  --content-default: 980px;
+  --content-wide:    1240px;
+
+  /* Fonts */
+  --font-display: 'Playfair Display', 'Georgia', serif;
+  --font-body:    'Plus Jakarta Sans', 'Helvetica Neue', sans-serif;
+  --font-mono:    'Courier New', monospace;
+}
+
+/* DARK MODE */
+[data-theme='dark'],
+@media (prefers-color-scheme: dark) { :root:not([data-theme]) {
+  --color-bg:              #111009;
+  --color-surface:         #161408;
+  --color-surface-2:       #1c1a0d;
+  --color-surface-offset:  #201e10;
+  --color-divider:         #2e2a18;
+  --color-border:          #3a3520;
+  --color-text:            #f0e8d4;
+  --color-text-muted:      #a09070;
+  --color-text-faint:      #6a5e48;
+  --color-text-inverse:    #111009;
+  --color-primary:          #f4405a;
+  --color-primary-hover:    #e62040;
+  --color-primary-active:   #c01030;
+  --color-primary-highlight:#3d1018;
+  --color-accent:           #f5c800;
+  --color-accent-hover:     #d4a900;
+  --color-accent-text:      #111009;
+  --color-blue:             #90caf9;
+  --color-blue-hover:       #64b5f6;
+  --color-success:          #81c784;
+  --color-success-hover:    #66bb6a;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.4);
+  --shadow-lg: 0 12px 32px rgba(0,0,0,0.5);
+}}
+
+[data-theme='dark'] {
+  --color-bg:              #111009;
+  --color-surface:         #161408;
+  --color-surface-2:       #1c1a0d;
+  --color-surface-offset:  #201e10;
+  --color-divider:         #2e2a18;
+  --color-border:          #3a3520;
+  --color-text:            #f0e8d4;
+  --color-text-muted:      #a09070;
+  --color-text-faint:      #6a5e48;
+  --color-text-inverse:    #111009;
+  --color-primary:          #f4405a;
+  --color-primary-hover:    #e62040;
+  --color-primary-active:   #c01030;
+  --color-primary-highlight:#3d1018;
+  --color-accent:           #f5c800;
+  --color-accent-hover:     #d4a900;
+  --color-accent-text:      #111009;
+  --color-blue:             #90caf9;
+  --color-blue-hover:       #64b5f6;
+  --color-success:          #81c784;
+  --color-success-hover:    #66bb6a;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.4);
+  --shadow-lg: 0 12px 32px rgba(0,0,0,0.5);
+}

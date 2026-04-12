@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Kid Reporter — News by Kids, for Everyone</title>
+  <meta name="description" content="The Kid Reporter is a digital newspaper written and edited entirely by young journalists. Read stories, support our work with a $1 subscription, or make a donation." />
+  <meta property="og:title" content="The Kid Reporter" />
+  <meta property="og:description" content="News by Kids, for Everyone" />
+  <meta property="og:type" content="website" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- Favicon inline SVG -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%23c8162a'/><text y='24' x='4' font-size='22' font-family='serif' font-weight='900' fill='white'>K</text></svg>" />
+</head>
+<body>
+
+  <!-- ===== HEADER / MASTHEAD ===== -->
+  <header class="masthead" role="banner">
+    <div class="masthead__topbar">
+      <div class="container masthead__topbar-inner">
+        <span class="masthead__date" id="js-date"></span>
+        <nav class="masthead__topnav" aria-label="Utility navigation">
+          <a href="subscribe.html" class="topnav-link topnav-link--cta">Subscribe — $1/mo</a>
+          <a href="donate.html" class="topnav-link">Donate</a>
+          <a href="about.html" class="topnav-link">About Us</a>
+        </nav>
+        <button class="theme-toggle" data-theme-toggle aria-label="Switch to dark mode">
+          <!-- moon icon default -->
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="masthead__brand">
+      <div class="container masthead__brand-inner">
+        <!-- SVG Logo -->
+        <a href="index.html" class="logo-link" aria-label="The Kid Reporter — Home">
+          <svg class="logo-svg" viewBox="0 0 480 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="The Kid Reporter">
+            <!-- Pencil icon mark -->
+            <g transform="translate(0,10)">
+              <rect x="0" y="18" width="8" height="36" rx="2" fill="currentColor"/>
+              <polygon points="0,54 8,54 4,64" fill="var(--color-accent)"/>
+              <rect x="0" y="14" width="8" height="6" rx="1" fill="var(--color-text-muted)"/>
+            </g>
+            <!-- Logotype -->
+            <text x="24" y="58" font-family="'Playfair Display', Georgia, serif" font-size="52" font-weight="900" fill="currentColor" letter-spacing="-1">The Kid Reporter</text>
+          </svg>
+        </a>
+        <p class="masthead__tagline">News by Kids &mdash; for Everyone</p>
+      </div>
+      <div class="masthead__rule"></div>
+    </div>
+
+    <!-- Main Nav -->
+    <nav class="mainnav" aria-label="Main navigation">
+      <div class="container mainnav__inner">
+        <ul class="mainnav__list" role="list">
+          <li><a href="index.html" class="mainnav__link mainnav__link--active" aria-current="page">Home</a></li>
+          <li><a href="#local" class="mainnav__link">Local</a></li>
+          <li><a href="#science" class="mainnav__link">Science</a></li>
+          <li><a href="#sports" class="mainnav__link">Sports</a></li>
+          <li><a href="#arts" class="mainnav__link">Arts &amp; Culture</a></li>
+          <li><a href="#opinion" class="mainnav__link">Opinion</a></li>
+          <li><a href="#animals" class="mainnav__link">Animals</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ===== BREAKING BANNER ===== -->
+  <div class="breaking-banner">
+    <div class="container breaking-banner__inner">
+      <span class="breaking-badge">BREAKING</span>
+      <marquee class="breaking-text" behavior="scroll" direction="left" scrollamount="4">
+        Local 5th graders win regional science fair &nbsp;•&nbsp; School lunch pizza officially ranked #1 food by student poll &nbsp;•&nbsp; Baby elephant born at city zoo — reporters on the scene &nbsp;•&nbsp; New mural completed at Lincoln Elementary &nbsp;•&nbsp; Soccer team advances to state championship
+      </marquee>
+    </div>
+  </div>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main id="main-content">
+
+    <!-- Feature / Hero Story -->
+    <section class="feature-section" aria-label="Featured story">
+      <div class="container">
+        <div class="feature-grid">
+          <article class="feature-card">
+            <div class="feature-card__meta">
+              <span class="category-badge category-badge--science">Science</span>
+              <span class="feature-card__readtime">4 min read</span>
+            </div>
+            <h1 class="feature-card__headline">
+              <a href="article.html">Fifth Graders Discover a New Way to Clean Plastic from Rivers Using Magnets</a>
+            </h1>
+            <p class="feature-card__excerpt">A group of young scientists at Riverside Elementary spent three months designing an experiment that could help remove microplastics from local waterways — and their results surprised even their teacher.</p>
+            <div class="feature-card__byline">
+              <div class="byline-avatar" aria-hidden="true">MJ</div>
+              <div>
+                <span class="byline-name">By Maya Johnson, Age 11</span>
+                <time class="byline-date" datetime="2026-04-10">April 10, 2026</time>
+              </div>
+            </div>
+            <div class="feature-card__image" aria-label="Illustrated newspaper graphic — science experiment">
+              <div class="placeholder-art placeholder-art--science">
+                <svg viewBox="0 0 560 300" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="560" height="300" fill="#e8f5e9"/>
+                  <!-- Flask -->
+                  <rect x="240" y="60" width="80" height="20" rx="4" fill="#81c784"/>
+                  <path d="M250 80 L220 200 Q218 220 240 220 L320 220 Q342 220 340 200 L310 80Z" fill="#a5d6a7" stroke="#2e7d32" stroke-width="3"/>
+                  <!-- Liquid -->
+                  <path d="M228 180 L332 180 Q340 200 320 220 L240 220 Q220 220 228 200Z" fill="#4caf50" opacity="0.6"/>
+                  <!-- Magnet -->
+                  <path d="M360 90 Q400 90 400 130 Q400 170 360 170" stroke="#c8162a" stroke-width="12" fill="none" stroke-linecap="round"/>
+                  <rect x="348" y="82" width="20" height="18" rx="3" fill="#c8162a"/>
+                  <rect x="348" y="160" width="20" height="18" rx="3" fill="#1565c0"/>
+                  <!-- Dots/particles -->
+                  <circle cx="270" cy="140" r="4" fill="#1565c0" opacity="0.7"/>
+                  <circle cx="290" cy="155" r="3" fill="#1565c0" opacity="0.7"/>
+                  <circle cx="310" cy="148" r="5" fill="#1565c0" opacity="0.7"/>
+                  <circle cx="260" cy="165" r="3" fill="#1565c0" opacity="0.5"/>
+                  <!-- Stars -->
+                  <text x="60" y="80" font-size="28" opacity="0.3">⭐</text>
+                  <text x="460" y="240" font-size="20" opacity="0.3">🔬</text>
+                </svg>
+              </div>
+            </div>
+          </article>
+
+          <!-- Side stories -->
+          <aside class="side-stories" aria-label="Top stories">
+            <h2 class="side-stories__heading">Today's Top Stories</h2>
+
+            <article class="side-card">
+              <span class="category-badge category-badge--sports">Sports</span>
+              <h3 class="side-card__headline"><a href="article.html">Our School's Soccer Team Makes History — Undefeated Season!</a></h3>
+              <p class="side-card__excerpt">Coach Rivera says the secret is "teamwork and believing in each other." Star forward Amara Davis shares her game-winning strategy.</p>
+              <div class="side-card__meta">
+                <span class="byline-name">By Tyler Reyes, Age 12</span>
+                <time datetime="2026-04-11">Apr 11</time>
+              </div>
+            </article>
+
+            <div class="side-divider"></div>
+
+            <article class="side-card">
+              <span class="category-badge category-badge--local">Local</span>
+              <h3 class="side-card__headline"><a href="article.html">Why the Crosswalk on Oak Street Is Dangerous — A Kid's Investigation</a></h3>
+              <p class="side-card__excerpt">After three close calls in one week, reporter Sam Park spent two weeks documenting traffic patterns to make the case for a traffic light.</p>
+              <div class="side-card__meta">
+                <span class="byline-name">By Samantha Park, Age 13</span>
+                <time datetime="2026-04-09">Apr 9</time>
+              </div>
+            </article>
+
+            <div class="side-divider"></div>
+
+            <article class="side-card">
+              <span class="category-badge category-badge--arts">Arts</span>
+              <h3 class="side-card__headline"><a href="article.html">Meet the 8-Year-Old Who Painted a Mural for the Entire School</a></h3>
+              <div class="side-card__meta">
+                <span class="byline-name">By Jordan Lee, Age 10</span>
+                <time datetime="2026-04-08">Apr 8</time>
+              </div>
+            </article>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- Subscription CTA Banner -->
+    <section class="sub-banner" aria-label="Subscribe">
+      <div class="container sub-banner__inner">
+        <div class="sub-banner__text">
+          <span class="sub-banner__emoji" aria-hidden="true">📰</span>
+          <div>
+            <strong>Support young journalists for just $1 a month.</strong>
+            <span> Every dollar goes toward reporting tools, ink, and future journalists.</span>
+          </div>
+        </div>
+        <a href="subscribe.html" class="btn btn--primary">Subscribe — $1/mo</a>
+      </div>
+    </section>
+
+    <!-- Article Grid -->
+    <section class="articles-section" id="local" aria-label="Latest articles">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Latest Stories</h2>
+          <div class="section-rule"></div>
+        </div>
+
+        <div class="article-grid">
+
+          <article class="article-card">
+            <div class="article-card__image">
+              <div class="placeholder-art placeholder-art--animals">
+                <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="320" height="200" fill="#fff8e1"/>
+                  <ellipse cx="160" cy="130" rx="60" ry="45" fill="#ffcc80"/>
+                  <ellipse cx="130" cy="90" rx="20" ry="28" fill="#ffcc80"/>
+                  <ellipse cx="190" cy="90" rx="20" ry="28" fill="#ffcc80"/>
+                  <circle cx="130" cy="90" r="14" fill="#ff8f00"/>
+                  <circle cx="190" cy="90" r="14" fill="#ff8f00"/>
+                  <ellipse cx="160" cy="140" rx="25" ry="15" fill="#ff8f00"/>
+                  <circle cx="148" cy="88" r="5" fill="#1a1208"/>
+                  <circle cx="172" cy="88" r="5" fill="#1a1208"/>
+                  <path d="M148 100 Q160 108 172 100" stroke="#1a1208" stroke-width="2" fill="none" stroke-linecap="round"/>
+                  <text x="20" y="30" font-size="20" opacity="0.4">🌿</text>
+                  <text x="260" y="180" font-size="16" opacity="0.4">🌿</text>
+                </svg>
+              </div>
+            </div>
+            <div class="article-card__body">
+              <span class="category-badge category-badge--animals">Animals</span>
+              <h3 class="article-card__headline"><a href="article.html">Baby Elephant Named "Peanut" Takes First Steps at City Zoo</a></h3>
+              <p class="article-card__excerpt">Our cub reporter was there when Peanut stood up for the first time — and yes, there were tears (from the adults).</p>
+              <div class="article-card__meta">
+                <span class="byline-name">By Lily Chen, Age 9</span>
+                <time datetime="2026-04-11">Apr 11, 2026</time>
+              </div>
+            </div>
+          </article>
+
+          <article class="article-card">
+            <div class="article-card__image">
+              <div class="placeholder-art placeholder-art--opinion">
+                <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="320" height="200" fill="#fce4ec"/>
+                  <rect x="60" y="40" width="200" height="140" rx="8" fill="white" stroke="#c8162a" stroke-width="2"/>
+                  <line x1="80" y1="70" x2="240" y2="70" stroke="#c8162a" stroke-width="2"/>
+                  <line x1="80" y1="90" x2="200" y2="90" stroke="#ddd0b8" stroke-width="2"/>
+                  <line x1="80" y1="108" x2="220" y2="108" stroke="#ddd0b8" stroke-width="2"/>
+                  <line x1="80" y1="126" x2="190" y2="126" stroke="#ddd0b8" stroke-width="2"/>
+                  <line x1="80" y1="144" x2="210" y2="144" stroke="#ddd0b8" stroke-width="2"/>
+                  <circle cx="85" cy="55" r="8" fill="#f5c800"/>
+                  <text x="79" y="59" font-size="10" fill="#1a1208" font-weight="bold">✦</text>
+                </svg>
+              </div>
+            </div>
+            <div class="article-card__body">
+              <span class="category-badge category-badge--opinion">Opinion</span>
+              <h3 class="article-card__headline"><a href="article.html">Why Kids Should Have More Say in School Lunch Menus</a></h3>
+              <p class="article-card__excerpt">A passionate argument from a 6th grader who surveyed 200 students and found that 94% want more options.</p>
+              <div class="article-card__meta">
+                <span class="byline-name">By Marcus Williams, Age 12</span>
+                <time datetime="2026-04-10">Apr 10, 2026</time>
+              </div>
+            </div>
+          </article>
+
+          <article class="article-card">
+            <div class="article-card__image">
+              <div class="placeholder-art placeholder-art--science">
+                <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="320" height="200" fill="#e3f2fd"/>
+                  <!-- Rocket -->
+                  <path d="M160 30 L140 100 L160 90 L180 100Z" fill="#1565c0"/>
+                  <ellipse cx="160" cy="30" rx="20" ry="15" fill="#c8162a"/>
+                  <path d="M140 100 L120 130 L160 115Z" fill="#f5c800"/>
+                  <path d="M180 100 L200 130 L160 115Z" fill="#f5c800"/>
+                  <!-- Stars -->
+                  <circle cx="60" cy="50" r="3" fill="#1565c0" opacity="0.5"/>
+                  <circle cx="90" cy="30" r="2" fill="#1565c0" opacity="0.4"/>
+                  <circle cx="250" cy="60" r="3" fill="#1565c0" opacity="0.5"/>
+                  <circle cx="220" cy="40" r="2" fill="#1565c0" opacity="0.4"/>
+                  <circle cx="80" cy="80" r="2" fill="#1565c0" opacity="0.3"/>
+                  <!-- Flames -->
+                  <ellipse cx="160" cy="125" rx="8" ry="14" fill="#f5c800" opacity="0.8"/>
+                  <ellipse cx="160" cy="130" rx="5" ry="10" fill="#ff8f00" opacity="0.9"/>
+                </svg>
+              </div>
+            </div>
+            <div class="article-card__body">
+              <span class="category-badge category-badge--science">Science</span>
+              <h3 class="article-card__headline"><a href="article.html">We Asked NASA: Can a Kid Become an Astronaut? Here's What They Said</a></h3>
+              <p class="article-card__excerpt">Spoiler: yes, with hard work in STEM, languages, and physical fitness — and you should start now.</p>
+              <div class="article-card__meta">
+                <span class="byline-name">By Priya Sharma, Age 11</span>
+                <time datetime="2026-04-07">Apr 7, 2026</time>
+              </div>
+            </div>
+          </article>
+
+          <article class="article-card">
+            <div class="article-card__image">
+              <div class="placeholder-art placeholder-art--local">
+                <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="320" height="200" fill="#f3e5f5"/>
+                  <!-- Community garden -->
+                  <rect x="0" y="150" width="320" height="50" fill="#a5d6a7"/>
+                  <!-- Plants -->
+                  <rect x="60" y="100" width="8" height="55" fill="#4caf50"/>
+                  <circle cx="64" cy="95" r="18" fill="#66bb6a"/>
+                  <rect x="110" y="110" width="8" height="45" fill="#4caf50"/>
+                  <circle cx="114" cy="105" r="15" fill="#81c784"/>
+                  <rect x="200" y="105" width="8" height="50" fill="#4caf50"/>
+                  <circle cx="204" cy="100" r="18" fill="#66bb6a"/>
+                  <rect x="250" y="115" width="8" height="40" fill="#4caf50"/>
+                  <circle cx="254" cy="110" r="13" fill="#81c784"/>
+                  <!-- Flowers -->
+                  <circle cx="90" cy="148" r="8" fill="#f5c800"/>
+                  <circle cx="170" cy="148" r="8" fill="#c8162a"/>
+                  <circle cx="230" cy="148" r="8" fill="#f5c800"/>
+                  <!-- Sun -->
+                  <circle cx="270" cy="40" r="22" fill="#f5c800" opacity="0.8"/>
+                </svg>
+              </div>
+            </div>
+            <div class="article-card__body">
+              <span class="category-badge category-badge--local">Local</span>
+              <h3 class="article-card__headline"><a href="article.html">Students Build Community Garden to Feed Families in Need</a></h3>
+              <p class="article-card__excerpt">The garden at Jefferson Middle School now produces 40 lbs of vegetables each month, donated to the local food bank.</p>
+              <div class="article-card__meta">
+                <span class="byline-name">By Aisha Brown, Age 13</span>
+                <time datetime="2026-04-06">Apr 6, 2026</time>
+              </div>
+            </div>
+          </article>
+
+          <article class="article-card">
+            <div class="article-card__image">
+              <div class="placeholder-art placeholder-art--sports">
+                <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="320" height="200" fill="#e8f5e9"/>
+                  <!-- Basketball court lines -->
+                  <rect x="20" y="30" width="280" height="160" rx="4" fill="none" stroke="#a5d6a7" stroke-width="3"/>
+                  <circle cx="160" cy="110" r="35" fill="none" stroke="#a5d6a7" stroke-width="2"/>
+                  <line x1="160" y1="30" x2="160" y2="190" stroke="#a5d6a7" stroke-width="2"/>
+                  <!-- Basketball -->
+                  <circle cx="160" cy="90" r="28" fill="#ff8f00"/>
+                  <path d="M136 78 Q160 100 184 78" stroke="#1a1208" stroke-width="2" fill="none"/>
+                  <path d="M136 102 Q160 80 184 102" stroke="#1a1208" stroke-width="2" fill="none"/>
+                  <line x1="160" y1="62" x2="160" y2="118" stroke="#1a1208" stroke-width="2"/>
+                  <!-- Stars -->
+                  <text x="30" y="55" font-size="16" opacity="0.5">⭐</text>
+                  <text x="265" y="55" font-size="16" opacity="0.5">⭐</text>
+                </svg>
+              </div>
+            </div>
+            <div class="article-card__body">
+              <span class="category-badge category-badge--sports">Sports</span>
+              <h3 class="article-card__headline"><a href="article.html">From Wheelchair to Basketball Court: Meet Jaylen, the Team's Biggest Inspiration</a></h3>
+              <p class="article-card__excerpt">After a leg injury sidelined him last year, Jaylen became the team's head statistician — and changed how everyone thinks about the game.</p>
+              <div class="article-card__meta">
+                <span class="byline-name">By Devon Harris, Age 12</span>
+                <time datetime="2026-04-05">Apr 5, 2026</time>
+              </div>
+            </div>
+          </article>
+
+          <article class="article-card">
+            <div class="article-card__image">
+              <div class="placeholder-art placeholder-art--arts">
+                <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="320" height="200" fill="#fff3e0"/>
+                  <!-- Paint palette -->
+                  <ellipse cx="160" cy="110" rx="80" ry="60" fill="#ffe0b2" stroke="#ff8f00" stroke-width="2"/>
+                  <ellipse cx="185" cy="145" rx="20" ry="25" fill="#ffe0b2"/>
+                  <circle cx="110" cy="90" r="14" fill="#c8162a"/>
+                  <circle cx="145" cy="75" r="14" fill="#f5c800"/>
+                  <circle cx="180" cy="75" r="14" fill="#1565c0"/>
+                  <circle cx="210" cy="90" r="14" fill="#2e7d32"/>
+                  <circle cx="220" cy="120" r="14" fill="#7b1fa2"/>
+                  <!-- Paintbrush -->
+                  <rect x="220" y="40" width="6" height="60" rx="3" fill="#8d6e63" transform="rotate(30 220 40)"/>
+                  <ellipse cx="240" cy="88" rx="6" ry="12" fill="#c8162a" transform="rotate(30 240 88)"/>
+                </svg>
+              </div>
+            </div>
+            <div class="article-card__body">
+              <span class="category-badge category-badge--arts">Arts</span>
+              <h3 class="article-card__headline"><a href="article.html">This 10-Year-Old's Paintings Are Selling in a Real Art Gallery Downtown</a></h3>
+              <p class="article-card__excerpt">Emma Zhang started painting during the pandemic. Now collectors are lining up for her work — and she donates half to charity.</p>
+              <div class="article-card__meta">
+                <span class="byline-name">By Jordan Lee, Age 10</span>
+                <time datetime="2026-04-04">Apr 4, 2026</time>
+              </div>
+            </div>
+          </article>
+
+        </div><!-- /.article-grid -->
+
+        <div class="load-more-wrap">
+          <button class="btn btn--outline" onclick="alert('In a live site, this would load more articles from your CMS or API.')">Load More Stories</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Donation Callout -->
+    <section class="donate-section" aria-label="Donate">
+      <div class="container donate-section__inner">
+        <div class="donate-section__text">
+          <h2 class="donate-section__heading">Help Us Keep Reporting</h2>
+          <p>Every donation supports young journalists with supplies, training, and the confidence to tell important stories. No amount is too small.</p>
+        </div>
+        <a href="donate.html" class="btn btn--accent">Make a Donation</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container site-footer__inner">
+      <div class="footer-brand">
+        <span class="footer-logo-text">The Kid Reporter</span>
+        <p class="footer-tagline">Written by kids. Read by everyone.</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <ul role="list">
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="subscribe.html">Subscribe</a></li>
+          <li><a href="donate.html">Donate</a></li>
+          <li><a href="mailto:editor@kidreporter.example.com">Contact</a></li>
+          <li><a href="#">Submit a Story</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </nav>
+      <p class="footer-legal">&copy; 2026 The Kid Reporter. All rights reserved. A student-run publication.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+<script data-pplx-inline-edit>
+(function(){
+  if(window===window.top)return;
+  function inlineAll(orig,clone){
+    if(orig.nodeType!==1)return;
+    try{
+      var cs=getComputedStyle(orig);
+      var t='';
+      for(var i=0;i<cs.length;i++){t+=cs[i]+':'+cs.getPropertyValue(cs[i])+';';}
+      clone.style.cssText=t;
+    }catch(e){}
+    var oc=orig.children,cc=clone.children;
+    for(var j=0;j<oc.length&&j<cc.length;j++){inlineAll(oc[j],cc[j]);}
+  }
+  function stripExternal(clone){
+    var imgs=clone.querySelectorAll('img');
+    for(var i=0;i<imgs.length;i++){
+      var s=imgs[i].getAttribute('src');
+      if(s&&!s.startsWith('data:'))imgs[i].removeAttribute('src');
+    }
+    var all=clone.querySelectorAll('*');
+    for(var i=0;i<all.length;i++){
+      var st=all[i].style.cssText;
+      if(st&&st.indexOf('url(')>=0){
+        all[i].style.cssText=st.replace(/url\(["']?(?!data:)[^)"']*["']?\)/gi,'none');
+      }
+    }
+  }
+  window.addEventListener('message',function(e){
+    if(!e.data||e.data.type!=='INLINE_EDIT_CAPTURE_REQUEST')return;
+    var scrollX=window.scrollX||window.pageXOffset||0;
+    var scrollY=window.scrollY||window.pageYOffset||0;
+    var w=window.innerWidth,h=window.innerHeight;
+    try{
+      var clone=document.documentElement.cloneNode(true);
+      var rm=clone.querySelectorAll('script,link[rel="stylesheet"],style');
+      for(var i=0;i<rm.length;i++){rm[i].remove();}
+      inlineAll(document.documentElement,clone);
+      stripExternal(clone);
+      var html=new XMLSerializer().serializeToString(clone);
+      var svg='<svg xmlns="http://www.w3.org/2000/svg" width="'+w+'" height="'+h+'">'
+        +'<foreignObject width="100%" height="100%">'
+        +'<div xmlns="http://www.w3.org/1999/xhtml" style="width:'+w+'px;height:'+h+'px;overflow:hidden">'
+        +'<div style="transform:translate(-'+scrollX+'px,-'+scrollY+'px);transform-origin:top left">'
+        +html+'</div></div></foreignObject></svg>';
+      var svgUrl='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
+      var img=new Image();
+      img.onload=function(){
+        var c=document.createElement('canvas');c.width=w;c.height=h;
+        c.getContext('2d').drawImage(img,0,0);
+        window.parent.postMessage({type:'INLINE_EDIT_SCREENSHOT_RESULT',dataUrl:c.toDataURL('image/png'),scrollX:scrollX,scrollY:scrollY},'*');
+      };
+      img.onerror=function(){
+        window.parent.postMessage({type:'INLINE_EDIT_SCREENSHOT_RESULT',dataUrl:null,scrollX:scrollX,scrollY:scrollY},'*');
+      };
+      img.src=svgUrl;
+    }catch(err){
+      window.parent.postMessage({type:'INLINE_EDIT_SCREENSHOT_RESULT',dataUrl:null,scrollX:scrollX,scrollY:scrollY},'*');
+    }
+  });
+})();
+</script></body>
+</html>

@@ -1,0 +1,3 @@
+# Cloudflare Pages redirects
+/home     /index.html   301
+/news     /index.html   301
