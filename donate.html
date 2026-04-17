@@ -1,340 +1,135 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Donate — The Kid Reporter</title>
-  <meta name="description" content="Make a one-time donation to support young journalists at The Kid Reporter." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/tokens.css" />
-  <link rel="stylesheet" href="css/base.css" />
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%23c8162a'/><text y='24' x='4' font-size='22' font-family='serif' font-weight='900' fill='white'>K</text></svg>" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Donate – The Kid Reporter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Source Sans 3', Arial, sans-serif; background: #fdfaf5; color: #1a1008; min-height: 100dvh; -webkit-font-smoothing: antialiased; }
+    nav { display: flex; align-items: center; justify-content: space-between; padding: 0.75rem 2rem; border-bottom: 2px solid #1a1008; background: #fdfaf5; position: sticky; top: 0; z-index: 100; gap: 1rem; }
+    .nav-logo { font-family: 'Playfair Display', Georgia, serif; font-weight: 900; font-size: 1.4rem; color: #d44000; text-decoration: none; }
+    .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+    .nav-links a { font-size: 0.9rem; font-weight: 600; color: #1a1008; text-decoration: none; text-transform: uppercase; letter-spacing: 0.06em; }
+    .nav-links a:hover { color: #d44000; }
+
+    .hero { text-align: center; padding: 4rem 2rem 2rem; max-width: 700px; margin: 0 auto; }
+    .eyebrow { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: #d44000; margin-bottom: 1rem; }
+    h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 900; margin-bottom: 1.25rem; line-height: 1.1; }
+    .hero p { font-size: 1.05rem; color: #6b5c3e; max-width: 52ch; margin: 0 auto; line-height: 1.7; }
+
+    /* Donation tiers */
+    .tiers { max-width: 800px; margin: 3rem auto; padding: 0 2rem; display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 1rem; }
+    .tier-card { background: #fff8ee; border: 2px solid rgba(100,60,0,0.12); border-radius: 1rem; padding: 1.5rem 1rem; text-align: center; transition: border-color 0.2s, box-shadow 0.2s; }
+    .tier-card:hover { border-color: #d44000; box-shadow: 0 4px 16px rgba(212,64,0,0.12); }
+    .tier-amount { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 900; color: #d44000; }
+    .tier-label { font-size: 0.85rem; font-weight: 700; margin: 0.5rem 0 0.25rem; }
+    .tier-desc { font-size: 0.78rem; color: #6b5c3e; line-height: 1.4; }
+
+    /* Donate CTA */
+    .donate-cta { max-width: 540px; margin: 1rem auto 4rem; padding: 0 2rem; text-align: center; }
+    .donate-cta p { font-size: 1rem; color: #6b5c3e; margin-bottom: 1.75rem; line-height: 1.6; }
+
+    /* Stripe Payment Link buttons */
+    .donate-btns { display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; margin-bottom: 1.5rem; }
+    .btn-donate {
+      display: inline-block;
+      padding: 0.85rem 1.6rem;
+      border-radius: 0.5rem;
+      font-family: 'Source Sans 3', Arial, sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.18s, transform 0.12s;
+    }
+    .btn-donate.primary { background: #d44000; color: #fff; }
+    .btn-donate.primary:hover { background: #b33500; transform: translateY(-1px); }
+    .btn-donate.secondary { background: #fff8ee; color: #d44000; border: 2px solid #d44000; }
+    .btn-donate.secondary:hover { background: #ffe5d0; transform: translateY(-1px); }
+
+    .secure-note { font-size: 0.8rem; color: #9a8060; margin-top: 0.5rem; }
+
+    /* Testimonial */
+    .testimonial { max-width: 600px; margin: 0 auto 4rem; padding: 2rem; background: #fff8ee; border-left: 4px solid #d44000; border-radius: 0 1rem 1rem 0; font-style: italic; color: #6b5c3e; font-size: 1rem; line-height: 1.7; }
+    .testimonial cite { display: block; margin-top: 1rem; font-style: normal; font-weight: 700; color: #1a1008; font-size: 0.9rem; }
+
+    footer { border-top: 2px solid #1a1008; padding: 2rem; text-align: center; font-size: 0.85rem; color: #6b5c3e; }
+    footer a { color: #d44000; text-decoration: none; }
+    @media (max-width: 480px) { .nav-links { display: none; } nav { padding: 0.75rem 1rem; } }
+  </style>
 </head>
 <body>
+  <nav>
+    <a href="index.html" class="nav-logo">&#128240; The Kid Reporter</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="subscribe.html">Subscribe</a></li>
+      <li><a href="donate.html">Donate</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </nav>
 
-  <!-- Minimal Header -->
-  <header class="masthead" role="banner">
-    <div class="masthead__topbar">
-      <div class="container masthead__topbar-inner">
-        <span class="masthead__date" id="js-date"></span>
-        <nav class="masthead__topnav" aria-label="Utility navigation">
-          <a href="index.html" class="topnav-link">← Back to News</a>
-          <a href="subscribe.html" class="topnav-link topnav-link--cta">Subscribe $1/mo</a>
-        </nav>
-        <button class="theme-toggle" data-theme-toggle aria-label="Switch to dark mode">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-        </button>
-      </div>
+  <div class="hero">
+    <p class="eyebrow">Support Young Journalists</p>
+    <h1>Help Kids Tell the Stories That Matter</h1>
+    <p>Every donation goes directly to supporting our young reporters — equipment, training, and the tools they need to do real journalism.</p>
+  </div>
+
+  <!-- Impact Tiers (visual only — all amounts go through the same Stripe link) -->
+  <div class="tiers">
+    <div class="tier-card">
+      <div class="tier-amount">$5</div>
+      <div class="tier-label">Reporter Starter</div>
+      <div class="tier-desc">Notebook, pens, and a press badge for one junior reporter</div>
     </div>
-    <div class="masthead__brand">
-      <div class="container masthead__brand-inner">
-        <a href="index.html" class="logo-link" aria-label="The Kid Reporter — Home">
-          <svg class="logo-svg" viewBox="0 0 480 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g transform="translate(0,10)">
-              <rect x="0" y="18" width="8" height="36" rx="2" fill="currentColor"/>
-              <polygon points="0,54 8,54 4,64" fill="var(--color-accent)"/>
-              <rect x="0" y="14" width="8" height="6" rx="1" fill="var(--color-text-muted)"/>
-            </g>
-            <text x="24" y="58" font-family="'Playfair Display', Georgia, serif" font-size="52" font-weight="900" fill="currentColor" letter-spacing="-1">The Kid Reporter</text>
-          </svg>
-        </a>
-      </div>
-      <div class="masthead__rule"></div>
+    <div class="tier-card">
+      <div class="tier-amount">$25</div>
+      <div class="tier-label">Photo Journalism</div>
+      <div class="tier-desc">One month of cloud storage for our photographers' work</div>
     </div>
-  </header>
-
-  <!-- Page Hero -->
-  <section class="page-hero">
-    <div class="container">
-      <p class="page-hero__kicker">Make a Difference</p>
-      <h1 class="page-hero__title">Donate to The Kid Reporter</h1>
-      <p class="page-hero__subtitle">A one-time gift helps us buy cameras, notebooks, printing supplies, and send our reporters to cover real community events.</p>
+    <div class="tier-card">
+      <div class="tier-amount">$50</div>
+      <div class="tier-label">Workshop Sponsor</div>
+      <div class="tier-desc">Sponsors one student at our investigative journalism training day</div>
     </div>
-  </section>
-
-  <main id="main-content">
-    <section style="padding-block: clamp(var(--space-10), 6vw, var(--space-24));">
-      <div class="container">
-        <div style="display:grid; grid-template-columns: 1fr; gap: var(--space-12); align-items: start; max-width: var(--content-default); margin-inline: auto;">
-
-          <!-- Impact Panel -->
-          <div style="order: 2;">
-            <h2 style="font-size: var(--text-xl); font-weight: 900; margin-bottom: var(--space-6);">Your Donation in Action</h2>
-
-            <div style="display: flex; flex-direction: column; gap: var(--space-4);">
-              <div style="display: flex; gap: var(--space-4); padding: var(--space-4); background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg);">
-                <div style="width: 52px; height: 52px; border-radius: var(--radius-md); background: #e3f2fd; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0;">✏️</div>
-                <div>
-                  <strong style="display: block; font-size: var(--text-sm); margin-bottom: var(--space-1);">$5 — Reporter's Starter Pack</strong>
-                  <span style="font-size: var(--text-sm); color: var(--color-text-muted);">Notebook, pens, and a press badge for one new junior reporter.</span>
-                </div>
-              </div>
-              <div style="display: flex; gap: var(--space-4); padding: var(--space-4); background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg);">
-                <div style="width: 52px; height: 52px; border-radius: var(--radius-md); background: #e8f5e9; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0;">📸</div>
-                <div>
-                  <strong style="display: block; font-size: var(--text-sm); margin-bottom: var(--space-1);">$25 — Photo Journalism</strong>
-                  <span style="font-size: var(--text-sm); color: var(--color-text-muted);">Covers one month of cloud storage for our photographers' work.</span>
-                </div>
-              </div>
-              <div style="display: flex; gap: var(--space-4); padding: var(--space-4); background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg);">
-                <div style="width: 52px; height: 52px; border-radius: var(--radius-md); background: #fff3e0; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0;">🎓</div>
-                <div>
-                  <strong style="display: block; font-size: var(--text-sm); margin-bottom: var(--space-1);">$50 — Workshop Sponsorship</strong>
-                  <span style="font-size: var(--text-sm); color: var(--color-text-muted);">Sponsors one student to attend our investigative journalism training day.</span>
-                </div>
-              </div>
-              <div style="display: flex; gap: var(--space-4); padding: var(--space-4); background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg);">
-                <div style="width: 52px; height: 52px; border-radius: var(--radius-md); background: #fce4ec; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0;">🏆</div>
-                <div>
-                  <strong style="display: block; font-size: var(--text-sm); margin-bottom: var(--space-1);">$100+ — Champion Donor</strong>
-                  <span style="font-size: var(--text-sm); color: var(--color-text-muted);">Named in our annual Champions of Youth Journalism report. Your name goes in the paper!</span>
-                </div>
-              </div>
-            </div>
-
-            <div style="margin-top: var(--space-8); padding: var(--space-5); background: var(--color-surface-offset); border-radius: var(--radius-lg); border-left: 4px solid var(--color-accent);">
-              <p style="font-size: var(--text-sm); font-style: italic; color: var(--color-text-muted); line-height: 1.7;">
-                "Mr. Davis donated a camera last year and now I take photos for every story. I want to be a photojournalist when I grow up."
-              </p>
-              <strong style="font-size: var(--text-xs); color: var(--color-text); font-family: var(--font-mono); display: block; margin-top: var(--space-3);">— Lily Chen, Age 9, Photo Reporter</strong>
-            </div>
-          </div>
-
-          <!-- Donation Form -->
-          <div style="order: 1;">
-            <div class="form-card">
-              <h2 style="font-size: var(--text-lg); font-weight: 900; margin-bottom: var(--space-2);">Make a Donation</h2>
-              <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin-bottom: var(--space-6);">One-time gift. Every amount helps.</p>
-
-              <div class="form-success" id="donate-success">
-                💛 Thank you for your generosity! Your donation will be confirmed by email shortly.
-              </div>
-
-              <form id="donate-form" novalidate>
-                <div style="display: flex; flex-direction: column; gap: var(--space-5);">
-
-                  <!-- Amount Selector -->
-                  <div class="form-group">
-                    <label>Donation Amount</label>
-                    <div class="amount-grid" role="group" aria-label="Choose donation amount">
-                      <button type="button" class="amount-btn" data-amount="5">$5</button>
-                      <button type="button" class="amount-btn" data-amount="10">$10</button>
-                      <button type="button" class="amount-btn active" data-amount="25">$25</button>
-                      <button type="button" class="amount-btn" data-amount="50">$50</button>
-                      <button type="button" class="amount-btn" data-amount="100">$100</button>
-                      <button type="button" class="amount-btn" data-amount="custom" id="custom-btn">Custom</button>
-                    </div>
-                    <input type="number" id="custom-amount" name="custom_amount" placeholder="Enter amount ($)" min="1" step="1"
-                      style="display:none; margin-top: var(--space-3);" />
-                    <input type="hidden" id="donation-amount" name="amount" value="25" />
-                  </div>
-
-                  <div class="form-group">
-                    <label for="donor-name">Your Name</label>
-                    <input type="text" id="donor-name" name="name" placeholder="Jane Smith" autocomplete="name" />
-                    <span class="form-hint">Optional — leave blank to donate anonymously.</span>
-                  </div>
-
-                  <div class="form-group">
-                    <label for="donor-email">Email Address <span style="color: var(--color-primary);">*</span></label>
-                    <input type="email" id="donor-email" name="email" placeholder="you@example.com" autocomplete="email" required />
-                    <span class="form-hint">For your receipt and thank-you note.</span>
-                  </div>
-
-                  <div class="form-group">
-                    <label for="donor-message">Message to Our Reporters (Optional)</label>
-                    <textarea id="donor-message" name="message" placeholder="Write something encouraging for our young journalists…"></textarea>
-                  </div>
-
-                  <!-- Stripe Card Element placeholder -->
-                  <div class="form-group">
-                    <label>Card Details</label>
-                    <div id="stripe-donate-element" style="
-                      border: 1.5px solid var(--color-border);
-                      border-radius: var(--radius-md);
-                      padding: var(--space-3) var(--space-4);
-                      background: var(--color-surface-2);
-                      min-height: 44px;
-                      display: flex;
-                      align-items: center;
-                      color: var(--color-text-muted);
-                      font-size: var(--text-sm);
-                      font-family: var(--font-mono);
-                    ">
-                      <span style="opacity:0.6;">💳 &nbsp;Card number &nbsp; MM/YY &nbsp; CVC</span>
-                    </div>
-                    <span class="form-hint">Powered by Stripe. Your card info is never stored here.</span>
-                  </div>
-
-                  <div style="background: var(--color-primary-highlight); border-radius: var(--radius-md); padding: var(--space-4); display: flex; justify-content: space-between; align-items: center;">
-                    <strong style="font-size: var(--text-base);">Donation Total</strong>
-                    <strong style="font-size: var(--text-xl); font-family: var(--font-display); color: var(--color-primary);" id="donate-total">$25</strong>
-                  </div>
-
-                  <button type="submit" class="btn btn--green btn--full btn--lg" id="donate-btn">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-                    Donate <span id="btn-amount">$25</span> Now
-                  </button>
-
-                  <div class="stripe-note">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                    Secured by <strong>Stripe</strong> · 256-bit SSL encryption
-                  </div>
-                </div>
-              </form>
-
-              <!-- Cloudflare Pages + Stripe integration note -->
-              <div style="margin-top: var(--space-6); padding: var(--space-4); border: 1px dashed var(--color-border); border-radius: var(--radius-md); background: var(--color-surface-offset);">
-                <p style="font-size: var(--text-xs); color: var(--color-text-muted); font-family: var(--font-mono); line-height: 1.7;">
-                  <strong style="color: var(--color-text);">🛠 DEVELOPER NOTE</strong><br/>
-                  Wire up Stripe Payment Intents for one-time donations:<br/>
-                  1. Create a Cloudflare Pages Function at <code>/functions/api/create-payment-intent.js</code>.<br/>
-                  2. Call <code>stripe.paymentIntents.create({ amount, currency: 'usd' })</code>.<br/>
-                  3. Return <code>clientSecret</code> and confirm with Stripe's Payment Element.<br/>
-                  See <a href="https://stripe.com/docs/payments/payment-intents" target="_blank" rel="noopener" style="color: var(--color-primary);">Stripe Payment Intents docs</a>.
-                </p>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer" role="contentinfo">
-    <div class="container site-footer__inner">
-      <div class="footer-brand">
-        <span class="footer-logo-text">The Kid Reporter</span>
-        <p class="footer-tagline">Written by kids. Read by everyone.</p>
-      </div>
-      <nav class="footer-nav" aria-label="Footer navigation">
-        <ul role="list">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="subscribe.html">Subscribe</a></li>
-          <li><a href="mailto:editor@kidreporter.example.com">Contact</a></li>
-        </ul>
-      </nav>
-      <p class="footer-legal">&copy; 2026 The Kid Reporter. All rights reserved.</p>
+    <div class="tier-card">
+      <div class="tier-amount">$100+</div>
+      <div class="tier-label">Champion Donor</div>
+      <div class="tier-desc">Named in our annual Champions of Youth Journalism report</div>
     </div>
+  </div>
+
+  <div class="donate-cta">
+    <p>Choose any amount. Every dollar makes a difference. You'll be taken to Stripe's secure checkout — no account required.</p>
+
+    <!--
+      STRIPE PAYMENT LINKS — replace the href values below with your real Stripe Payment Link URLs.
+      Create them at: https://dashboard.stripe.com/payment-links/create
+      Create one product called "Donation to The Kid Reporter" with a customer-chosen price (Tip Jar / Let customer decide amount).
+      You can also create fixed-amount links for $5, $25, $50, $100 if you prefer.
+
+      PLACEHOLDER LINKS BELOW — update before going live:
+    -->
+    <div class="donate-btns">
+      <a href="REPLACE_WITH_STRIPE_PAYMENT_LINK" class="btn-donate primary" target="_blank" rel="noopener">Donate Now</a>
+      <a href="subscribe.html" class="btn-donate secondary">Subscribe $1/mo Instead</a>
+    </div>
+
+    <p class="secure-note">&#128274; Payments securely processed by Stripe. Your information is never stored on our servers.</p>
+  </div>
+
+  <blockquote class="testimonial">
+    "Mr. Davis donated a camera last year and now I take photos for every story. I want to be a photojournalist when I grow up."
+    <cite>— Lily Chen, Age 9, Photo Reporter</cite>
+  </blockquote>
+
+  <footer>
+    <p>&copy; 2026 The Kid Reporter &middot; <a href="about.html">About</a> &middot; <a href="subscribe.html">Subscribe</a> &middot; <a href="mailto:editor@thekidreporter.com">Contact</a></p>
+    <p style="margin-top:0.5rem;font-size:0.78rem;">Payments securely processed by Stripe.</p>
   </footer>
-
-  <script src="js/main.js"></script>
-  <script>
-    // Amount selector
-    const amountBtns = document.querySelectorAll('.amount-btn');
-    const donateTotal = document.getElementById('donate-total');
-    const btnAmount  = document.getElementById('btn-amount');
-    const hiddenAmt  = document.getElementById('donation-amount');
-    const customInput = document.getElementById('custom-amount');
-    let selectedAmount = 25;
-
-    amountBtns.forEach(btn => {
-      btn.addEventListener('click', function() {
-        amountBtns.forEach(b => b.classList.remove('active'));
-        this.classList.add('active');
-        const val = this.dataset.amount;
-        if (val === 'custom') {
-          customInput.style.display = 'block';
-          customInput.focus();
-          selectedAmount = parseInt(customInput.value) || 0;
-        } else {
-          customInput.style.display = 'none';
-          selectedAmount = parseInt(val);
-          updateTotal(selectedAmount);
-        }
-        hiddenAmt.value = selectedAmount;
-      });
-    });
-
-    customInput.addEventListener('input', function() {
-      selectedAmount = parseInt(this.value) || 0;
-      hiddenAmt.value = selectedAmount;
-      updateTotal(selectedAmount);
-    });
-
-    function updateTotal(amt) {
-      donateTotal.textContent = '$' + (amt || 0);
-      btnAmount.textContent   = '$' + (amt || 0);
-    }
-
-    // Demo form submit
-    document.getElementById('donate-form').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const btn = document.getElementById('donate-btn');
-      btn.disabled = true;
-      btn.textContent = 'Processing…';
-      setTimeout(function() {
-        document.getElementById('donate-form').style.display = 'none';
-        const s = document.getElementById('donate-success');
-        s.style.display = 'block';
-      }, 1400);
-    });
-  </script>
-<script data-pplx-inline-edit>
-(function(){
-  if(window===window.top)return;
-  function inlineAll(orig,clone){
-    if(orig.nodeType!==1)return;
-    try{
-      var cs=getComputedStyle(orig);
-      var t='';
-      for(var i=0;i<cs.length;i++){t+=cs[i]+':'+cs.getPropertyValue(cs[i])+';';}
-      clone.style.cssText=t;
-    }catch(e){}
-    var oc=orig.children,cc=clone.children;
-    for(var j=0;j<oc.length&&j<cc.length;j++){inlineAll(oc[j],cc[j]);}
-  }
-  function stripExternal(clone){
-    var imgs=clone.querySelectorAll('img');
-    for(var i=0;i<imgs.length;i++){
-      var s=imgs[i].getAttribute('src');
-      if(s&&!s.startsWith('data:'))imgs[i].removeAttribute('src');
-    }
-    var all=clone.querySelectorAll('*');
-    for(var i=0;i<all.length;i++){
-      var st=all[i].style.cssText;
-      if(st&&st.indexOf('url(')>=0){
-        all[i].style.cssText=st.replace(/url\(["']?(?!data:)[^)"']*["']?\)/gi,'none');
-      }
-    }
-  }
-  window.addEventListener('message',function(e){
-    if(!e.data||e.data.type!=='INLINE_EDIT_CAPTURE_REQUEST')return;
-    var scrollX=window.scrollX||window.pageXOffset||0;
-    var scrollY=window.scrollY||window.pageYOffset||0;
-    var w=window.innerWidth,h=window.innerHeight;
-    try{
-      var clone=document.documentElement.cloneNode(true);
-      var rm=clone.querySelectorAll('script,link[rel="stylesheet"],style');
-      for(var i=0;i<rm.length;i++){rm[i].remove();}
-      inlineAll(document.documentElement,clone);
-      stripExternal(clone);
-      var html=new XMLSerializer().serializeToString(clone);
-      var svg='<svg xmlns="http://www.w3.org/2000/svg" width="'+w+'" height="'+h+'">'
-        +'<foreignObject width="100%" height="100%">'
-        +'<div xmlns="http://www.w3.org/1999/xhtml" style="width:'+w+'px;height:'+h+'px;overflow:hidden">'
-        +'<div style="transform:translate(-'+scrollX+'px,-'+scrollY+'px);transform-origin:top left">'
-        +html+'</div></div></foreignObject></svg>';
-      var svgUrl='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
-      var img=new Image();
-      img.onload=function(){
-        var c=document.createElement('canvas');c.width=w;c.height=h;
-        c.getContext('2d').drawImage(img,0,0);
-        window.parent.postMessage({type:'INLINE_EDIT_SCREENSHOT_RESULT',dataUrl:c.toDataURL('image/png'),scrollX:scrollX,scrollY:scrollY},'*');
-      };
-      img.onerror=function(){
-        window.parent.postMessage({type:'INLINE_EDIT_SCREENSHOT_RESULT',dataUrl:null,scrollX:scrollX,scrollY:scrollY},'*');
-      };
-      img.src=svgUrl;
-    }catch(err){
-      window.parent.postMessage({type:'INLINE_EDIT_SCREENSHOT_RESULT',dataUrl:null,scrollX:scrollX,scrollY:scrollY},'*');
-    }
-  });
-})();
-</script></body>
+</body>
 </html>
