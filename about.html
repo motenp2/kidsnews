@@ -104,6 +104,29 @@
       color: var(--color-parchment-dim);
     }
 
+    /* ── Bio photo float wrap ── */
+    .owner-photo-wrap {
+      float: right;
+      margin: 0 0 var(--space-5) var(--space-6);
+      width: clamp(120px, 35%, 180px);
+      flex-shrink: 0;
+    }
+    .owner-photo-wrap img {
+      width: 100%;
+      border-radius: var(--radius-lg);
+      border: 2px solid var(--neon-magenta);
+      box-shadow: var(--glow-magenta), var(--shadow-md);
+      display: block;
+    }
+    /* On very small screens stack the photo above text */
+    @media (max-width: 480px) {
+      .owner-photo-wrap {
+        float: none;
+        width: clamp(100px, 55%, 160px);
+        margin: 0 auto var(--space-5) auto;
+      }
+    }
+
     .owner-tags {
       display: flex; flex-wrap: wrap; gap: var(--space-2);
       margin-top: var(--space-5);
@@ -309,13 +332,15 @@
 
           <!-- Sarai -->
           <div class="owner-card owner-card--sarai">
-            <div class="owner-avatar owner-avatar--sarai">S</div>
             <div class="owner-name">Sarai</div>
             <div class="owner-role owner-role--sarai">Co-Owner &amp; Editor-in-Chief · Age 8</div>
-            <p class="owner-bio">
+            <div class="owner-bio" style="overflow: hidden;">
+              <div class="owner-photo-wrap">
+                <img src="img/sarai.jpg" alt="Sarai — Co-Owner and Editor-in-Chief of The Kid Reporter" />
+              </div>
               Sarai is the driving force behind The Kid Reporter. At 8 years old she already knows what makes a great story — and she is not afraid to chase it. When she is not chasing down headlines, you will find her on the softball diamond, where she brings the same intensity to the field that she brings to the newsroom. Sarai covers technology, science, and anything that makes her ask "but why?" She believes every kid deserves to know what is happening in the world — explained in a way that actually makes sense.
-            </p>
-            <div class="owner-tags">
+            </div>
+            <div class="owner-tags" style="clear: both;">
               <span class="tag tag--magenta">Editor-in-Chief</span>
               <span class="tag tag--gold">Softball Player</span>
               <span class="tag tag--lime">Tech Reporter</span>
