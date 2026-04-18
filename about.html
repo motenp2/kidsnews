@@ -104,7 +104,7 @@
       color: var(--color-parchment-dim);
     }
 
-    /* ── Bio photo float wrap ── */
+    /* ── Bio photo float wrap (all reporters) ── */
     .owner-photo-wrap {
       float: right;
       margin: 0 0 var(--space-5) var(--space-6);
@@ -114,11 +114,39 @@
     .owner-photo-wrap img {
       width: 100%;
       border-radius: var(--radius-lg);
-      border: 2px solid var(--neon-magenta);
-      box-shadow: var(--glow-magenta), var(--shadow-md);
+      box-shadow: var(--shadow-md);
       display: block;
     }
-    /* On very small screens stack the photo above text */
+    /* Per-reporter border color */
+    .owner-card--sarai .owner-photo-wrap img {
+      border: 2px solid var(--neon-magenta);
+      box-shadow: var(--glow-magenta), var(--shadow-md);
+    }
+    .owner-card--alani .owner-photo-wrap img {
+      border: 2px solid var(--neon-cyan);
+      box-shadow: var(--glow-cyan), var(--shadow-md);
+    }
+
+    /* Placeholder avatar shown when no real photo yet */
+    .owner-photo-placeholder {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      border-radius: var(--radius-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 8vw, 3.5rem);
+      font-weight: 900;
+      color: var(--color-ink);
+    }
+    .owner-card--alani .owner-photo-placeholder {
+      background: var(--neon-cyan);
+      box-shadow: var(--glow-cyan), var(--shadow-md);
+      border: 2px solid var(--neon-cyan);
+    }
+
+    /* On very small screens — stack photo above text */
     @media (max-width: 480px) {
       .owner-photo-wrap {
         float: none;
@@ -349,14 +377,18 @@
           </div>
 
           <!-- Alani -->
+          <!-- PHOTO: drop img/alani.jpg into the repo to replace the placeholder below -->
           <div class="owner-card owner-card--alani">
-            <div class="owner-avatar owner-avatar--alani">A</div>
             <div class="owner-name">Alani</div>
             <div class="owner-role owner-role--alani">Co-Owner &amp; Community Reporter · Age 5</div>
-            <p class="owner-bio">
+            <div class="owner-bio" style="overflow: hidden;">
+              <div class="owner-photo-wrap">
+                <!-- Replace this placeholder with: <img src="img/alani.jpg" alt="Alani — Co-Owner and Community Reporter" /> -->
+                <div class="owner-photo-placeholder">A</div>
+              </div>
               Do not let the age fool you — Alani is one of the boldest voices on the team. At 5 years old she is already learning what it means to own a business, tell a story, and stand behind your work. She covers community news and the things that matter to the youngest readers. On weekends you will catch her on the softball field, proving that age is just a number when you have heart. Alani's superpower is asking the questions adults forget to ask — and she writes them down.
-            </p>
-            <div class="owner-tags">
+            </div>
+            <div class="owner-tags" style="clear: both;">
               <span class="tag tag--cyan">Community Reporter</span>
               <span class="tag tag--gold">Softball Player</span>
               <span class="tag tag--lime">Young Entrepreneur</span>
