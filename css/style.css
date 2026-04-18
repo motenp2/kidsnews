@@ -839,3 +839,102 @@
   .donate-section__inner { flex-direction: column; text-align: center; }
   .amount-grid { grid-template-columns: repeat(2, 1fr); }
 }
+
+/* ----------------------------------------
+   LIVE NEWS TICKER
+---------------------------------------- */
+.news-ticker {
+  background: var(--color-ink);
+  border-top: 1px solid var(--color-ink-border);
+  border-bottom: 2px solid var(--neon-cyan);
+  padding-block: var(--space-2);
+  display: flex;
+  align-items: center;
+  gap: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.ticker-label {
+  background: var(--neon-cyan);
+  color: var(--color-ink);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  padding: var(--space-1) var(--space-3);
+  flex-shrink: 0;
+  z-index: 2;
+  position: relative;
+  box-shadow: var(--glow-cyan);
+  text-transform: uppercase;
+}
+
+/* Fade edges on both sides */
+.news-ticker::before,
+.news-ticker::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 60px;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+.news-ticker::before {
+  left: 0;
+  background: linear-gradient(to right, var(--color-ink) 40%, transparent);
+}
+.news-ticker::after {
+  right: 0;
+  background: linear-gradient(to left, var(--color-ink) 40%, transparent);
+}
+
+.ticker-track-wrapper {
+  flex: 1;
+  overflow: hidden;
+  height: 1.6rem;
+  display: flex;
+  align-items: center;
+}
+
+.ticker-track {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  white-space: nowrap;
+  /* CSS marquee animation */
+  animation: ticker-scroll 60s linear infinite;
+  will-change: transform;
+}
+
+/* Pause on hover */
+.news-ticker:hover .ticker-track {
+  animation-play-state: paused;
+}
+
+@keyframes ticker-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.ticker-item {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--neon-lime);
+  text-shadow: var(--glow-lime);
+  padding-inline: var(--space-8);
+  flex-shrink: 0;
+  position: relative;
+}
+
+/* Bullet separator between items */
+.ticker-item::before {
+  content: '✦';
+  color: var(--neon-magenta);
+  margin-right: var(--space-8);
+  text-shadow: var(--glow-magenta);
+  font-size: 0.6em;
+  vertical-align: middle;
+}
