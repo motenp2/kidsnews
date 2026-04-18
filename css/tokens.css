@@ -116,4 +116,6 @@
   --glow-lime:    0 0 4px rgba(61,140,0,0.5);
   --glow-magenta: 0 0 4px rgba(153,0,153,0.5);
   --glow-gold:    0 0 4px rgba(170,119,0,0.5);
+  --color-text:     #1a1612;
+  --color-text-dim: #4a4035;
 }
