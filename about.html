@@ -1,238 +1,442 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About Us — The Kid Reporter</title>
-  <meta name="description" content="The Kid Reporter is a digital newspaper written and edited entirely by young journalists aged 8–14." />
+  <meta name="description" content="Meet Sarai and Alani — the young journalists, entrepreneurs, and softball players behind The Kid Reporter." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=UnifrakturMaguntia&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/tokens.css" />
   <link rel="stylesheet" href="css/base.css" />
   <link rel="stylesheet" href="css/style.css" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%23c8162a'/><text y='24' x='4' font-size='22' font-family='serif' font-weight='900' fill='white'>K</text></svg>" />
+  <style>
+    /* ── About page extras ── */
+    .page-hero {
+      padding-block: clamp(var(--space-12), 8vw, var(--space-24));
+      border-bottom: 1px solid var(--color-ink-border);
+      text-align: center;
+    }
+    .page-hero__kicker {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--neon-cyan);
+      text-shadow: var(--glow-cyan);
+      margin-bottom: var(--space-3);
+    }
+    .page-hero__title {
+      font-family: var(--font-display);
+      font-size: var(--text-3xl);
+      color: var(--color-parchment);
+      margin-bottom: var(--space-5);
+      line-height: 1.1;
+    }
+    .page-hero__subtitle {
+      font-size: var(--text-base);
+      color: var(--color-parchment-dim);
+      line-height: 1.8;
+      max-width: 60ch;
+      margin-inline: auto;
+    }
+
+    /* ── Owner cards ── */
+    .owner-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: var(--space-10);
+      margin-bottom: var(--space-16);
+    }
+    .owner-card {
+      background: var(--color-ink-mid);
+      border: 1px solid var(--color-ink-border);
+      border-radius: var(--radius-md);
+      padding: var(--space-8);
+      position: relative;
+      overflow: hidden;
+    }
+    .owner-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 4px; height: 100%;
+    }
+    .owner-card--sarai::before { background: var(--neon-magenta); box-shadow: var(--glow-magenta); }
+    .owner-card--alani::before { background: var(--neon-cyan);    box-shadow: var(--glow-cyan);    }
+
+    .owner-avatar {
+      width: 72px; height: 72px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      font-weight: 900;
+      color: var(--color-ink);
+      margin-bottom: var(--space-5);
+      flex-shrink: 0;
+    }
+    .owner-avatar--sarai { background: var(--neon-magenta); box-shadow: var(--glow-magenta); }
+    .owner-avatar--alani { background: var(--neon-cyan);    box-shadow: var(--glow-cyan);    }
+
+    .owner-name {
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      font-weight: 900;
+      color: var(--color-parchment);
+      margin-bottom: var(--space-1);
+    }
+    .owner-role {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      margin-bottom: var(--space-5);
+    }
+    .owner-role--sarai { color: var(--neon-magenta); }
+    .owner-role--alani { color: var(--neon-cyan); }
+
+    .owner-bio {
+      font-size: var(--text-sm);
+      line-height: 1.8;
+      color: var(--color-parchment-dim);
+    }
+
+    .owner-tags {
+      display: flex; flex-wrap: wrap; gap: var(--space-2);
+      margin-top: var(--space-5);
+    }
+    .tag {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: .1em;
+      padding: var(--space-1) var(--space-3);
+      border-radius: var(--radius-sm);
+      font-weight: 700;
+    }
+    .tag--magenta { border: 1px solid var(--neon-magenta); color: var(--neon-magenta); }
+    .tag--cyan    { border: 1px solid var(--neon-cyan);    color: var(--neon-cyan);    }
+    .tag--gold    { border: 1px solid var(--neon-gold);    color: var(--neon-gold);    }
+    .tag--lime    { border: 1px solid var(--neon-lime);    color: var(--neon-lime);    }
+
+    /* ── Stats band ── */
+    .stats-band {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: var(--space-4);
+      background: var(--color-ink-mid);
+      border: 1px solid var(--color-ink-border);
+      border-top: 2px solid var(--neon-gold);
+      border-radius: var(--radius-md);
+      padding: var(--space-8) var(--space-6);
+      margin-bottom: var(--space-16);
+      text-align: center;
+    }
+    .stat-num {
+      display: block;
+      font-family: var(--font-display);
+      font-size: var(--text-2xl);
+      font-weight: 900;
+      color: var(--neon-gold);
+      text-shadow: var(--glow-gold);
+      line-height: 1;
+      margin-bottom: var(--space-2);
+    }
+    .stat-label {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--color-parchment-dim);
+    }
+
+    /* ── Mission section ── */
+    .mission-block {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-10);
+      margin-bottom: var(--space-16);
+    }
+    @media (max-width: 700px) {
+      .mission-block { grid-template-columns: 1fr; }
+    }
+    .mission-block h2 {
+      font-size: var(--text-xl);
+      font-weight: 900;
+      color: var(--color-parchment);
+      margin-bottom: var(--space-5);
+    }
+    .mission-block p {
+      font-size: var(--text-sm);
+      line-height: 1.8;
+      color: var(--color-parchment-dim);
+      margin-bottom: var(--space-4);
+      max-width: 60ch;
+    }
+    .neon-rule {
+      width: 80px; height: 2px;
+      background: linear-gradient(90deg, var(--neon-magenta), var(--neon-cyan));
+      border-radius: 2px;
+      margin-bottom: var(--space-5);
+    }
+
+    /* ── Values list ── */
+    .values-list {
+      list-style: none;
+      padding: 0; margin: 0;
+      display: flex; flex-direction: column; gap: var(--space-4);
+    }
+    .values-list li {
+      display: flex; align-items: flex-start; gap: var(--space-3);
+      font-size: var(--text-sm);
+      color: var(--color-parchment-dim);
+      line-height: 1.7;
+    }
+    .values-list li::before {
+      content: '✦';
+      color: var(--neon-gold);
+      text-shadow: var(--glow-gold);
+      font-size: .7em;
+      margin-top: .35em;
+      flex-shrink: 0;
+    }
+    .values-list strong { color: var(--color-parchment); }
+
+    /* ── Update cadence callout ── */
+    .update-callout {
+      background: rgba(0,229,255,.04);
+      border: 1px solid var(--neon-cyan);
+      border-radius: var(--radius-md);
+      padding: var(--space-6) var(--space-8);
+      margin-bottom: var(--space-16);
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-5);
+    }
+    .update-callout__icon {
+      font-size: 1.8rem;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+    .update-callout__text h3 {
+      font-family: var(--font-mono);
+      font-size: var(--text-sm);
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--neon-cyan);
+      margin-bottom: var(--space-2);
+    }
+    .update-callout__text p {
+      font-size: var(--text-sm);
+      line-height: 1.7;
+      color: var(--color-parchment-dim);
+      max-width: 70ch;
+    }
+
+    /* ── CTA buttons ── */
+    .cta-row {
+      display: flex; gap: var(--space-5); flex-wrap: wrap; justify-content: center;
+      margin-top: var(--space-4);
+    }
+  </style>
 </head>
 <body>
+
+  <!-- ════ HEADER ════ -->
   <header class="masthead" role="banner">
     <div class="masthead__topbar">
       <div class="container masthead__topbar-inner">
-        <span class="masthead__date" id="js-date"></span>
+        <span id="js-date" class="masthead__date"></span>
         <nav class="masthead__topnav">
           <a href="subscribe.html" class="topnav-link topnav-link--cta">Subscribe — $1/mo</a>
           <a href="donate.html" class="topnav-link">Donate</a>
         </nav>
-        <button class="theme-toggle" data-theme-toggle aria-label="Switch to dark mode">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-        </button>
       </div>
     </div>
-    <div class="masthead__brand">
-      <div class="container masthead__brand-inner">
-        <a href="index.html" class="logo-link">
-          <svg class="logo-svg" viewBox="0 0 480 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g transform="translate(0,10)"><rect x="0" y="18" width="8" height="36" rx="2" fill="currentColor"/><polygon points="0,54 8,54 4,64" fill="var(--color-accent)"/><rect x="0" y="14" width="8" height="6" rx="1" fill="var(--color-text-muted)"/></g>
-            <text x="24" y="58" font-family="'Playfair Display', Georgia, serif" font-size="52" font-weight="900" fill="currentColor" letter-spacing="-1">The Kid Reporter</text>
-          </svg>
-        </a>
-        <p class="masthead__tagline">News by Kids &mdash; for Everyone</p>
+    <div class="container">
+      <div class="masthead__logo">
+        <div class="rule-ornament">EST. 2024</div>
+        <h1 class="neon-magenta">The Kid Reporter</h1>
+        <div class="rule-ornament">✦ Vires in Veritate ✦</div>
       </div>
-      <div class="masthead__rule"></div>
     </div>
-    <nav class="mainnav" aria-label="Main navigation">
-      <div class="container mainnav__inner">
-        <ul class="mainnav__list" role="list">
-          <li><a href="index.html" class="mainnav__link">Home</a></li>
-          <li><a href="index.html#local" class="mainnav__link">Local</a></li>
-          <li><a href="index.html#science" class="mainnav__link">Science</a></li>
-          <li><a href="index.html#sports" class="mainnav__link">Sports</a></li>
-          <li><a href="index.html#arts" class="mainnav__link">Arts &amp; Culture</a></li>
-          <li><a href="index.html#opinion" class="mainnav__link">Opinion</a></li>
-          <li><a href="index.html#animals" class="mainnav__link">Animals</a></li>
+    <!-- Live News Ticker -->
+    <div class="news-ticker" aria-label="Live headlines">
+      <span class="ticker-label">LIVE</span>
+      <div class="ticker-track-wrapper">
+        <ul id="js-ticker" class="ticker-track" role="list">
+          <li class="ticker-item">Loading latest news&hellip;</li>
         </ul>
       </div>
+    </div>
+    <nav class="nav">
+      <ul class="nav__list container">
+        <li><a href="index.html" class="nav__link">Home</a></li>
+        <li><a href="subscribe.html" class="nav__link">Subscribe</a></li>
+        <li><a href="donate.html" class="nav__link">Donate</a></li>
+        <li><a href="about.html" class="nav__link active">About</a></li>
+      </ul>
     </nav>
   </header>
 
+  <!-- ════ MAIN ════ -->
   <main id="main-content">
+
+    <!-- Hero -->
     <section class="page-hero">
       <div class="container">
-        <p class="page-hero__kicker">Who We Are</p>
-        <h1 class="page-hero__title">About The Kid Reporter</h1>
-        <p class="page-hero__subtitle">A motenbased super amazing news paper digital newspaper written, edited, and published entirely by young journalists aged 8–14. Every story is real. Every reporter is a kid.</p>
+        <p class="page-hero__kicker">✦ &nbsp; Who We Are &nbsp; ✦</p>
+        <h1 class="page-hero__title">Young Reporters.<br/>Real Stories. No Limits.</h1>
+        <p class="page-hero__subtitle">
+          The Kid Reporter is owned and operated by two sisters from Southern California
+          who believe kids deserve a real news source — written by kids who actually live it.
+        </p>
       </div>
     </section>
 
     <section style="padding-block: clamp(var(--space-10), 6vw, var(--space-24));">
       <div class="container container--default">
 
-        <div style="display: grid; grid-template-columns: 1fr; gap: var(--space-12); margin-bottom: var(--space-16);">
+        <!-- ── Owner Cards ── -->
+        <div style="margin-bottom: var(--space-6);">
+          <div class="neon-rule"></div>
+          <h2 style="font-size: var(--text-xl); font-weight: 900; color: var(--color-parchment); margin-bottom: var(--space-8);">Meet the Owners</h2>
+        </div>
+
+        <div class="owner-grid">
+
+          <!-- Sarai -->
+          <div class="owner-card owner-card--sarai">
+            <div class="owner-avatar owner-avatar--sarai">S</div>
+            <div class="owner-name">Sarai</div>
+            <div class="owner-role owner-role--sarai">Co-Owner &amp; Editor-in-Chief · Age 8</div>
+            <p class="owner-bio">
+              Sarai is the driving force behind The Kid Reporter. At 8 years old she already knows what makes a great story — and she is not afraid to chase it. When she is not chasing down headlines, you will find her on the softball diamond, where she brings the same intensity to the field that she brings to the newsroom. Sarai covers technology, science, and anything that makes her ask "but why?" She believes every kid deserves to know what is happening in the world — explained in a way that actually makes sense.
+            </p>
+            <div class="owner-tags">
+              <span class="tag tag--magenta">Editor-in-Chief</span>
+              <span class="tag tag--gold">Softball Player</span>
+              <span class="tag tag--lime">Tech Reporter</span>
+              <span class="tag tag--magenta">Entrepreneur</span>
+            </div>
+          </div>
+
+          <!-- Alani -->
+          <div class="owner-card owner-card--alani">
+            <div class="owner-avatar owner-avatar--alani">A</div>
+            <div class="owner-name">Alani</div>
+            <div class="owner-role owner-role--alani">Co-Owner &amp; Community Reporter · Age 5</div>
+            <p class="owner-bio">
+              Do not let the age fool you — Alani is one of the boldest voices on the team. At 5 years old she is already learning what it means to own a business, tell a story, and stand behind your work. She covers community news and the things that matter to the youngest readers. On weekends you will catch her on the softball field, proving that age is just a number when you have heart. Alani's superpower is asking the questions adults forget to ask — and she writes them down.
+            </p>
+            <div class="owner-tags">
+              <span class="tag tag--cyan">Community Reporter</span>
+              <span class="tag tag--gold">Softball Player</span>
+              <span class="tag tag--lime">Young Entrepreneur</span>
+              <span class="tag tag--cyan">Southern California</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ── Stats Band ── -->
+        <div class="stats-band">
           <div>
-            <h2 style="font-size: var(--text-xl); font-weight: 900; margin-bottom: var(--space-5);">Our Mission</h2>
-            <p style="font-size: var(--text-base); line-height: 1.8; color: var(--color-text-muted); margin-bottom: var(--space-5); max-width: 65ch;">
-              The Kid Reporter was founded on one simple idea: kids have important things to say, and the world should hear them. We give young people a real platform — not a school project, but a genuine digital publication — to report on the stories that matter to them and their communities.
-            </p>
-            <p style="font-size: var(--text-base); line-height: 1.8; color: var(--color-text-muted); max-width: 65ch;">
-              Our reporters cover real news: science experiments, local government, sports, arts, and the big issues that affect kids everywhere. They interview real people, fact-check their work, and have their articles reviewed by our adult advisory board before publication.
-            </p>
+            <span class="stat-num">2</span>
+            <span class="stat-label">Owner-Reporters</span>
           </div>
-          <div style="background: var(--color-surface-offset); border-radius: var(--radius-xl); padding: var(--space-8);">
-            <h2 style="font-size: var(--text-lg); font-weight: 900; margin-bottom: var(--space-5);">By the Numbers</h2>
-            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-6);">
-              <div style="text-align: center;">
-                <span style="display: block; font-size: var(--text-2xl); font-family: var(--font-display); font-weight: 900; color: var(--color-primary);">24</span>
-                <span style="font-size: var(--text-sm); color: var(--color-text-muted);">Active Reporters</span>
-              </div>
-              <div style="text-align: center;">
-                <span style="display: block; font-size: var(--text-2xl); font-family: var(--font-display); font-weight: 900; color: var(--color-primary);">180+</span>
-                <span style="font-size: var(--text-sm); color: var(--color-text-muted);">Stories Published</span>
-              </div>
-              <div style="text-align: center;">
-                <span style="display: block; font-size: var(--text-2xl); font-family: var(--font-display); font-weight: 900; color: var(--color-primary);">8–14</span>
-                <span style="font-size: var(--text-sm); color: var(--color-text-muted);">Reporter Age Range</span>
-              </div>
-              <div style="text-align: center;">
-                <span style="display: block; font-size: var(--text-2xl); font-family: var(--font-display); font-weight: 900; color: var(--color-primary);">2023</span>
-                <span style="font-size: var(--text-sm); color: var(--color-text-muted);">Year Founded</span>
-              </div>
-            </div>
+          <div>
+            <span class="stat-num">2024</span>
+            <span class="stat-label">Founded</span>
+          </div>
+          <div>
+            <span class="stat-num">Daily</span>
+            <span class="stat-label">News Ticker Updates</span>
+          </div>
+          <div>
+            <span class="stat-num">Weekly</span>
+            <span class="stat-label">Story Updates</span>
+          </div>
+          <div>
+            <span class="stat-num">100%</span>
+            <span class="stat-label">Kid-Powered</span>
           </div>
         </div>
 
-        <!-- Team -->
-        <div>
-          <div class="section-header" style="margin-bottom: var(--space-8);">
-            <h2 class="section-title">Meet the Team</h2>
-            <div class="section-rule"></div>
-          </div>
-          <div class="team-grid">
-            <div class="team-card">
-              <div class="team-avatar">MJ</div>
-              <div class="team-name">Maya Johnson</div>
-              <div class="team-role">Science Reporter · Age 11</div>
-            </div>
-            <div class="team-card">
-              <div class="team-avatar" style="background: var(--color-blue);">TR</div>
-              <div class="team-name">Tyler Reyes</div>
-              <div class="team-role">Sports Reporter · Age 12</div>
-            </div>
-            <div class="team-card">
-              <div class="team-avatar" style="background: #7b1fa2;">SP</div>
-              <div class="team-name">Samantha Park</div>
-              <div class="team-role">Investigative Reporter · Age 13</div>
-            </div>
-            <div class="team-card">
-              <div class="team-avatar" style="background: #2e7d32;">LC</div>
-              <div class="team-name">Lily Chen</div>
-              <div class="team-role">Photo Reporter · Age 9</div>
-            </div>
-            <div class="team-card">
-              <div class="team-avatar" style="background: #f57c00;">MW</div>
-              <div class="team-name">Marcus Williams</div>
-              <div class="team-role">Opinion Editor · Age 12</div>
-            </div>
-            <div class="team-card">
-              <div class="team-avatar" style="background: #880e4f;">JL</div>
-              <div class="team-name">Jordan Lee</div>
-              <div class="team-role">Arts Reporter · Age 10</div>
-            </div>
-            <div class="team-card">
-              <div class="team-avatar" style="background: #4a148c;">AB</div>
-              <div class="team-name">Aisha Brown</div>
-              <div class="team-role">Community Reporter · Age 13</div>
-            </div>
-            <div class="team-card">
-              <div class="team-avatar" style="background: #1b5e20;">PS</div>
-              <div class="team-name">Priya Sharma</div>
-              <div class="team-role">Science Reporter · Age 11</div>
-            </div>
+        <!-- ── Update Cadence Callout ── -->
+        <div class="update-callout">
+          <div class="update-callout__icon">📡</div>
+          <div class="update-callout__text">
+            <h3>How We Publish</h3>
+            <p>
+              Sarai and Alani update the paper <strong style="color: var(--color-parchment);">weekly</strong> — and more often when news breaks. The live ticker at the top of every page pulls the <strong style="color: var(--color-parchment);">latest kids' tech and science headlines</strong> around the clock so there is always something fresh to read, even between story drops. Big news? Expect a same-day post. That is the promise.
+            </p>
           </div>
         </div>
 
-        <!-- CTA row -->
-        <div style="margin-top: var(--space-16); display: flex; gap: var(--space-5); flex-wrap: wrap; justify-content: center;">
-          <a href="subscribe.html" class="btn btn--red btn--lg">Subscribe for $1/month</a>
-          <a href="donate.html" class="btn btn--outline btn--lg">Make a Donation</a>
-          <a href="mailto:editor@kidreporter.example.com" class="btn btn--outline btn--lg">Contact Us</a>
+        <!-- ── Mission + Values ── -->
+        <div class="mission-block">
+          <div>
+            <div class="neon-rule"></div>
+            <h2>Our Mission</h2>
+            <p>
+              The Kid Reporter started with one simple idea: kids have important things to say, and the world should hear them. Sarai and Alani built this platform themselves — not for a school project, but as a real digital publication they own and run.
+            </p>
+            <p>
+              They cover real news in tech, science, community, and sports. They fact-check their work. They write stories they actually care about. And they do it all from Southern California with big ambitions and even bigger bylines.
+            </p>
+            <p>
+              The goal is to grow — more stories, more topics, more readers — and to show every kid watching that you do not have to wait to grow up to start something great.
+            </p>
+          </div>
+          <div>
+            <div class="neon-rule" style="background: linear-gradient(90deg, var(--neon-cyan), var(--neon-lime));"></div>
+            <h2>What We Stand For</h2>
+            <ul class="values-list">
+              <li><strong>Real stories, real voices.</strong> Every article is written by a kid — no ghostwriting, no filler.</li>
+              <li><strong>Accuracy first.</strong> If we report it, we checked it. No rumors, no clout-chasing.</li>
+              <li><strong>Kid-focused journalism.</strong> Stories that matter to young readers — science, tech, sports, and community.</li>
+              <li><strong>Entrepreneurship in action.</strong> Running a paper is a business. Sarai and Alani are learning both sides.</li>
+              <li><strong>No age limit on ambition.</strong> 5 and 8 years old. Owners of a publication. It is already happening.</li>
+            </ul>
+          </div>
         </div>
+
+        <!-- ── CTA Row ── -->
+        <div style="text-align: center; padding-block: var(--space-10); border-top: 1px solid var(--color-ink-border);">
+          <p style="font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing:.18em; text-transform: uppercase; color: var(--neon-gold); text-shadow: var(--glow-gold); margin-bottom: var(--space-6);">Support the newsroom</p>
+          <div class="cta-row">
+            <a href="subscribe.html" class="btn btn--primary">Subscribe for $1/month</a>
+            <a href="donate.html" class="btn btn--primary" style="background: transparent; border: 2px solid var(--neon-gold); color: var(--neon-gold); box-shadow: var(--glow-gold);">Make a Donation</a>
+            <a href="mailto:newsroom@thekidreporter.com" class="btn btn--primary" style="background: transparent; border: 2px solid var(--color-ink-border); color: var(--color-parchment-dim);">Contact Us</a>
+          </div>
+        </div>
+
       </div>
     </section>
   </main>
 
-  <footer class="site-footer" role="contentinfo">
-    <div class="container site-footer__inner">
-      <div class="footer-brand">
-        <span class="footer-logo-text">The Kid Reporter</span>
-        <p class="footer-tagline">Written by kids. Read by everyone.</p>
+  <!-- ════ FOOTER ════ -->
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div><h4 class="neon-magenta">The Kid Reporter</h4><p>Truth. Curiosity. Cookies.</p></div>
+      <div><h4 class="neon-cyan">Quick Links</h4>
+        <ul style="list-style: none; padding-top: var(--space-2);">
+          <li><a href="subscribe.html">Newsletter</a></li>
+          <li><a href="about.html">About the Team</a></li>
+          <li><a href="about.html">Ethics Policy</a></li>
+        </ul>
       </div>
-      <nav class="footer-nav"><ul role="list">
-        <li><a href="index.html">Home</a></li><li><a href="subscribe.html">Subscribe</a></li>
-        <li><a href="donate.html">Donate</a></li><li><a href="mailto:editor@kidreporter.example.com">Contact</a></li>
-      </ul></nav>
-      <p class="footer-legal">&copy; 2026 The Kid Reporter. All rights reserved.</p>
+      <div><h4 class="neon-lime">Contact</h4><p>newsroom@thekidreporter.com</p></div>
+    </div>
+    <div class="container" style="border-top: 1px solid var(--color-ink-border); margin-top: var(--space-12); padding-top: var(--space-8); text-align: center; font-family: var(--font-mono); font-size: var(--text-xs);">
+      &copy; 2026 THE KID REPORTER. ALL RIGHTS RESERVED.<br/>OWNED &amp; OPERATED BY SARAI &amp; ALANI.
     </div>
   </footer>
+
   <script src="js/main.js"></script>
-<script data-pplx-inline-edit>
-(function(){
-  if(window===window.top)return;
-  function inlineAll(orig,clone){
-    if(orig.nodeType!==1)return;
-    try{
-      var cs=getComputedStyle(orig);
-      var t='';
-      for(var i=0;i<cs.length;i++){t+=cs[i]+':'+cs.getPropertyValue(cs[i])+';';}
-      clone.style.cssText=t;
-    }catch(e){}
-    var oc=orig.children,cc=clone.children;
-    for(var j=0;j<oc.length&&j<cc.length;j++){inlineAll(oc[j],cc[j]);}
-  }
-  function stripExternal(clone){
-    var imgs=clone.querySelectorAll('img');
-    for(var i=0;i<imgs.length;i++){
-      var s=imgs[i].getAttribute('src');
-      if(s&&!s.startsWith('data:'))imgs[i].removeAttribute('src');
-    }
-    var all=clone.querySelectorAll('*');
-    for(var i=0;i<all.length;i++){
-      var st=all[i].style.cssText;
-      if(st&&st.indexOf('url(')>=0){
-        all[i].style.cssText=st.replace(/url\(["']?(?!data:)[^)"']*["']?\)/gi,'none');
-      }
-    }
-  }
-  window.addEventListener('message',function(e){
-    if(!e.data||e.data.type!=='INLINE_EDIT_CAPTURE_REQUEST')return;
-    var scrollX=window.scrollX||window.pageXOffset||0;
-    var scrollY=window.scrollY||window.pageYOffset||0;
-    var w=window.innerWidth,h=window.innerHeight;
-    try{
-      var clone=document.documentElement.cloneNode(true);
-      var rm=clone.querySelectorAll('script,link[rel="stylesheet"],style');
-      for(var i=0;i<rm.length;i++){rm[i].remove();}
-      inlineAll(document.documentElement,clone);
-      stripExternal(clone);
-      var html=new XMLSerializer().serializeToString(clone);
-      var svg='<svg xmlns="http://www.w3.org/2000/svg" width="'+w+'" height="'+h+'">'
-        +'<foreignObject width="100%" height="100%">'
-        +'<div xmlns="http://www.w3.org/1999/xhtml" style="width:'+w+'px;height:'+h+'px;overflow:hidden">'
-        +'<div style="transform:translate(-'+scrollX+'px,-'+scrollY+'px);transform-origin:top left">'
-        +html+'</div></div></foreignObject></svg>';
-      var svgUrl='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
-      var img=new Image();
-      img.onload=function(){
-        var c=document.createElement('canvas');c.width=w;c.height=h;
-        c.getContext('2d').drawImage(img,0,0);
-        window.parent.postMessage({type:'INLINE_EDIT_SCREENSHOT_RESULT',dataUrl:c.toDataURL('image/png'),scrollX:scrollX,scrollY:scrollY},'*');
-      };
-      img.onerror=function(){
-        window.parent.postMessage({type:'INLINE_EDIT_SCREENSHOT_RESULT',dataUrl:null,scrollX:scrollX,scrollY:scrollY},'*');
-      };
-      img.src=svgUrl;
-    }catch(err){
-      window.parent.postMessage({type:'INLINE_EDIT_SCREENSHOT_RESULT',dataUrl:null,scrollX:scrollX,scrollY:scrollY},'*');
-    }
-  });
-})();
-</script></body>
+  <script src="js/ticker.js"></script>
+</body>
 </html>
