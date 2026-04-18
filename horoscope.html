@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weekly Horoscope — The Kid Reporter</title>
+  <meta name="description" content="The Kid Reporter's weekly horoscope for kids — fun, positive forecasts for all 12 signs. Updated every week!" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=UnifrakturMaguntia&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .sign-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: var(--space-8);
+      margin-top: var(--space-10);
+    }
+    .sign-card {
+      background: var(--color-ink-mid, #fff8ee);
+      border: 1px solid var(--color-ink-border, #c8bfa8);
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+      transition: transform 0.2s, box-shadow 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .sign-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+    .sign-card.active-sign {
+      border-color: var(--neon-gold);
+      box-shadow: var(--glow-gold);
+    }
+    .sign-emoji { font-size: 2.4rem; margin-bottom: var(--space-3); display: block; }
+    .sign-name {
+      font-family: var(--font-serif);
+      font-size: var(--text-lg);
+      font-weight: 900;
+      color: var(--color-text, #1a1612);
+      margin-bottom: var(--space-1);
+    }
+    .sign-dates {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      color: var(--color-text-dim, #4a4035);
+      letter-spacing: 0.06em;
+      margin-bottom: var(--space-4);
+    }
+    .sign-forecast {
+      font-size: var(--text-sm);
+      line-height: 1.7;
+      color: var(--color-text, #1a1612);
+    }
+    .sign-lucky {
+      margin-top: var(--space-4);
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      color: var(--color-text-dim, #4a4035);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-1);
+    }
+    .sign-lucky span { color: var(--neon-gold); font-weight: 700; }
+    .sign-corner {
+      position: absolute;
+      top: var(--space-4);
+      right: var(--space-4);
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 2px 6px;
+      border-radius: 2px;
+    }
+    .finder-bar {
+      background: var(--color-ink-raised, #fff8ee);
+      border: 1px solid var(--color-ink-border, #c8bfa8);
+      border-radius: var(--radius-lg);
+      padding: var(--space-6) var(--space-8);
+      margin-bottom: var(--space-10);
+      max-width: 500px;
+    }
+    .finder-bar label {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-text-dim, #4a4035);
+      margin-bottom: var(--space-3);
+    }
+    .finder-bar select {
+      width: 100%;
+      padding: var(--space-3) var(--space-4);
+      background: var(--color-ink-mid, #fff);
+      border: 1.5px solid var(--color-ink-border, #c8bfa8);
+      border-radius: var(--radius-md);
+      font-family: var(--font-sans);
+      font-size: var(--text-base);
+      color: var(--color-text, #1a1612);
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body class="animate-flicker">
+
+  <header class="masthead">
+    <div class="masthead__topbar">
+      <div class="container masthead__topbar-inner">
+        <span class="neon-magenta animate-flicker">Weekly Horoscope</span>
+        <span id="current-date"></span>
+      </div>
+    </div>
+    <div class="container">
+      <div class="masthead__logo">
+        <div class="rule-ornament">EST. 2026</div>
+        <h1 class="neon-magenta"><a href="index.html" style="color: inherit; text-decoration: none;">The Kid Reporter</a></h1>
+        <div class="rule-ornament">&#10022; Vires in Veritate &#10022;</div>
+      </div>
+    </div>
+    <nav class="nav">
+      <ul class="nav__list container">
+        <li><a href="index.html" class="nav__link">Home</a></li>
+        <li><a href="crossword.html" class="nav__link">Crossword</a></li>
+        <li><a href="horoscope.html" class="nav__link active">Horoscope</a></li>
+        <li><a href="subscribe.html" class="nav__link">Subscribe</a></li>
+        <li><a href="donate.html" class="nav__link">Donate</a></li>
+        <li><a href="about.html" class="nav__link">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container" style="margin-block: var(--space-12);">
+
+    <div style="margin-bottom: var(--space-8);">
+      <span class="neon-magenta" style="font-family: var(--font-mono); font-size: var(--text-sm); letter-spacing: 0.1em; text-transform: uppercase;">Stars &amp; Signs</span>
+      <h2 style="font-family: var(--font-serif); font-size: var(--text-2xl); font-weight: 900; margin-top: var(--space-2); color: var(--color-text, #1a1612); text-shadow: none;">Weekly Horoscope</h2>
+      <p id="week-label" style="font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-text-dim, #4a4035); letter-spacing: 0.08em; text-transform: uppercase; margin-top: var(--space-2);"></p>
+      <p style="color: var(--color-text-dim, #4a4035); font-size: var(--text-sm); max-width: 55ch; margin-top: var(--space-3);">The stars have something to say to every kid this week. Find your sign below — or pick your birthday from the menu!</p>
+    </div>
+
+    <div class="finder-bar">
+      <label for="birthday-finder">Find my sign by birthday</label>
+      <select id="birthday-finder" onchange="jumpToSign(this.value)">
+        <option value="">— Pick your birth month and day —</option>
+        <optgroup label="March 21 – April 19 (Aries ♈)">
+          <option value="aries">March 21 – April 19</option>
+        </optgroup>
+        <optgroup label="April 20 – May 20 (Taurus ♉)">
+          <option value="taurus">April 20 – May 20</option>
+        </optgroup>
+        <optgroup label="May 21 – June 20 (Gemini ♊)">
+          <option value="gemini">May 21 – June 20</option>
+        </optgroup>
+        <optgroup label="June 21 – July 22 (Cancer ♋)">
+          <option value="cancer">June 21 – July 22</option>
+        </optgroup>
+        <optgroup label="July 23 – Aug 22 (Leo ♌)">
+          <option value="leo">July 23 – August 22</option>
+        </optgroup>
+        <optgroup label="Aug 23 – Sep 22 (Virgo ♍)">
+          <option value="virgo">August 23 – September 22</option>
+        </optgroup>
+        <optgroup label="Sep 23 – Oct 22 (Libra ♎)">
+          <option value="libra">September 23 – October 22</option>
+        </optgroup>
+        <optgroup label="Oct 23 – Nov 21 (Scorpio ♏)">
+          <option value="scorpio">October 23 – November 21</option>
+        </optgroup>
+        <optgroup label="Nov 22 – Dec 21 (Sagittarius ♐)">
+          <option value="sagittarius">November 22 – December 21</option>
+        </optgroup>
+        <optgroup label="Dec 22 – Jan 19 (Capricorn ♑)">
+          <option value="capricorn">December 22 – January 19</option>
+        </optgroup>
+        <optgroup label="Jan 20 – Feb 18 (Aquarius ♒)">
+          <option value="aquarius">January 20 – February 18</option>
+        </optgroup>
+        <optgroup label="Feb 19 – Mar 20 (Pisces ♓)">
+          <option value="pisces">February 19 – March 20</option>
+        </optgroup>
+      </select>
+    </div>
+
+    <div class="sign-grid" id="sign-grid"></div>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div><h4 class="neon-magenta">The Kid Reporter</h4><p>Truth. Curiosity. Cookies.</p></div>
+      <div><h4 class="neon-cyan">Quick Links</h4><ul style="list-style: none; padding-top: var(--space-2);"><li><a href="index.html">Home</a></li><li><a href="crossword.html">Crossword</a></li><li><a href="horoscope.html">Horoscope</a></li><li><a href="donate.html">Donate</a></li></ul></div>
+      <div><h4 class="neon-lime">Contact</h4><p><a href="mailto:newsroom@thekidreporter.com" style="color: inherit;">newsroom@thekidreporter.com</a></p></div>
+    </div>
+    <div class="container" style="border-top: 1px solid var(--color-ink-border); margin-top: var(--space-12); padding-top: var(--space-8); text-align: center; font-family: var(--font-mono); font-size: var(--text-xs);">&#169; 2026 THE KID REPORTER. ALL RIGHTS RESERVED.<br/>DESIGNED BY GOTHIC NEON SYSTEMS.</div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+  // Weekly horoscopes rotate by week number so they feel fresh each week
+  const SIGNS = [
+    { id: 'aries',       emoji: '♈', name: 'Aries',       dates: 'March 21 – April 19',      color: 'neon-magenta' },
+    { id: 'taurus',      emoji: '♉', name: 'Taurus',      dates: 'April 20 – May 20',         color: 'neon-lime' },
+    { id: 'gemini',      emoji: '♊', name: 'Gemini',      dates: 'May 21 – June 20',          color: 'neon-cyan' },
+    { id: 'cancer',      emoji: '♋', name: 'Cancer',      dates: 'June 21 – July 22',         color: 'neon-gold' },
+    { id: 'leo',         emoji: '♌', name: 'Leo',         dates: 'July 23 – August 22',       color: 'neon-gold' },
+    { id: 'virgo',       emoji: '♍', name: 'Virgo',       dates: 'August 23 – September 22',  color: 'neon-lime' },
+    { id: 'libra',       emoji: '♎', name: 'Libra',       dates: 'September 23 – October 22', color: 'neon-cyan' },
+    { id: 'scorpio',     emoji: '♏', name: 'Scorpio',     dates: 'October 23 – November 21',  color: 'neon-magenta' },
+    { id: 'sagittarius', emoji: '♐', name: 'Sagittarius', dates: 'November 22 – December 21', color: 'neon-gold' },
+    { id: 'capricorn',   emoji: '♑', name: 'Capricorn',   dates: 'December 22 – January 19',  color: 'neon-lime' },
+    { id: 'aquarius',    emoji: '♒', name: 'Aquarius',    dates: 'January 20 – February 18',  color: 'neon-cyan' },
+    { id: 'pisces',      emoji: '♓', name: 'Pisces',      dates: 'February 19 – March 20',    color: 'neon-magenta' },
+  ];
+
+  // Pool of forecasts per sign — rotates by week
+  const FORECASTS = {
+    aries: [
+      { forecast: "Big energy this week, Aries! You've got the courage to try something you've been nervous about — maybe signing up for that robotics club or asking a question in class. Your boldness is your superpower. A friend needs your help with something, and you'll know just what to say. Lucky day to explore a new trail or path.", lucky_number: 7, lucky_color: 'Red', lucky_activity: 'Racing robots' },
+      { forecast: "This week your ideas are on fire, Aries. Share them! A project you've been working on is about to get really good. Stay patient with someone who's slower than you — they'll surprise you. Your favorite teacher might give you a special responsibility.", lucky_number: 3, lucky_color: 'Orange', lucky_activity: 'Building something' },
+    ],
+    taurus: [
+      { forecast: "Steady and strong as always, Taurus. This week is perfect for finishing something you started — a drawing, a story, or a science project. Take your time in the garden or at the park. You'll notice something beautiful that everyone else walks right past. Treat yourself to your favorite snack — you've earned it.", lucky_number: 6, lucky_color: 'Green', lucky_activity: 'Gardening or drawing' },
+      { forecast: "Taurus, your patience pays off big this week. Something you've been waiting for is finally coming together. A younger kid looks up to you more than you know. Share what you've learned with them. Nature has a message for you — spend some time outside to hear it.", lucky_number: 4, lucky_color: 'Blue', lucky_activity: 'Reading outside' },
+    ],
+    gemini: [
+      { forecast: "Your curiosity is electric this week, Gemini! You'll have twice as many questions as usual — and that's a good thing. Ask them! A conversation at lunch or recess could turn into an exciting new friendship. Your brain is jumping between two great ideas; don't worry, you can do both. Perfect week to start a journal.", lucky_number: 11, lucky_color: 'Yellow', lucky_activity: 'Writing or talking with friends' },
+      { forecast: "Gemini, you're the connector this week — you bring people together just by being yourself. Someone in your class has the same secret interest as you. The stars say you'll find out by Friday. A creative project involving words or drawing will feel easy and fun.", lucky_number: 2, lucky_color: 'Silver', lucky_activity: 'Crafts or storytelling' },
+    ],
+    cancer: [
+      { forecast: "Your kindness is your gift, Cancer, and this week someone really needs it. A classmate or sibling is having a tough day — your hug or encouraging words will mean more than you know. At home, something cozy and fun is waiting for you. This is also a great week to try cooking or baking something new with a parent.", lucky_number: 2, lucky_color: 'Silver', lucky_activity: 'Baking or helping someone' },
+      { forecast: "Cancer, home feels extra warm and wonderful this week. A family story or memory will make you smile. Your imagination is running wild — use it to write a short story or draw a comic. Someone older than you has very good advice if you ask for it.", lucky_number: 8, lucky_color: 'White', lucky_activity: 'Drawing comics' },
+    ],
+    leo: [
+      { forecast: "Roar, Leo! You're in the spotlight this week in the best way. Whether it's speaking up in class, performing at an event, or just being the loudest one laughing at recess — let yourself shine. A new skill you've been practicing is about to really click. Someone thinks you're even cooler than you realize.", lucky_number: 1, lucky_color: 'Gold', lucky_activity: 'Performing or presenting' },
+      { forecast: "Leo, your confidence is contagious this week. Lead a game, start a conversation, or organize something fun for your friends. You have natural leadership — use it for good. A small challenge this week will make you stronger. The stars say Friday is your most powerful day.", lucky_number: 5, lucky_color: 'Orange', lucky_activity: 'Leading a group activity' },
+    ],
+    virgo: [
+      { forecast: "Detail-focused Virgo, your sharp eye catches something important this week that others miss. Maybe it's in a science experiment, or maybe it's in a friend's face when they need help. Your organized mind is your superpower — use it to plan something awesome. A neat, quiet activity like reading or building will recharge you.", lucky_number: 5, lucky_color: 'Navy', lucky_activity: 'Science experiment or organizing' },
+      { forecast: "Virgo, your careful thinking helps your team this week. Someone is struggling to understand something at school — your clear explanation makes all the difference. Don't be too hard on yourself about small mistakes. The stars say you are doing better than you think.", lucky_number: 14, lucky_color: 'Green', lucky_activity: 'Helping someone learn' },
+    ],
+    libra: [
+      { forecast: "Libra, your sense of fairness is needed this week. If two friends disagree, you're the perfect one to help them find a solution that works for everyone. A creative project — art, music, or writing — will come together beautifully. The stars say spending time near water (a fountain, river, or even a fish tank) brings good energy.", lucky_number: 9, lucky_color: 'Pink', lucky_activity: 'Art or peacemaking' },
+      { forecast: "Balance is everything for you this week, Libra. You've been going hard — now it's okay to rest and play. A new book or movie will give you something exciting to talk about. Your fairness earns the trust of someone new this week.", lucky_number: 6, lucky_color: 'Lavender', lucky_activity: 'Reading a new book' },
+    ],
+    scorpio: [
+      { forecast: "Your curiosity goes deep this week, Scorpio — deeper than most kids your age. You want to know how things really work. Ask the tough questions in science class. You sense when something isn't quite right, and this week trusting that instinct helps you and a friend. A mystery — real or in a book — keeps you excited all week long.", lucky_number: 8, lucky_color: 'Purple', lucky_activity: 'Solving a mystery or puzzle' },
+      { forecast: "Scorpio, your focus is laser-sharp this week. Whatever you put your mind to, you can achieve. A project or challenge that seemed hard is suddenly very doable. Someone close to you has a surprise they're keeping — be patient, it's a good one.", lucky_number: 13, lucky_color: 'Black', lucky_activity: 'Deep reading or research' },
+    ],
+    sagittarius: [
+      { forecast: "Adventure is calling, Sagittarius! This week is perfect for exploring — whether that means a new park, a new book about a faraway place, or trying a new food. Your enthusiasm gets other kids excited too. A funny moment at school this week will become a story you tell for years. Keep an eye out for something that makes you curious.", lucky_number: 3, lucky_color: 'Blue', lucky_activity: 'Exploring somewhere new' },
+      { forecast: "Sagittarius, your optimism lights up any room you walk into. This week someone needs your cheerful energy. Share it freely. A physical activity — running, biking, or just playing hard at recess — feels especially great. An unexpected chance to learn something totally new comes up this week.", lucky_number: 7, lucky_color: 'Purple', lucky_activity: 'Sports or outdoor play' },
+    ],
+    capricorn: [
+      { forecast: "Hard work pays off big this week, Capricorn. A goal you've been quietly working toward is about to show real progress. Don't forget to celebrate your wins, even small ones! You're the kind of person who makes big things happen slowly and surely. A younger kid is watching you and learning from how you handle things.", lucky_number: 10, lucky_color: 'Brown', lucky_activity: 'Working on a long-term project' },
+      { forecast: "Capricorn, your discipline is impressive this week. You finish what you start — and that earns you big respect. A helpful tip from a parent or teacher changes how you approach something. Take one break this week to just play with no goal at all. You deserve it.", lucky_number: 4, lucky_color: 'Grey', lucky_activity: 'Finishing a goal' },
+    ],
+    aquarius: [
+      { forecast: "Your big ideas could change your school or neighborhood, Aquarius! This week you'll think of something creative and helpful. Don't keep it to yourself — share it with a teacher, parent, or friend. Technology and science feel especially exciting right now. If you could invent one thing to help your community, what would it be? Start sketching it out.", lucky_number: 11, lucky_color: 'Electric Blue', lucky_activity: 'Inventing or brainstorming' },
+      { forecast: "Aquarius, you're ahead of your time this week — in the best way. Your unusual idea turns out to be the right one. Someone who didn't agree with you comes around by Thursday. Use your voice for something you really believe in. The stars say the future needs your kind of thinking.", lucky_number: 22, lucky_color: 'Teal', lucky_activity: 'Creative problem solving' },
+    ],
+    pisces: [
+      { forecast: "Your imagination is overflowing this week, Pisces! Use it — draw, write, daydream, or tell a story. You'll feel the emotions of people around you more than usual, so remember to take care of yourself too. A quiet moment by the river or in a garden restores your energy. A dream you have this week might hold an interesting message.", lucky_number: 12, lucky_color: 'Sea Green', lucky_activity: 'Art, music, or being near water' },
+      { forecast: "Pisces, your creativity peaks this week. A piece of writing or art you create surprises even you with how good it is. Share it! Your empathy helps a friend feel truly understood. Music can change your whole mood this week — put on your favorite songs and let them.", lucky_number: 7, lucky_color: 'Soft Purple', lucky_activity: 'Music or journaling' },
+    ],
+  };
+
+  function getWeekNumber() {
+    const now = new Date();
+    const start = new Date(2026, 0, 1);
+    return Math.floor((now - start) / (7 * 24 * 60 * 60 * 1000));
+  }
+
+  function getForecast(signId) {
+    const pool = FORECASTS[signId];
+    const week = getWeekNumber();
+    return pool[week % pool.length];
+  }
+
+  function renderSigns() {
+    const grid = document.getElementById('sign-grid');
+    SIGNS.forEach(sign => {
+      const f = getForecast(sign.id);
+      const card = document.createElement('div');
+      card.className = 'sign-card';
+      card.id = `sign-${sign.id}`;
+      card.innerHTML = `
+        <span class="sign-corner ${sign.color}" style="font-size: 0.6rem; letter-spacing: 0.08em; text-transform: uppercase; position: absolute; top: var(--space-4); right: var(--space-4);">${sign.name.toUpperCase()}</span>
+        <span class="sign-emoji">${sign.emoji}</span>
+        <div class="sign-name">${sign.name}</div>
+        <div class="sign-dates">${sign.dates}</div>
+        <div class="sign-forecast">${f.forecast}</div>
+        <div class="sign-lucky">
+          <div>Lucky number: <span>${f.lucky_number}</span></div>
+          <div>Lucky color: <span>${f.lucky_color}</span></div>
+          <div>Lucky activity: <span>${f.lucky_activity}</span></div>
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+  }
+
+  function jumpToSign(signId) {
+    if (!signId) return;
+    document.querySelectorAll('.sign-card').forEach(c => c.classList.remove('active-sign'));
+    const el = document.getElementById(`sign-${signId}`);
+    if (el) {
+      el.classList.add('active-sign');
+      el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }
+
+  function setDates() {
+    const d = new Date();
+    const opts = { year: 'numeric', month: 'long', day: 'numeric' };
+    const end = new Date(d);
+    end.setDate(d.getDate() + 6);
+    document.getElementById('week-label').textContent =
+      `Week of ${d.toLocaleDateString('en-US', opts)} — ${end.toLocaleDateString('en-US', opts)}`;
+    const cd = document.getElementById('current-date');
+    if (cd) cd.textContent = d.toLocaleDateString('en-US', opts);
+  }
+
+  renderSigns();
+  setDates();
+  </script>
+</body>
+</html>

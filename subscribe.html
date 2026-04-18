@@ -1,76 +1,141 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Subscribe – The Kid Reporter</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
-  <!-- Stripe Pricing Table — loaded from Stripe CDN (required) -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Subscribe — The Kid Reporter</title>
+  <meta name="description" content="Support young journalists at The Kid Reporter for just $1 a month. Every dollar goes directly to keeping independent youth journalism alive." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=UnifrakturMaguntia&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/style.css" />
   <script async src="https://js.stripe.com/v3/pricing-table.js"></script>
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Source Sans 3', Arial, sans-serif; background: #fdfaf5; color: #1a1008; min-height: 100dvh; -webkit-font-smoothing: antialiased; }
-    nav { display: flex; align-items: center; justify-content: space-between; padding: 0.75rem 2rem; border-bottom: 2px solid #1a1008; background: #fdfaf5; position: sticky; top: 0; z-index: 100; gap: 1rem; }
-    .nav-logo { font-family: 'Playfair Display', Georgia, serif; font-weight: 900; font-size: 1.4rem; color: #d44000; text-decoration: none; }
-    .nav-links { display: flex; gap: 1.5rem; list-style: none; }
-    .nav-links a { font-size: 0.9rem; font-weight: 600; color: #1a1008; text-decoration: none; text-transform: uppercase; letter-spacing: 0.06em; }
-    .nav-links a:hover { color: #d44000; }
-    .hero { text-align: center; padding: 4rem 2rem 3rem; max-width: 700px; margin: 0 auto; }
-    .eyebrow { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: #d44000; margin-bottom: 1rem; }
-    h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; margin-bottom: 1.5rem; line-height: 1.1; }
-    .hero p { font-size: 1.1rem; color: #6b5c3e; max-width: 52ch; margin: 0 auto; line-height: 1.7; }
-    .pricing-wrapper { max-width: 960px; margin: 2.5rem auto; padding: 0 2rem; }
-    .perks { max-width: 700px; margin: 0 auto 4rem; padding: 2rem; background: #fff8ee; border: 1px solid rgba(100,60,0,0.12); border-radius: 1rem; }
-    .perks h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 1.2rem; margin-bottom: 1.5rem; text-align: center; }
-    .perks-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; }
-    .perk { display: flex; align-items: flex-start; gap: 0.75rem; font-size: 0.95rem; }
-    .perk-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 2px; }
-    .perk strong { display: block; margin-bottom: 2px; }
-    .perk span { color: #6b5c3e; font-size: 0.85rem; }
-    footer { border-top: 2px solid #1a1008; padding: 2rem; text-align: center; font-size: 0.85rem; color: #6b5c3e; }
-    footer a { color: #d44000; text-decoration: none; }
-    @media (max-width: 480px) { .nav-links { display: none; } nav { padding: 0.75rem 1rem; } }
+    .perks-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: var(--space-6);
+      margin-top: var(--space-8);
+    }
+    .perk-item {
+      display: flex;
+      gap: var(--space-4);
+      align-items: flex-start;
+    }
+    .perk-icon {
+      font-size: 1.6rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .perk-text strong {
+      display: block;
+      font-weight: 700;
+      font-size: var(--text-sm);
+      color: var(--color-text, #1a1612);
+      margin-bottom: 2px;
+    }
+    .perk-text span {
+      font-size: var(--text-xs);
+      color: var(--color-text-dim, #4a4035);
+    }
+    stripe-pricing-table { display: block; margin-block: var(--space-10); }
   </style>
 </head>
-<body>
-  <nav>
-    <a href="index.html" class="nav-logo">&#128240; The Kid Reporter</a>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="subscribe.html">Subscribe</a></li>
-      <li><a href="donate.html">Donate</a></li>
-      <li><a href="about.html">About</a></li>
-    </ul>
-  </nav>
+<body class="animate-flicker">
 
-  <div class="hero">
-    <p class="eyebrow">Join The Kid Reporter</p>
-    <h1>News Written By Kids, For Everyone</h1>
-    <p>Support young journalists and get full access to every story, interview, and investigation — for just $1 a month.</p>
-  </div>
+  <header class="masthead">
+    <div class="masthead__topbar">
+      <div class="container masthead__topbar-inner">
+        <span class="neon-cyan animate-flicker">Support Youth Journalism</span>
+        <span id="current-date"></span>
+      </div>
+    </div>
+    <div class="container">
+      <div class="masthead__logo">
+        <div class="rule-ornament">EST. 2026</div>
+        <h1 class="neon-magenta"><a href="index.html" style="color: inherit; text-decoration: none;">The Kid Reporter</a></h1>
+        <div class="rule-ornament">&#10022; Vires in Veritate &#10022;</div>
+      </div>
+    </div>
+    <nav class="nav">
+      <ul class="nav__list container">
+        <li><a href="index.html" class="nav__link">Home</a></li>
+        <li><a href="crossword.html" class="nav__link">Crossword</a></li>
+        <li><a href="horoscope.html" class="nav__link">Horoscope</a></li>
+        <li><a href="subscribe.html" class="nav__link active">Subscribe</a></li>
+        <li><a href="donate.html" class="nav__link">Donate</a></li>
+        <li><a href="about.html" class="nav__link">About</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  <div class="pricing-wrapper">
+  <main class="container" style="margin-block: var(--space-12);">
+
+    <div style="max-width: 640px; margin-bottom: var(--space-10);">
+      <span class="neon-cyan" style="font-family: var(--font-mono); font-size: var(--text-sm); letter-spacing: 0.1em; text-transform: uppercase;">Join the Newsroom</span>
+      <h2 style="font-family: var(--font-serif); font-size: var(--text-2xl); font-weight: 900; margin-top: var(--space-2); color: var(--color-text, #1a1612); text-shadow: none;">Support The Kid Reporter</h2>
+      <p style="font-size: var(--text-base); color: var(--color-text-dim, #4a4035); line-height: 1.7; margin-top: var(--space-4); max-width: 60ch;">
+        For just $1 a month, you help keep Sarai, Alani, and every future reporter on the street — covering the stories that matter to kids in Sacramento and beyond. No newsletters. No spam. Just the knowledge that you made this possible.
+      </p>
+    </div>
+
+    <!-- Perks -->
+    <div class="card" style="padding: var(--space-8); margin-bottom: var(--space-10); border: 1px solid var(--color-ink-border);">
+      <h3 style="font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: 0.15em; text-transform: uppercase; color: var(--neon-gold); margin-bottom: var(--space-2);">What your $1/month does</h3>
+      <div class="perks-grid">
+        <div class="perk-item">
+          <span class="perk-icon">🖊️</span>
+          <div class="perk-text"><strong>Keeps stories free</strong><span>Every article stays free for all kids to read — no paywalls</span></div>
+        </div>
+        <div class="perk-item">
+          <span class="perk-icon">🏆</span>
+          <div class="perk-text"><strong>Supporter recognition</strong><span>Your name on our <a href="thanks.html" style="color: var(--neon-cyan);">Thank You Wall</a> as a founding supporter</span></div>
+        </div>
+        <div class="perk-item">
+          <span class="perk-icon">🧩</span>
+          <div class="perk-text"><strong>Funds the crossword</strong><span>Helps us create new puzzles, horoscopes, and features every week</span></div>
+        </div>
+        <div class="perk-item">
+          <span class="perk-icon">📰</span>
+          <div class="perk-text"><strong>Pays for hosting</strong><span>Keeps the site fast and online 24/7 for every young reader</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stripe Pricing Table -->
     <stripe-pricing-table
       pricing-table-id="prctbl_1TLTNQEMMO6lNXW8mJCv0vL0"
       publishable-key="pk_live_51TLRfIEMMO6lNXW8whDnSztDkJmBuOMxqNH2g7W3BzkyWjUktLXG2kohYO11ID8r0oU40hWYX8XDo9ZQcYibZugg00L3vpc32v">
     </stripe-pricing-table>
-  </div>
 
-  <div class="perks">
-    <h3>What's included with every subscription</h3>
-    <div class="perks-grid">
-      <div class="perk"><span class="perk-icon">&#128240;</span><div><strong>Full article access</strong><span>Read every story, no limits</span></div></div>
-      <div class="perk"><span class="perk-icon">&#9999;&#65039;</span><div><strong>Weekly newsletter</strong><span>Top stories to your inbox</span></div></div>
-      <div class="perk"><span class="perk-icon">&#127885;</span><div><strong>Supporter badge</strong><span>Founding supporter recognition</span></div></div>
-      <div class="perk"><span class="perk-icon">&#127897;</span><div><strong>Community access</strong><span>Engage with our reporters</span></div></div>
+    <p style="font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-text-dim, #4a4035); text-align: center; margin-top: var(--space-6);">
+      &#128274; Payments securely processed by Stripe. Cancel anytime. No spam, ever.
+    </p>
+
+    <!-- Also donate CTA -->
+    <div style="text-align: center; margin-top: var(--space-12); padding-top: var(--space-8); border-top: 1px solid var(--color-ink-border);">
+      <p style="color: var(--color-text-dim, #4a4035); font-size: var(--text-sm); margin-bottom: var(--space-4);">Prefer a one-time gift instead?</p>
+      <a href="donate.html" class="btn btn--primary" style="background: var(--neon-gold); box-shadow: var(--glow-gold); color: var(--color-ink);">Make a Donation</a>
     </div>
-  </div>
 
-  <footer>
-    <p>&copy; 2026 The Kid Reporter &middot; <a href="about.html">About</a> &middot; <a href="donate.html">Donate</a> &middot; <a href="mailto:editor@thekidreporter.com">Contact</a></p>
-    <p style="margin-top:0.5rem;font-size:0.78rem;">Payments securely processed by Stripe. Cancel anytime.</p>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div><h4 class="neon-magenta">The Kid Reporter</h4><p>Truth. Curiosity. Cookies.</p></div>
+      <div><h4 class="neon-cyan">Quick Links</h4><ul style="list-style: none; padding-top: var(--space-2);"><li><a href="index.html">Home</a></li><li><a href="crossword.html">Crossword</a></li><li><a href="horoscope.html">Horoscope</a></li><li><a href="thanks.html">Thank You Wall</a></li></ul></div>
+      <div><h4 class="neon-lime">Contact</h4><p><a href="mailto:newsroom@thekidreporter.com" style="color: inherit;">newsroom@thekidreporter.com</a></p></div>
+    </div>
+    <div class="container" style="border-top: 1px solid var(--color-ink-border); margin-top: var(--space-12); padding-top: var(--space-8); text-align: center; font-family: var(--font-mono); font-size: var(--text-xs);">&#169; 2026 THE KID REPORTER. ALL RIGHTS RESERVED.<br/>DESIGNED BY GOTHIC NEON SYSTEMS.</div>
   </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    const d = new Date();
+    const cd = document.getElementById('current-date');
+    if (cd) cd.textContent = d.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+  </script>
 </body>
 </html>

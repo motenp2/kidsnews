@@ -1,94 +1,72 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>You're Subscribed! — The Kid Reporter</title>
+  <title>You're a Supporter! — The Kid Reporter</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=UnifrakturMaguntia&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/tokens.css" />
   <link rel="stylesheet" href="css/base.css" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
-<body>
-  <main id="main-content" style="min-height: 100dvh; display: flex; align-items: center; justify-content: center; padding: var(--space-8);">
-    <div style="max-width: 480px; text-align: center;">
-      <div style="font-size: 4rem; margin-bottom: var(--space-6);">🎉</div>
-      <h1 style="font-size: var(--text-2xl); font-weight: 900; margin-bottom: var(--space-4);">You're a Subscriber!</h1>
-      <p style="font-size: var(--text-base); color: var(--color-text-muted); line-height: 1.7; margin-bottom: var(--space-8);">
-        Welcome to The Kid Reporter family. Your $1 a month supports real young journalists telling real stories. Check your email for your welcome message and subscriber badge.
-      </p>
-      <div style="display: flex; flex-direction: column; gap: var(--space-4);">
-        <a href="index.html" class="btn btn--red btn--full btn--lg">Read Today's News</a>
-        <a href="donate.html" class="btn btn--outline btn--full">Also Make a Donation</a>
+<body class="animate-flicker">
+  <header class="masthead">
+    <div class="masthead__topbar">
+      <div class="container masthead__topbar-inner">
+        <span class="neon-gold animate-flicker">Welcome to the Family</span>
       </div>
-      <p style="margin-top: var(--space-8); font-size: var(--text-xs); color: var(--color-text-faint); font-family: var(--font-mono);">
-        Questions? Email us at <a href="mailto:editor@kidreporter.example.com" style="color: var(--color-primary);">editor@kidreporter.example.com</a>
+    </div>
+    <div class="container">
+      <div class="masthead__logo">
+        <div class="rule-ornament">EST. 2026</div>
+        <h1 class="neon-magenta"><a href="index.html" style="color: inherit; text-decoration: none;">The Kid Reporter</a></h1>
+        <div class="rule-ornament">&#10022; Vires in Veritate &#10022;</div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container" style="margin-block: var(--space-20);">
+    <div style="max-width: 540px; margin-inline: auto; text-align: center;">
+
+      <div style="font-size: 4rem; margin-bottom: var(--space-6);">🌟</div>
+
+      <h2 class="neon-gold" style="font-size: var(--text-2xl); font-weight: 900; margin-bottom: var(--space-4);">
+        Thank you. Seriously.
+      </h2>
+
+      <p style="font-size: var(--text-base); line-height: 1.8; color: var(--color-text, #1a1612); margin-bottom: var(--space-6); max-width: 52ch; margin-inline: auto;">
+        Hi! It's Sarai and Alani. We just wanted to say — your support means everything to us. Because of you, we get to keep writing, keep asking questions, and keep telling the stories that matter to kids in Sacramento. You are officially part of the newsroom family. 🎉
       </p>
+
+      <blockquote style="border-left: 4px solid var(--neon-gold); box-shadow: var(--glow-gold); background: rgba(255,214,0,0.02); padding: var(--space-6); margin: var(--space-8) 0; font-family: var(--font-serif); font-style: italic; font-size: var(--text-lg); color: var(--neon-gold); text-align: left;">
+        &ldquo;When a grown-up believes in what a kid is doing, it changes everything. Thank you for believing in us.&rdquo;
+        <footer style="font-size: var(--text-sm); margin-top: var(--space-3); color: var(--color-text-dim, #4a4035); font-style: normal; background: none; padding: 0;">— Sarai &amp; Alani Moten</footer>
+      </blockquote>
+
+      <p style="font-size: var(--text-sm); color: var(--color-text-dim, #4a4035); margin-bottom: var(--space-8);">
+        Your name will be added to our <a href="thanks.html" style="color: var(--neon-cyan);">Thank You Wall</a> in the next update. Welcome aboard.
+      </p>
+
+      <div style="display: flex; flex-direction: column; gap: var(--space-4); align-items: center;">
+        <a href="index.html" class="btn btn--primary" style="min-width: 240px;">Read Today's Stories</a>
+        <a href="crossword.html" class="btn btn--primary" style="min-width: 240px; background: transparent; border: 2px solid var(--neon-cyan); color: var(--neon-cyan);">Try the Daily Crossword</a>
+        <a href="horoscope.html" class="btn btn--primary" style="min-width: 240px; background: transparent; border: 2px solid var(--neon-magenta); color: var(--neon-magenta);">Check Your Horoscope</a>
+        <a href="thanks.html" class="btn btn--primary" style="min-width: 240px; background: transparent; border: 2px solid var(--neon-gold); color: var(--neon-gold);">See the Thank You Wall</a>
+      </div>
+
     </div>
   </main>
+
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div><h4 class="neon-magenta">The Kid Reporter</h4><p>Truth. Curiosity. Cookies.</p></div>
+      <div><h4 class="neon-cyan">Quick Links</h4><ul style="list-style: none; padding-top: var(--space-2);"><li><a href="index.html">Home</a></li><li><a href="crossword.html">Crossword</a></li><li><a href="horoscope.html">Horoscope</a></li><li><a href="thanks.html">Thank You Wall</a></li></ul></div>
+      <div><h4 class="neon-lime">Contact</h4><p><a href="mailto:newsroom@thekidreporter.com" style="color: inherit;">newsroom@thekidreporter.com</a></p></div>
+    </div>
+    <div class="container" style="border-top: 1px solid var(--color-ink-border); margin-top: var(--space-12); padding-top: var(--space-8); text-align: center; font-family: var(--font-mono); font-size: var(--text-xs);">&#169; 2026 THE KID REPORTER. ALL RIGHTS RESERVED.<br/>DESIGNED BY GOTHIC NEON SYSTEMS.</div>
+  </footer>
   <script src="js/main.js"></script>
-<script data-pplx-inline-edit>
-(function(){
-  if(window===window.top)return;
-  function inlineAll(orig,clone){
-    if(orig.nodeType!==1)return;
-    try{
-      var cs=getComputedStyle(orig);
-      var t='';
-      for(var i=0;i<cs.length;i++){t+=cs[i]+':'+cs.getPropertyValue(cs[i])+';';}
-      clone.style.cssText=t;
-    }catch(e){}
-    var oc=orig.children,cc=clone.children;
-    for(var j=0;j<oc.length&&j<cc.length;j++){inlineAll(oc[j],cc[j]);}
-  }
-  function stripExternal(clone){
-    var imgs=clone.querySelectorAll('img');
-    for(var i=0;i<imgs.length;i++){
-      var s=imgs[i].getAttribute('src');
-      if(s&&!s.startsWith('data:'))imgs[i].removeAttribute('src');
-    }
-    var all=clone.querySelectorAll('*');
-    for(var i=0;i<all.length;i++){
-      var st=all[i].style.cssText;
-      if(st&&st.indexOf('url(')>=0){
-        all[i].style.cssText=st.replace(/url\(["']?(?!data:)[^)"']*["']?\)/gi,'none');
-      }
-    }
-  }
-  window.addEventListener('message',function(e){
-    if(!e.data||e.data.type!=='INLINE_EDIT_CAPTURE_REQUEST')return;
-    var scrollX=window.scrollX||window.pageXOffset||0;
-    var scrollY=window.scrollY||window.pageYOffset||0;
-    var w=window.innerWidth,h=window.innerHeight;
-    try{
-      var clone=document.documentElement.cloneNode(true);
-      var rm=clone.querySelectorAll('script,link[rel="stylesheet"],style');
-      for(var i=0;i<rm.length;i++){rm[i].remove();}
-      inlineAll(document.documentElement,clone);
-      stripExternal(clone);
-      var html=new XMLSerializer().serializeToString(clone);
-      var svg='<svg xmlns="http://www.w3.org/2000/svg" width="'+w+'" height="'+h+'">'
-        +'<foreignObject width="100%" height="100%">'
-        +'<div xmlns="http://www.w3.org/1999/xhtml" style="width:'+w+'px;height:'+h+'px;overflow:hidden">'
-        +'<div style="transform:translate(-'+scrollX+'px,-'+scrollY+'px);transform-origin:top left">'
-        +html+'</div></div></foreignObject></svg>';
-      var svgUrl='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
-      var img=new Image();
-      img.onload=function(){
-        var c=document.createElement('canvas');c.width=w;c.height=h;
-        c.getContext('2d').drawImage(img,0,0);
-        window.parent.postMessage({type:'INLINE_EDIT_SCREENSHOT_RESULT',dataUrl:c.toDataURL('image/png'),scrollX:scrollX,scrollY:scrollY},'*');
-      };
-      img.onerror=function(){
-        window.parent.postMessage({type:'INLINE_EDIT_SCREENSHOT_RESULT',dataUrl:null,scrollX:scrollX,scrollY:scrollY},'*');
-      };
-      img.src=svgUrl;
-    }catch(err){
-      window.parent.postMessage({type:'INLINE_EDIT_SCREENSHOT_RESULT',dataUrl:null,scrollX:scrollX,scrollY:scrollY},'*');
-    }
-  });
-})();
-</script></body>
+</body>
 </html>
