@@ -10,6 +10,22 @@
     <link rel="stylesheet" href="css/tokens.css" />
     <link rel="stylesheet" href="css/base.css" />
     <link rel="stylesheet" href="css/style.css" />
+    <style>
+      /* Force card headlines to always be dark/readable on light backgrounds */
+      .card h2, .card h3 {
+        color: var(--color-text, #1a1612) !important;
+        text-shadow: none !important;
+      }
+      /* Hero headline stays neon in dark, goes dark in light */
+      .hero-headline {
+        color: var(--neon-cyan);
+        text-shadow: var(--glow-cyan);
+      }
+      [data-theme='light'] .hero-headline,
+      @media (prefers-color-scheme: light) {
+        .hero-headline { color: #1a1612; text-shadow: none; }
+      }
+    </style>
 </head>
 <body class="animate-flicker">
     <header class="masthead">
@@ -43,47 +59,65 @@
             </ul>
         </nav>
     </header>
+
     <main class="container">
+
+        <!-- HERO: Top Story -->
         <section class="hero animate-slide-up" style="margin-block: var(--space-12);">
             <div class="card card--large" style="padding: 0; display: grid; grid-template-columns: 1.5fr 1fr;">
                 <div class="card__img" style="background: var(--color-ink-soft); min-height: 300px;"></div>
                 <div class="card__content" style="padding: var(--space-8);">
                     <span class="badge badge--breaking">Top Story</span>
-                    <h2 class="neon-cyan" style="margin-block: var(--space-4);">Fifth Graders Discover a New Way to Clean Plastic from Rivers</h2>
-                    <p>A group of young scientists spent three months designing an experiment that could help remove microplastics from our waterways.</p>
-                    <a href="article.html" class="btn btn--primary">Read Full Investigation</a>
+                    <h2 style="margin-block: var(--space-4); color: var(--color-text, #1a1612); text-shadow: none;">Salmon Fishing Along Sacramento River Teaches Pocket Kids Environmental Science and Stewardship</h2>
+                    <p>When the fall salmon run begins, Sarai and her father hit the river — and a lesson in stewardship follows every catch.</p>
+                    <a href="articles/salmon-fishing-river/" class="btn btn--primary">Read Full Story</a>
                 </div>
             </div>
         </section>
-        <section class="news-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-8);">
-            <article class="card card--lime">
-                <div class="card__content" style="padding: var(--space-6);">
-                    <span class="neon-lime" style="font-family: var(--font-mono); font-size: var(--text-xs);">Environment</span>
-                    <h3 style="margin-block: var(--space-2);">School Gardens: The New Front Line?</h3>
-                    <p>Young botanists are taking over the playground with vertical farming.</p>
-                    <a href="article.html" class="neon-cyan">Read More →</a>
-                </div>
-            </article>
-            <article class="card card--magenta">
-                <div class="card__content" style="padding: var(--space-6);">
-                    <span class="neon-magenta" style="font-family: var(--font-mono); font-size: var(--text-xs);">Technology</span>
-                    <h3 style="margin-block: var(--space-2);">The Secret Language of Roblox Bots</h3>
-                    <p>An inside look at how AI is shaping the future of digital play.</p>
-                    <a href="article.html" class="neon-cyan">Read More →</a>
-                </div>
-            </article>
-            <article class="card card--gold">
-                <div class="card__content" style="padding: var(--space-6);">
-                    <span class="neon-gold" style="font-family: var(--font-mono); font-size: var(--text-xs);">Education</span>
-                    <h3 style="margin-block: var(--space-2);">No More Homework? The Experiment</h3>
-                    <p>One school district tried it for a month. The results will surprise you.</p>
-                    <a href="article.html" class="neon-cyan">Read More →</a>
-                </div>
-            </article>
+
+        <!-- ALANI'S BEAT -->
+        <section style="margin-block: var(--space-16);">
+            <div style="display: flex; align-items: center; gap: var(--space-5); margin-bottom: var(--space-10);">
+                <h2 style="font-family: var(--font-serif); font-size: var(--text-xl); font-weight: 900; white-space: nowrap; color: var(--color-text, #1a1612); text-shadow: none;">Alani&rsquo;s Corner</h2>
+                <div style="flex: 1; height: 2px; background: linear-gradient(to right, var(--neon-cyan), transparent);"></div>
+                <span style="font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-text-dim, #4a4035); white-space: nowrap;">BY ALANI MOTEN</span>
+            </div>
+            <div class="news-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-8);">
+
+                <article class="card card--lime">
+                    <div class="card__content" style="padding: var(--space-6);">
+                        <span class="neon-lime" style="font-family: var(--font-mono); font-size: var(--text-xs);">Environment</span>
+                        <h3 style="margin-block: var(--space-2); color: var(--color-text, #1a1612); text-shadow: none;">School Gardens: The New Front Line?</h3>
+                        <p>Young botanists are taking over the playground with vertical farming and edible science.</p>
+                        <a href="articles/school-gardens/" class="neon-cyan">Read More &rarr;</a>
+                    </div>
+                </article>
+
+                <article class="card card--magenta">
+                    <div class="card__content" style="padding: var(--space-6);">
+                        <span class="neon-cyan" style="font-family: var(--font-mono); font-size: var(--text-xs);">Technology</span>
+                        <h3 style="margin-block: var(--space-2); color: var(--color-text, #1a1612); text-shadow: none;">The Secret Language of Roblox Bots</h3>
+                        <p>An inside look at how AI is shaping the future of digital play — and what every kid gamer should know.</p>
+                        <a href="articles/roblox-bots/" class="neon-cyan">Read More &rarr;</a>
+                    </div>
+                </article>
+
+                <article class="card card--gold">
+                    <div class="card__content" style="padding: var(--space-6);">
+                        <span class="neon-gold" style="font-family: var(--font-mono); font-size: var(--text-xs);">Education</span>
+                        <h3 style="margin-block: var(--space-2); color: var(--color-text, #1a1612); text-shadow: none;">No More Homework? The Experiment</h3>
+                        <p>One school district tried it for a month. The results will surprise you.</p>
+                        <a href="articles/no-more-homework/" class="neon-cyan">Read More &rarr;</a>
+                    </div>
+                </article>
+
+            </div>
         </section>
+
+        <!-- SARAI'S POCKET BEAT -->
         <section class="sarai-stories" style="margin-block: var(--space-16);">
             <div style="display: flex; align-items: center; gap: var(--space-5); margin-bottom: var(--space-10);">
-                <h2 style="font-family: var(--font-serif); font-size: var(--text-xl); font-weight: 900; white-space: nowrap; color: var(--color-text, #1a1612);">Sarai&rsquo;s Pocket Beat</h2>
+                <h2 style="font-family: var(--font-serif); font-size: var(--text-xl); font-weight: 900; white-space: nowrap; color: var(--color-text, #1a1612); text-shadow: none;">Sarai&rsquo;s Pocket Beat</h2>
                 <div style="flex: 1; height: 2px; background: linear-gradient(to right, var(--neon-magenta), transparent);"></div>
                 <span style="font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-text-dim, #4a4035); white-space: nowrap;">BY SARAI MOTEN</span>
             </div>
@@ -92,8 +126,8 @@
                 <article class="card card--lime">
                     <div class="card__content" style="padding: var(--space-6);">
                         <span class="neon-lime" style="font-family: var(--font-mono); font-size: var(--text-xs);">Technology</span>
-                        <h3 style="margin-block: var(--space-2);">Local Robotics Summer Camp Brings Coding to Pocket Kids Ages 8&ndash;16</h3>
-                        <p>Sarai discovers Play to Labs, where block-based coding and robot races make STEM accessible for kids across the Pocket.</p>
+                        <h3 style="margin-block: var(--space-2); color: var(--color-text, #1a1612); text-shadow: none;">Local Robotics Summer Camp Brings Coding to Pocket Kids Ages 8&ndash;16</h3>
+                        <p>Sarai discovers Play to Labs, where block-based coding and robot races make STEM accessible for every kid.</p>
                         <a href="articles/robotics-summer-camp/" class="neon-cyan">Read More &rarr;</a>
                     </div>
                 </article>
@@ -101,8 +135,8 @@
                 <article class="card card--magenta">
                     <div class="card__content" style="padding: var(--space-6);">
                         <span class="neon-lime" style="font-family: var(--font-mono); font-size: var(--text-xs);">Science</span>
-                        <h3 style="margin-block: var(--space-2);">4-H YES Program Teaches Scientific Inquiry to Pocket Elementary Kids Ages 5&ndash;8</h3>
-                        <p>Volcanoes, bean plants, and ladybugs &mdash; Sarai reports on the hands-on 4-H Youth Experiences in Science program.</p>
+                        <h3 style="margin-block: var(--space-2); color: var(--color-text, #1a1612); text-shadow: none;">4-H YES Program Teaches Scientific Inquiry to Pocket Elementary Kids Ages 5&ndash;8</h3>
+                        <p>Volcanoes, bean plants, and ladybugs — Sarai reports on the hands-on 4-H Youth Experiences in Science program.</p>
                         <a href="articles/4h-yes-science/" class="neon-cyan">Read More &rarr;</a>
                     </div>
                 </article>
@@ -110,8 +144,8 @@
                 <article class="card card--gold">
                     <div class="card__content" style="padding: var(--space-6);">
                         <span class="neon-gold" style="font-family: var(--font-mono); font-size: var(--text-xs);">Education</span>
-                        <h3 style="margin-block: var(--space-2);">My Money Camp Teaches Financial Literacy to Sacramento-Area Kids</h3>
-                        <p>Three jars, 12 hours of lessons, and one very satisfying sketchbook purchase &mdash; Sarai covers the My Money Camp program.</p>
+                        <h3 style="margin-block: var(--space-2); color: var(--color-text, #1a1612); text-shadow: none;">My Money Camp Teaches Financial Literacy to Sacramento-Area Kids</h3>
+                        <p>Three jars, 12 hours of lessons, and one very satisfying sketchbook purchase — Sarai covers My Money Camp.</p>
                         <a href="articles/my-money-camp/" class="neon-cyan">Read More &rarr;</a>
                     </div>
                 </article>
@@ -119,8 +153,8 @@
                 <article class="card card--lime">
                     <div class="card__content" style="padding: var(--space-6);">
                         <span class="neon-cyan" style="font-family: var(--font-mono); font-size: var(--text-xs);">Technology</span>
-                        <h3 style="margin-block: var(--space-2);">Coding Classes from Code Wizards HQ Expand Access for Pocket Elementary Students</h3>
-                        <p>Live online classes, a star-collecting game, and dreams of selling virtual pets &mdash; Sarai reviews Code Wizards HQ.</p>
+                        <h3 style="margin-block: var(--space-2); color: var(--color-text, #1a1612); text-shadow: none;">Coding Classes from Code Wizards HQ Expand Access for Pocket Elementary Students</h3>
+                        <p>Live online classes, a star-collecting game, and dreams of selling virtual pets — Sarai reviews Code Wizards HQ.</p>
                         <a href="articles/code-wizards-hq/" class="neon-cyan">Read More &rarr;</a>
                     </div>
                 </article>
@@ -128,8 +162,8 @@
                 <article class="card card--magenta">
                     <div class="card__content" style="padding: var(--space-6);">
                         <span class="neon-lime" style="font-family: var(--font-mono); font-size: var(--text-xs);">Science</span>
-                        <h3 style="margin-block: var(--space-2);">Mad Science Workshops Bring STEM Fun to Pocket After-School Programs</h3>
-                        <p>Glow-in-the-dark slime, self-inflating balloons, and wacky hats &mdash; Sarai covers Mad Science&rsquo;s visit to Pocket schools.</p>
+                        <h3 style="margin-block: var(--space-2); color: var(--color-text, #1a1612); text-shadow: none;">Mad Science Workshops Bring STEM Fun to Pocket After-School Programs</h3>
+                        <p>Glow-in-the-dark slime, self-inflating balloons, and wacky hats — Sarai covers Mad Science's visit to Pocket schools.</p>
                         <a href="articles/mad-science-workshops/" class="neon-cyan">Read More &rarr;</a>
                     </div>
                 </article>
@@ -137,7 +171,7 @@
                 <article class="card card--gold">
                     <div class="card__content" style="padding: var(--space-6);">
                         <span class="neon-lime" style="font-family: var(--font-mono); font-size: var(--text-xs);">Environment</span>
-                        <h3 style="margin-block: var(--space-2);">New Sacramento River Trail Boosts Outdoor Science Learning for Pocket Kids</h3>
+                        <h3 style="margin-block: var(--space-2); color: var(--color-text, #1a1612); text-shadow: none;">New Sacramento River Trail Boosts Outdoor Science Learning for Pocket Kids</h3>
                         <p>A four-mile trail from Garcia Bend to Zacharias Park will turn the riverbank into a giant science classroom.</p>
                         <a href="articles/sacramento-river-trail/" class="neon-cyan">Read More &rarr;</a>
                     </div>
@@ -146,8 +180,8 @@
                 <article class="card card--lime">
                     <div class="card__content" style="padding: var(--space-6);">
                         <span class="neon-cyan" style="font-family: var(--font-mono); font-size: var(--text-xs);">Education</span>
-                        <h3 style="margin-block: var(--space-2);">Pocket Elementary Students Embrace Cell Phone Restrictions to Boost Focus on Learning</h3>
-                        <p>Sarai explores why Sacramento County schools are putting phones away &mdash; and why many kids say it&rsquo;s actually a good call.</p>
+                        <h3 style="margin-block: var(--space-2); color: var(--color-text, #1a1612); text-shadow: none;">Pocket Elementary Students Embrace Cell Phone Restrictions to Boost Focus on Learning</h3>
+                        <p>Sarai explores why Sacramento County schools are putting phones away — and why many kids say it's a good call.</p>
                         <a href="articles/cell-phone-restrictions/" class="neon-cyan">Read More &rarr;</a>
                     </div>
                 </article>
@@ -155,8 +189,8 @@
                 <article class="card card--magenta">
                     <div class="card__content" style="padding: var(--space-6);">
                         <span class="neon-magenta" style="font-family: var(--font-mono); font-size: var(--text-xs);">Community</span>
-                        <h3 style="margin-block: var(--space-2);">Families in Pocket Balance Million-Dollar Estates with Affordable Homes While Investing in Kids&rsquo; Education</h3>
-                        <p>Sarai asks the hard question: does every kid in the Pocket get the same shot at great programs?</p>
+                        <h3 style="margin-block: var(--space-2); color: var(--color-text, #1a1612); text-shadow: none;">Families in Pocket Balance Million-Dollar Estates with Affordable Homes While Investing in Kids&rsquo; Education</h3>
+                        <p>Sarai asks: does every kid in the Pocket get the same shot at great programs?</p>
                         <a href="articles/pocket-housing-education/" class="neon-cyan">Read More &rarr;</a>
                     </div>
                 </article>
@@ -164,8 +198,8 @@
                 <article class="card card--gold">
                     <div class="card__content" style="padding: var(--space-6);">
                         <span class="neon-lime" style="font-family: var(--font-mono); font-size: var(--text-xs);">Environment</span>
-                        <h3 style="margin-block: var(--space-2);">Portuguese Community Park Becomes Informal Science Learning Hub for Pocket Children</h3>
-                        <p>No lab required &mdash; Sarai shows how one Pocket park quietly teaches bugs, birds, and botany to every kid who shows up.</p>
+                        <h3 style="margin-block: var(--space-2); color: var(--color-text, #1a1612); text-shadow: none;">Portuguese Community Park Becomes Informal Science Learning Hub for Pocket Children</h3>
+                        <p>No lab required — Sarai shows how one Pocket park quietly teaches bugs, birds, and botany to every kid who shows up.</p>
                         <a href="articles/portuguese-community-park/" class="neon-cyan">Read More &rarr;</a>
                     </div>
                 </article>
@@ -173,14 +207,16 @@
                 <article class="card card--lime">
                     <div class="card__content" style="padding: var(--space-6);">
                         <span class="neon-lime" style="font-family: var(--font-mono); font-size: var(--text-xs);">Environment</span>
-                        <h3 style="margin-block: var(--space-2);">Salmon Fishing Along Sacramento River Teaches Pocket Kids Environmental Science and Stewardship</h3>
-                        <p>When the fall salmon run begins, Sarai and her father hit the river &mdash; and a lesson in stewardship follows every catch.</p>
+                        <h3 style="margin-block: var(--space-2); color: var(--color-text, #1a1612); text-shadow: none;">Salmon Fishing Along Sacramento River Teaches Pocket Kids Environmental Science and Stewardship</h3>
+                        <p>When the fall salmon run begins, Sarai and her father hit the river — and a lesson in stewardship follows every catch.</p>
                         <a href="articles/salmon-fishing-river/" class="neon-cyan">Read More &rarr;</a>
                     </div>
                 </article>
 
             </div>
         </section>
+
+        <!-- DONATE CTA -->
         <section class="cta" style="margin-block: var(--space-20); text-align: center;">
             <div class="card edge-gold" style="padding: var(--space-12); border-left: none; border: 2px solid var(--neon-gold); background: rgba(255, 214, 0, 0.02);">
                 <h2 class="neon-gold">Keep Independent Youth Journalism Alive</h2>
@@ -188,7 +224,9 @@
                 <a href="donate.html" class="btn btn--primary" style="background: var(--neon-gold); box-shadow: var(--glow-gold); color: var(--color-ink);">Donate Now</a>
             </div>
         </section>
+
     </main>
+
     <footer class="footer">
         <div class="container footer__grid">
             <div><h4 class="neon-magenta">The Kid Reporter</h4><p>Truth. Curiosity. Cookies.</p></div>
