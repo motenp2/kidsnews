@@ -938,3 +938,77 @@
   font-size: 0.6em;
   vertical-align: middle;
 }
+
+/* ----------------------------------------
+   MOBILE TYPOGRAPHY — reduce Old English
+   weight and glow intensity below 600px
+---------------------------------------- */
+@media (max-width: 600px) {
+
+  /* Swap display (blackletter) font to the
+     serif fallback on small screens —
+     keeps the editorial feel without the
+     heavy stroke weight of UnifrakturMaguntia */
+  :root {
+    --font-display: 'Playfair Display', Georgia, serif;
+  }
+
+  /* Pull back neon glow — too intense on OLED/mobile */
+  :root {
+    --glow-cyan:    0 0 4px rgba(0,229,255,0.35);
+    --glow-lime:    0 0 4px rgba(178,255,89,0.35);
+    --glow-magenta: 0 0 4px rgba(255,0,229,0.35);
+    --glow-gold:    0 0 4px rgba(255,214,0,0.35);
+    --glow-violet:  0 0 4px rgba(199,125,255,0.35);
+  }
+
+  /* Tighten letter-spacing on ornamental rules —
+     wide tracking on blackletter = illegible on mobile */
+  .rule-ornament {
+    letter-spacing: 0.08em;
+    font-size: var(--text-xs);
+  }
+
+  /* Footer logo — lighter weight, readable at small size */
+  .footer-logo-text {
+    font-weight: 700;
+    font-size: var(--text-base);
+    letter-spacing: 0.04em;
+  }
+
+  /* Team avatar initials — drop display font, use sans */
+  .team-avatar {
+    font-family: var(--font-sans);
+    font-weight: 800;
+  }
+
+  /* Masthead brand name — reduce heading weight */
+  .masthead__brand h1,
+  .masthead__brand .logo-text {
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+
+  /* Feature headline — tighten weight slightly */
+  .feature-card__headline {
+    font-weight: 800;
+  }
+
+  /* Section titles — keep bold but not ultra-heavy */
+  .section-title,
+  .page-hero__title {
+    font-weight: 800;
+  }
+
+  /* Ticker label — reduce glow on mobile */
+  .ticker-label {
+    box-shadow: none;
+    letter-spacing: 0.08em;
+  }
+
+  /* Ticker items — reduce text-shadow glow */
+  .ticker-item {
+    text-shadow: none;
+    color: var(--neon-lime);
+  }
+}
