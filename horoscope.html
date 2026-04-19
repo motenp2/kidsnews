@@ -62,6 +62,14 @@
       gap: var(--space-1);
     }
     .sign-lucky span { color: var(--neon-gold); font-weight: 700; }
+    /* Force readable text in all modes */
+    .sign-card .sign-name,
+    .sign-card .sign-forecast,
+    .sign-card .sign-dates,
+    .sign-card .sign-lucky { color: var(--color-text, #1a1612) !important; }
+    .sign-card .sign-lucky span { color: var(--neon-gold) !important; }
+    .finder-bar label { color: var(--color-text-dim, #4a4035); }
+    .finder-bar select { color: var(--color-text, #1a1612); background: #fff; }
     .sign-corner {
       position: absolute;
       top: var(--space-4);
