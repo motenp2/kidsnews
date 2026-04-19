@@ -1,13 +1,13 @@
-/* === THE KID REPORTER — Gothic Neon Design Tokens === */
-/* Dark inkwell base, aged parchment accents, neon edge highlights */
+/* === THE KID REPORTER — K-Pop Demon Hunter Design Tokens === */
+/* Always dark. Void black base. Electric neon. Concert poster energy. */
 
 :root,
 [data-theme='dark'] {
   /* === TYPOGRAPHY === */
-  --font-display:   'UnifrakturMaguntia', 'Playfair Display', serif;
-  --font-serif:     'Playfair Display', 'Georgia', serif;
-  --font-sans:      'Plus Jakarta Sans', 'Inter', sans-serif;
-  --font-mono:      'JetBrains Mono', monospace;
+  --font-display:  'Bebas Neue', 'UnifrakturMaguntia', sans-serif;
+  --font-serif:    'Playfair Display', 'Georgia', serif;
+  --font-sans:     'Plus Jakarta Sans', 'Inter', sans-serif;
+  --font-mono:     'JetBrains Mono', monospace;
 
   /* Fluid type scale */
   --text-xs:    clamp(0.7rem,  0.65rem + 0.25vw, 0.8rem);
@@ -33,58 +33,83 @@
   --space-20: 5rem;
   --space-24: 6rem;
 
-  /* === DARK GOTHIC PALETTE === */
-  /* Base surfaces */
-  --color-ink:        #0c0b09;   /* deep inkwell black */
-  --color-ink-soft:   #141210;   /* slightly lifted black */
-  --color-ink-mid:    #1e1c18;   /* card / panel background */
-  --color-ink-raised: #262320;   /* elevated surface */
-  --color-ink-border: #332f2a;   /* subtle border */
+  /* === VOID BLACK PALETTE (K-Pop Stage) === */
+  --color-void:        #06040a;   /* absolute void black-purple */
+  --color-void-soft:   #0d0a14;   /* slightly lifted — card bg */
+  --color-void-mid:    #120f1c;   /* raised panel */
+  --color-void-high:   #1a1528;   /* elevated surface — nav/footer */
+  --color-void-border: #2a2040;   /* subtle border */
 
-  /* Aged parchment text */
-  --color-parchment:       #e8dfc8;  /* primary text */
-  --color-parchment-dim:   #b5aa92;  /* secondary text */
-  --color-parchment-muted: #7a7060;  /* muted/placeholder */
+  /* Legacy aliases (keep ticker/glows working) */
+  --color-ink:        var(--color-void);
+  --color-ink-soft:   var(--color-void-soft);
+  --color-ink-mid:    var(--color-void-mid);
+  --color-ink-raised: var(--color-void-high);
+  --color-ink-border: var(--color-void-border);
 
-  /* Brand reds (kept from original, warmed) */
-  --color-blood:      #9e0e1e;   /* deep gothic red */
-  --color-crimson:    #c8162a;   /* headline red */
-  --color-ember:      #e63946;   /* bright accent red */
+  /* === SEMANTIC SURFACES === */
+  --bg-page:        var(--color-void);
+  --bg-surface:     var(--color-void-soft);
+  --bg-raised:      var(--color-void-mid);
+  --color-surface:  var(--color-void-soft);
+  --color-surface-2: var(--color-void-mid);
+  --color-surface-offset: var(--color-void-high);
+  --color-border:   var(--color-void-border);
+  --color-divider:  var(--color-void-border);
 
-  /* === NEON HIGHLIGHTS === */
-  --neon-cyan:     #00e5ff;    /* primary edge glow */
-  --neon-lime:     #b2ff59;    /* breaking news / section rules */
-  --neon-magenta:  #ff00e5;    /* card stripe / hover ping */
-  --neon-gold:     #ffd600;    /* blockquote / donate border */
-  --neon-violet:   #c77dff;    /* tag / category badge */
+  /* === TEXT === */
+  --color-text:         #f0eaff;   /* near-white lavender — readable on void */
+  --color-text-dim:     #c0aee0;   /* muted lavender */
+  --color-text-muted:   #7a6a9c;   /* dim accent */
+  --color-text-inverse: #06040a;
 
-  /* Neon glow shadows */
-  --glow-cyan:    0 0 8px #00e5ff, 0 0 20px rgba(0,229,255,0.4);
-  --glow-lime:    0 0 8px #b2ff59, 0 0 20px rgba(178,255,89,0.4);
-  --glow-magenta: 0 0 8px #ff00e5, 0 0 20px rgba(255,0,229,0.4);
+  /* Legacy parchment aliases */
+  --color-parchment:       var(--color-text);
+  --color-parchment-dim:   var(--color-text-dim);
+  --color-parchment-muted: var(--color-text-muted);
+
+  /* === K-POP NEON PALETTE === */
+  --neon-pink:    #ff2d78;    /* hot K-pop pink — PRIMARY brand */
+  --neon-cyan:    #00f0ff;    /* electric cyan — secondary */
+  --neon-lime:    #aaff00;    /* acid lime — tertiary */
+  --neon-gold:    #ffd600;    /* gold — donate/blockquote */
+  --neon-violet:  #bf5fff;    /* violet/purple — tags */
+  --neon-magenta: #ff2d78;    /* alias for pink */
+
+  /* Glow shadows */
+  --glow-pink:    0 0 8px #ff2d78, 0 0 24px rgba(255,45,120,0.5);
+  --glow-cyan:    0 0 8px #00f0ff, 0 0 24px rgba(0,240,255,0.45);
+  --glow-lime:    0 0 8px #aaff00, 0 0 20px rgba(170,255,0,0.4);
   --glow-gold:    0 0 8px #ffd600, 0 0 20px rgba(255,214,0,0.4);
-  --glow-violet:  0 0 8px #c77dff, 0 0 20px rgba(199,125,255,0.4);
+  --glow-violet:  0 0 8px #bf5fff, 0 0 20px rgba(191,95,255,0.4);
+  --glow-magenta: var(--glow-pink);
 
-  /* === SEMANTIC ALIASES === */
-  --bg-page:        var(--color-ink);
-  --bg-surface:     var(--color-ink-mid);
-  --bg-raised:      var(--color-ink-raised);
-  --color-border:   var(--color-ink-border);
-  --color-text:     var(--color-parchment);
-  --color-text-dim: var(--color-parchment-dim);
-  --color-primary:  var(--color-crimson);
-  --color-accent:   var(--neon-cyan);
+  /* === SEMANTIC COLORS === */
+  --color-primary:        var(--neon-pink);
+  --color-primary-hover:  #ff5ca0;
+  --color-accent:         var(--neon-cyan);
+  --color-accent-hover:   #33f5ff;
+  --color-accent-text:    #06040a;
+  --color-success:        var(--neon-lime);
+  --color-success-hover:  #ccff44;
 
   /* === RADIUS & SHADOW === */
-  --radius-sm:  2px;
-  --radius-md:  4px;
-  --radius-lg:  6px;
-  --radius-xl:  10px;
+  --radius-sm:  3px;
+  --radius-md:  6px;
+  --radius-lg:  10px;
+  --radius-xl:  16px;
+  --radius-full: 9999px;
 
-  --shadow-sm:  0 1px 3px rgba(0,0,0,0.6);
-  --shadow-md:  0 4px 12px rgba(0,0,0,0.7);
-  --shadow-lg:  0 8px 24px rgba(0,0,0,0.8);
-  --shadow-xl:  0 16px 48px rgba(0,0,0,0.9);
+  --shadow-sm:  0 1px 3px rgba(0,0,0,0.7);
+  --shadow-md:  0 4px 16px rgba(0,0,0,0.8);
+  --shadow-lg:  0 8px 32px rgba(0,0,0,0.9);
+  --shadow-xl:  0 16px 56px rgba(0,0,0,0.95);
+
+  /* Card glow on hover */
+  --shadow-card-hover-pink:   0 0 0 1px #ff2d78, 0 8px 32px rgba(255,45,120,0.35);
+  --shadow-card-hover-cyan:   0 0 0 1px #00f0ff, 0 8px 32px rgba(0,240,255,0.35);
+  --shadow-card-hover-lime:   0 0 0 1px #aaff00, 0 8px 32px rgba(170,255,0,0.3);
+  --shadow-card-hover-gold:   0 0 0 1px #ffd600, 0 8px 32px rgba(255,214,0,0.3);
 
   /* === LAYOUT === */
   --max-w-content: 1200px;
@@ -97,28 +122,47 @@
   --dur-fast:  150ms;
   --dur-base:  250ms;
   --dur-slow:  400ms;
+  --transition-interactive: 200ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* Light mode override (aged parchment) */
+/* ================================================================
+   LIGHT MODE — preserve the dark-text fix from previous session.
+   Background goes slightly lighter but text stays DARK + readable.
+   We intentionally keep a dark-ish surface (deep indigo) rather than
+   cream so the neon still works. Text is near-black.
+================================================================ */
 [data-theme='light'] {
-  --bg-page:        #f5f0e8;
-  --bg-surface:     #ede6d6;
-  --bg-raised:      #e5dcca;
-  --color-border:   #c8bfa8;
-  --color-text:     #1a1612;
-  --color-text-dim: #4a4035;
-  --color-accent:   #007acc;  /* toned-down cyan for light */
-  --neon-cyan:      #0077bb;
-  --neon-lime:      #3d8c00;
-  --neon-magenta:   #990099;
-  --neon-gold:      #aa7700;
-  --glow-cyan:    0 0 4px rgba(0,119,187,0.5);
-  --glow-lime:    0 0 4px rgba(61,140,0,0.5);
-  --glow-magenta: 0 0 4px rgba(153,0,153,0.5);
-  --glow-gold:    0 0 4px rgba(170,119,0,0.5);
-  --color-text:          #1a1612;
-  --color-text-dim:      #4a4035;
-  --color-parchment:     #1a1612;
-  --color-parchment-dim: #4a4035;
-  --color-ink-border:    #c8bfa8;
+  --bg-page:        #0d0a14;   /* still dark — neon doesn't work on cream */
+  --bg-surface:     #120f1c;
+  --bg-raised:      #1a1528;
+  --color-surface:  #120f1c;
+  --color-surface-2: #1a1528;
+  --color-surface-offset: #211840;
+  --color-border:   #2a2040;
+  --color-divider:  #2a2040;
+  --color-void:     #06040a;
+  --color-ink:      #06040a;
+  --color-ink-soft: #0d0a14;
+  --color-ink-border: #2a2040;
+
+  /* Text stays light (bright) so it reads on dark bg */
+  --color-text:         #f0eaff;
+  --color-text-dim:     #c0aee0;
+  --color-text-muted:   #7a6a9c;
+  --color-parchment:    #f0eaff;
+  --color-parchment-dim: #c0aee0;
+
+  /* Neons stay electric in light mode too */
+  --neon-pink:    #ff2d78;
+  --neon-cyan:    #00f0ff;
+  --neon-lime:    #aaff00;
+  --neon-gold:    #ffd600;
+  --neon-violet:  #bf5fff;
+  --neon-magenta: #ff2d78;
+
+  --glow-pink:    0 0 6px rgba(255,45,120,0.6);
+  --glow-cyan:    0 0 6px rgba(0,240,255,0.6);
+  --glow-lime:    0 0 6px rgba(170,255,0,0.5);
+  --glow-gold:    0 0 6px rgba(255,214,0,0.5);
+  --glow-magenta: 0 0 6px rgba(255,45,120,0.6);
 }

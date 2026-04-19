@@ -6,41 +6,52 @@
     <title>The Kid Reporter — News Written by Kids</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Plus+Jakarta+Sans:wght@400;500;700;800&family=UnifrakturMaguntia&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Plus+Jakarta+Sans:wght@400;500;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="css/tokens.css" />
     <link rel="stylesheet" href="css/base.css" />
     <link rel="stylesheet" href="css/style.css" />
-    <style>
-      /* Force card headlines to always be dark/readable on light backgrounds */
-      .card h2, .card h3 {
-        color: var(--color-text, #1a1612) !important;
-        text-shadow: none !important;
-      }
-      /* Hero headline stays neon in dark, goes dark in light */
-      .hero-headline {
-        color: var(--neon-cyan);
-        text-shadow: var(--glow-cyan);
-      }
-      [data-theme='light'] .hero-headline,
-      @media (prefers-color-scheme: light) {
-        .hero-headline { color: #1a1612; text-shadow: none; }
-      }
-    </style>
 </head>
-<body class="animate-flicker">
+<body>
+    <!-- ==================== HEADER ==================== -->
     <header class="masthead">
+        <!-- Top utility bar -->
         <div class="masthead__topbar">
             <div class="container masthead__topbar-inner">
                 <span id="js-date" class="masthead__date"></span>
+                <nav class="masthead__topnav">
+                    <a href="subscribe.html" class="topnav-link topnav-link--cta">Subscribe $1/mo</a>
+                    <a href="donate.html" class="topnav-link">Donate</a>
+                </nav>
             </div>
         </div>
-        <div class="container">
-            <div class="masthead__logo">
-                <div class="rule-ornament">EST. 2026</div>
-                <h1 class="neon-magenta">The Kid Reporter</h1>
-                <div class="rule-ornament">✦ Vires in Veritate ✦</div>
+
+        <!-- Concert Poster Masthead -->
+        <div class="masthead__logo">
+            <!-- Decorative top rule -->
+            <div class="rule-ornament" style="margin: 0 auto; max-width: 600px; padding-inline: 1rem;">
+                <span style="font-family:var(--font-mono); font-size:var(--text-xs); letter-spacing:0.3em;">THE KID REPORTER</span>
             </div>
+
+            <!-- The BIG gradient title -->
+            <h1 style="
+                font-family: var(--font-sans);
+                font-weight: 900;
+                font-size: clamp(2.5rem, 8vw, 7rem);
+                letter-spacing: -0.04em;
+                line-height: 0.92;
+                text-transform: uppercase;
+                background: linear-gradient(135deg, #ff2d78 0%, #00f0ff 50%, #bf5fff 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+                filter: drop-shadow(0 0 20px rgba(255,45,120,0.4));
+                padding-block: var(--space-2);
+            ">THE KID<br/>REPORTER</h1>
+
+            <span class="masthead__tagline">✦ Vires in Veritate ✦ Sacramento's Youth Voice ✦</span>
+            <div class="masthead__rule"></div>
         </div>
+
         <!-- Live News Ticker -->
         <div class="news-ticker" aria-label="Live headlines">
             <span class="ticker-label">LIVE</span>
@@ -50,193 +61,270 @@
                 </ul>
             </div>
         </div>
-        <nav class="nav">
+
+        <!-- Main Nav -->
+        <nav class="nav" aria-label="Main navigation">
             <ul class="nav__list container">
-                <li><a href="index.html" class="nav__link active">Home</a></li>
-                <li><a href="crossword.html" class="nav__link">Crossword</a></li>
-                <li><a href="horoscope.html" class="nav__link">Horoscope</a></li>
+                <li><a href="index.html"    class="nav__link active">Home</a></li>
+                <li><a href="crossword.html" class="nav__link">🧩 Crossword</a></li>
+                <li><a href="horoscope.html" class="nav__link">✨ Horoscope</a></li>
+                <li><a href="thanks.html"    class="nav__link">💜 Thank You Wall</a></li>
                 <li><a href="subscribe.html" class="nav__link">Subscribe</a></li>
-                <li><a href="donate.html" class="nav__link">Donate</a></li>
-                <li><a href="about.html" class="nav__link">About</a></li>
+                <li><a href="donate.html"    class="nav__link">Donate</a></li>
+                <li><a href="about.html"     class="nav__link">About</a></li>
             </ul>
         </nav>
     </header>
 
+    <!-- ==================== MAIN ==================== -->
     <main class="container">
 
         <!-- HERO: Top Story -->
-        <section class="hero animate-slide-up" style="margin-block: var(--space-12);">
-            <div class="card card--large" style="padding: 0; display: grid; grid-template-columns: 1.5fr 1fr;">
-                <div class="card__img" style="background: var(--color-ink-soft); min-height: 300px;"></div>
-                <div class="card__content" style="padding: var(--space-8);">
+        <section class="hero animate-slide-up">
+            <div class="card card--large" style="border: 1px solid rgba(255,45,120,0.3); box-shadow: 0 0 40px rgba(255,45,120,0.1);">
+                <!-- Abstract K-pop stage image panel -->
+                <div class="card__img" style="
+                    background: linear-gradient(135deg, #1a0028 0%, #06040a 50%, #001428 100%);
+                    position: relative;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    overflow: hidden;
+                ">
+                    <!-- Decorative K-pop grid lines -->
+                    <div style="position:absolute;inset:0;background:linear-gradient(rgba(255,45,120,0.06)1px,transparent 1px),linear-gradient(90deg,rgba(0,240,255,0.06)1px,transparent 1px);background-size:28px 28px;"></div>
+                    <!-- Decorative kanji/logo mark -->
+                    <div style="position:relative;text-align:center;">
+                        <div style="font-size:clamp(4rem,12vw,8rem);line-height:1;filter:drop-shadow(0 0 30px rgba(255,45,120,0.7));">⚔️</div>
+                        <div style="font-family:var(--font-mono);font-size:var(--text-xs);color:var(--neon-pink);letter-spacing:0.3em;text-shadow:var(--glow-pink);margin-top:var(--space-2);">TOP STORY</div>
+                    </div>
+                </div>
+
+                <!-- Story content -->
+                <div class="card__content">
                     <span class="badge badge--breaking">Top Story</span>
-                    <h2 style="margin-block: var(--space-4); color: var(--color-text, #1a1612); text-shadow: none;">Salmon Fishing Along Sacramento River Teaches Pocket Kids Environmental Science and Stewardship</h2>
-                    <p>When the fall salmon run begins, Sarai and her father hit the river — and a lesson in stewardship follows every catch.</p>
-                    <a href="articles/salmon-fishing-river/" class="btn btn--primary">Read Full Story</a>
+                    <h2 style="font-size:var(--text-xl);font-weight:900;line-height:1.15;color:var(--color-text)!important;text-shadow:none!important;margin-block:var(--space-3);">
+                        Salmon Fishing Along Sacramento River Teaches Pocket Kids Environmental Science and Stewardship
+                    </h2>
+                    <p style="color:var(--color-text-dim)!important;font-size:var(--text-sm);line-height:1.6;">
+                        When the fall salmon run begins, Sarai and her father hit the river — and a lesson in stewardship follows every catch.
+                    </p>
+                    <div style="display:flex;align-items:center;gap:var(--space-2);margin-top:var(--space-2);">
+                        <div style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--neon-pink),var(--neon-violet));display:flex;align-items:center;justify-content:center;font-size:var(--text-xs);font-weight:900;color:#fff;">S</div>
+                        <span style="font-family:var(--font-mono);font-size:var(--text-xs);color:var(--color-text-muted);">By Sarai Moten · Apr 2026</span>
+                    </div>
+                    <a href="articles/salmon-fishing-river/" class="btn btn--primary" style="margin-top:var(--space-2);align-self:flex-start;">Read Full Story →</a>
                 </div>
             </div>
         </section>
 
-        <!-- ALANI'S BEAT -->
+        <!-- ==================== ALANI'S CORNER ==================== -->
         <section style="margin-block: var(--space-16);">
-            <div style="display: flex; align-items: center; gap: var(--space-5); margin-bottom: var(--space-10);">
-                <h2 style="font-family: var(--font-serif); font-size: var(--text-xl); font-weight: 900; white-space: nowrap; color: var(--color-text, #1a1612); text-shadow: none;">Alani&rsquo;s Corner</h2>
-                <div style="flex: 1; height: 2px; background: linear-gradient(to right, var(--neon-cyan), transparent);"></div>
-                <span style="font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-text-dim, #4a4035); white-space: nowrap;">BY ALANI MOTEN</span>
+            <div class="section-header">
+                <h2 class="section-title" style="
+                    background: linear-gradient(135deg, var(--neon-lime), var(--neon-cyan));
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                    background-clip: text;
+                    filter: drop-shadow(0 0 8px rgba(170,255,0,0.3));
+                ">Alani's Corner</h2>
+                <div class="section-rule" style="background:linear-gradient(to right, var(--neon-lime), transparent);box-shadow:0 0 6px rgba(170,255,0,0.25);"></div>
+                <span style="font-family:var(--font-mono);font-size:var(--text-xs);color:var(--neon-lime);text-shadow:var(--glow-lime);white-space:nowrap;letter-spacing:0.1em;">BY ALANI ✦ AGE 5</span>
             </div>
-            <div class="news-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-8);">
+
+            <div class="news-grid">
 
                 <article class="card card--lime">
-                    <div class="card__content" style="padding: var(--space-6);">
-                        <span class="neon-lime" style="font-family: var(--font-mono); font-size: var(--text-xs);">Environment</span>
-                        <h3 style="margin-block: var(--space-2); color: var(--color-text, #1a1612); text-shadow: none;">School Gardens: The New Front Line?</h3>
-                        <p>Young botanists are taking over the playground with vertical farming and edible science.</p>
-                        <a href="articles/school-gardens/" class="neon-cyan">Read More &rarr;</a>
+                    <div class="card__content" style="padding:var(--space-6);">
+                        <span class="category-badge category-badge--science" style="margin-bottom:var(--space-2);">Environment</span>
+                        <h3 style="margin-block:var(--space-2);font-size:var(--text-base);font-weight:800;color:var(--color-text)!important;text-shadow:none!important;line-height:1.25;">School Gardens: The New Front Line?</h3>
+                        <p style="color:var(--color-text-dim)!important;font-size:var(--text-sm);margin-bottom:var(--space-4);">Young botanists are taking over the playground with vertical farming and edible science.</p>
+                        <a href="articles/school-gardens/" class="neon-lime" style="font-family:var(--font-mono);font-size:var(--text-xs);font-weight:700;">Read More →</a>
                     </div>
                 </article>
 
-                <article class="card card--magenta">
-                    <div class="card__content" style="padding: var(--space-6);">
-                        <span class="neon-cyan" style="font-family: var(--font-mono); font-size: var(--text-xs);">Technology</span>
-                        <h3 style="margin-block: var(--space-2); color: var(--color-text, #1a1612); text-shadow: none;">The Secret Language of Roblox Bots</h3>
-                        <p>An inside look at how AI is shaping the future of digital play — and what every kid gamer should know.</p>
-                        <a href="articles/roblox-bots/" class="neon-cyan">Read More &rarr;</a>
+                <article class="card card--cyan">
+                    <div class="card__content" style="padding:var(--space-6);">
+                        <span class="category-badge category-badge--science" style="margin-bottom:var(--space-2);">Technology</span>
+                        <h3 style="margin-block:var(--space-2);font-size:var(--text-base);font-weight:800;color:var(--color-text)!important;text-shadow:none!important;line-height:1.25;">The Secret Language of Roblox Bots</h3>
+                        <p style="color:var(--color-text-dim)!important;font-size:var(--text-sm);margin-bottom:var(--space-4);">An inside look at how AI is shaping the future of digital play — and what every kid gamer should know.</p>
+                        <a href="articles/roblox-bots/" class="neon-cyan" style="font-family:var(--font-mono);font-size:var(--text-xs);font-weight:700;">Read More →</a>
                     </div>
                 </article>
 
                 <article class="card card--gold">
-                    <div class="card__content" style="padding: var(--space-6);">
-                        <span class="neon-gold" style="font-family: var(--font-mono); font-size: var(--text-xs);">Education</span>
-                        <h3 style="margin-block: var(--space-2); color: var(--color-text, #1a1612); text-shadow: none;">No More Homework? The Experiment</h3>
-                        <p>One school district tried it for a month. The results will surprise you.</p>
-                        <a href="articles/no-more-homework/" class="neon-cyan">Read More &rarr;</a>
-                    </div>
-                </article>
-
-            </div>
-        </section>
-
-        <!-- SARAI'S POCKET BEAT -->
-        <section class="sarai-stories" style="margin-block: var(--space-16);">
-            <div style="display: flex; align-items: center; gap: var(--space-5); margin-bottom: var(--space-10);">
-                <h2 style="font-family: var(--font-serif); font-size: var(--text-xl); font-weight: 900; white-space: nowrap; color: var(--color-text, #1a1612); text-shadow: none;">Sarai&rsquo;s Pocket Beat</h2>
-                <div style="flex: 1; height: 2px; background: linear-gradient(to right, var(--neon-magenta), transparent);"></div>
-                <span style="font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-text-dim, #4a4035); white-space: nowrap;">BY SARAI MOTEN</span>
-            </div>
-            <div class="news-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-8);">
-
-                <article class="card card--lime">
-                    <div class="card__content" style="padding: var(--space-6);">
-                        <span class="neon-lime" style="font-family: var(--font-mono); font-size: var(--text-xs);">Technology</span>
-                        <h3 style="margin-block: var(--space-2); color: var(--color-text, #1a1612); text-shadow: none;">Local Robotics Summer Camp Brings Coding to Pocket Kids Ages 8&ndash;16</h3>
-                        <p>Sarai discovers Play to Labs, where block-based coding and robot races make STEM accessible for every kid.</p>
-                        <a href="articles/robotics-summer-camp/" class="neon-cyan">Read More &rarr;</a>
-                    </div>
-                </article>
-
-                <article class="card card--magenta">
-                    <div class="card__content" style="padding: var(--space-6);">
-                        <span class="neon-lime" style="font-family: var(--font-mono); font-size: var(--text-xs);">Science</span>
-                        <h3 style="margin-block: var(--space-2); color: var(--color-text, #1a1612); text-shadow: none;">4-H YES Program Teaches Scientific Inquiry to Pocket Elementary Kids Ages 5&ndash;8</h3>
-                        <p>Volcanoes, bean plants, and ladybugs — Sarai reports on the hands-on 4-H Youth Experiences in Science program.</p>
-                        <a href="articles/4h-yes-science/" class="neon-cyan">Read More &rarr;</a>
-                    </div>
-                </article>
-
-                <article class="card card--gold">
-                    <div class="card__content" style="padding: var(--space-6);">
-                        <span class="neon-gold" style="font-family: var(--font-mono); font-size: var(--text-xs);">Education</span>
-                        <h3 style="margin-block: var(--space-2); color: var(--color-text, #1a1612); text-shadow: none;">My Money Camp Teaches Financial Literacy to Sacramento-Area Kids</h3>
-                        <p>Three jars, 12 hours of lessons, and one very satisfying sketchbook purchase — Sarai covers My Money Camp.</p>
-                        <a href="articles/my-money-camp/" class="neon-cyan">Read More &rarr;</a>
-                    </div>
-                </article>
-
-                <article class="card card--lime">
-                    <div class="card__content" style="padding: var(--space-6);">
-                        <span class="neon-cyan" style="font-family: var(--font-mono); font-size: var(--text-xs);">Technology</span>
-                        <h3 style="margin-block: var(--space-2); color: var(--color-text, #1a1612); text-shadow: none;">Coding Classes from Code Wizards HQ Expand Access for Pocket Elementary Students</h3>
-                        <p>Live online classes, a star-collecting game, and dreams of selling virtual pets — Sarai reviews Code Wizards HQ.</p>
-                        <a href="articles/code-wizards-hq/" class="neon-cyan">Read More &rarr;</a>
-                    </div>
-                </article>
-
-                <article class="card card--magenta">
-                    <div class="card__content" style="padding: var(--space-6);">
-                        <span class="neon-lime" style="font-family: var(--font-mono); font-size: var(--text-xs);">Science</span>
-                        <h3 style="margin-block: var(--space-2); color: var(--color-text, #1a1612); text-shadow: none;">Mad Science Workshops Bring STEM Fun to Pocket After-School Programs</h3>
-                        <p>Glow-in-the-dark slime, self-inflating balloons, and wacky hats — Sarai covers Mad Science's visit to Pocket schools.</p>
-                        <a href="articles/mad-science-workshops/" class="neon-cyan">Read More &rarr;</a>
-                    </div>
-                </article>
-
-                <article class="card card--gold">
-                    <div class="card__content" style="padding: var(--space-6);">
-                        <span class="neon-lime" style="font-family: var(--font-mono); font-size: var(--text-xs);">Environment</span>
-                        <h3 style="margin-block: var(--space-2); color: var(--color-text, #1a1612); text-shadow: none;">New Sacramento River Trail Boosts Outdoor Science Learning for Pocket Kids</h3>
-                        <p>A four-mile trail from Garcia Bend to Zacharias Park will turn the riverbank into a giant science classroom.</p>
-                        <a href="articles/sacramento-river-trail/" class="neon-cyan">Read More &rarr;</a>
-                    </div>
-                </article>
-
-                <article class="card card--lime">
-                    <div class="card__content" style="padding: var(--space-6);">
-                        <span class="neon-cyan" style="font-family: var(--font-mono); font-size: var(--text-xs);">Education</span>
-                        <h3 style="margin-block: var(--space-2); color: var(--color-text, #1a1612); text-shadow: none;">Pocket Elementary Students Embrace Cell Phone Restrictions to Boost Focus on Learning</h3>
-                        <p>Sarai explores why Sacramento County schools are putting phones away — and why many kids say it's a good call.</p>
-                        <a href="articles/cell-phone-restrictions/" class="neon-cyan">Read More &rarr;</a>
-                    </div>
-                </article>
-
-                <article class="card card--magenta">
-                    <div class="card__content" style="padding: var(--space-6);">
-                        <span class="neon-magenta" style="font-family: var(--font-mono); font-size: var(--text-xs);">Community</span>
-                        <h3 style="margin-block: var(--space-2); color: var(--color-text, #1a1612); text-shadow: none;">Families in Pocket Balance Million-Dollar Estates with Affordable Homes While Investing in Kids&rsquo; Education</h3>
-                        <p>Sarai asks: does every kid in the Pocket get the same shot at great programs?</p>
-                        <a href="articles/pocket-housing-education/" class="neon-cyan">Read More &rarr;</a>
-                    </div>
-                </article>
-
-                <article class="card card--gold">
-                    <div class="card__content" style="padding: var(--space-6);">
-                        <span class="neon-lime" style="font-family: var(--font-mono); font-size: var(--text-xs);">Environment</span>
-                        <h3 style="margin-block: var(--space-2); color: var(--color-text, #1a1612); text-shadow: none;">Portuguese Community Park Becomes Informal Science Learning Hub for Pocket Children</h3>
-                        <p>No lab required — Sarai shows how one Pocket park quietly teaches bugs, birds, and botany to every kid who shows up.</p>
-                        <a href="articles/portuguese-community-park/" class="neon-cyan">Read More &rarr;</a>
-                    </div>
-                </article>
-
-                <article class="card card--lime">
-                    <div class="card__content" style="padding: var(--space-6);">
-                        <span class="neon-lime" style="font-family: var(--font-mono); font-size: var(--text-xs);">Environment</span>
-                        <h3 style="margin-block: var(--space-2); color: var(--color-text, #1a1612); text-shadow: none;">Salmon Fishing Along Sacramento River Teaches Pocket Kids Environmental Science and Stewardship</h3>
-                        <p>When the fall salmon run begins, Sarai and her father hit the river — and a lesson in stewardship follows every catch.</p>
-                        <a href="articles/salmon-fishing-river/" class="neon-cyan">Read More &rarr;</a>
+                    <div class="card__content" style="padding:var(--space-6);">
+                        <span class="category-badge category-badge--arts" style="margin-bottom:var(--space-2);">Education</span>
+                        <h3 style="margin-block:var(--space-2);font-size:var(--text-base);font-weight:800;color:var(--color-text)!important;text-shadow:none!important;line-height:1.25;">No More Homework? The Experiment</h3>
+                        <p style="color:var(--color-text-dim)!important;font-size:var(--text-sm);margin-bottom:var(--space-4);">One school district tried it for a month. The results will surprise you.</p>
+                        <a href="articles/no-more-homework/" class="neon-gold" style="font-family:var(--font-mono);font-size:var(--text-xs);font-weight:700;">Read More →</a>
                     </div>
                 </article>
 
             </div>
         </section>
 
-        <!-- DONATE CTA -->
-        <section class="cta" style="margin-block: var(--space-20); text-align: center;">
-            <div class="card edge-gold" style="padding: var(--space-12); border-left: none; border: 2px solid var(--neon-gold); background: rgba(255, 214, 0, 0.02);">
-                <h2 class="neon-gold">Keep Independent Youth Journalism Alive</h2>
-                <p style="margin-inline: auto; margin-block: var(--space-6);">Every dollar helps us pay for the server hosting and printing costs for our monthly digital edition.</p>
-                <a href="donate.html" class="btn btn--primary" style="background: var(--neon-gold); box-shadow: var(--glow-gold); color: var(--color-ink);">Donate Now</a>
+        <!-- ==================== SARAI'S POCKET BEAT ==================== -->
+        <section style="margin-block: var(--space-16);">
+            <div class="section-header">
+                <h2 class="section-title" style="
+                    background: linear-gradient(135deg, var(--neon-pink), var(--neon-violet));
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                    background-clip: text;
+                    filter: drop-shadow(0 0 8px rgba(255,45,120,0.3));
+                ">Sarai's Pocket Beat</h2>
+                <div class="section-rule"></div>
+                <span style="font-family:var(--font-mono);font-size:var(--text-xs);color:var(--neon-pink);text-shadow:var(--glow-pink);white-space:nowrap;letter-spacing:0.1em;">BY SARAI ✦ AGE 8</span>
+            </div>
+
+            <div class="news-grid">
+
+                <article class="card card--cyan">
+                    <div class="card__content" style="padding:var(--space-6);">
+                        <span class="category-badge category-badge--science" style="margin-bottom:var(--space-2);">Technology</span>
+                        <h3 style="margin-block:var(--space-2);font-size:var(--text-base);font-weight:800;color:var(--color-text)!important;text-shadow:none!important;line-height:1.25;">Local Robotics Summer Camp Brings Coding to Pocket Kids Ages 8–16</h3>
+                        <p style="color:var(--color-text-dim)!important;font-size:var(--text-sm);margin-bottom:var(--space-4);">Block-based coding and robot races make STEM accessible for every kid.</p>
+                        <a href="articles/robotics-summer-camp/" class="neon-cyan" style="font-family:var(--font-mono);font-size:var(--text-xs);font-weight:700;">Read More →</a>
+                    </div>
+                </article>
+
+                <article class="card card--lime">
+                    <div class="card__content" style="padding:var(--space-6);">
+                        <span class="category-badge category-badge--sports" style="margin-bottom:var(--space-2);">Science</span>
+                        <h3 style="margin-block:var(--space-2);font-size:var(--text-base);font-weight:800;color:var(--color-text)!important;text-shadow:none!important;line-height:1.25;">4-H YES Program Teaches Scientific Inquiry to Pocket Elementary Kids</h3>
+                        <p style="color:var(--color-text-dim)!important;font-size:var(--text-sm);margin-bottom:var(--space-4);">Volcanoes, bean plants, and ladybugs — hands-on 4-H Youth Experiences in Science.</p>
+                        <a href="articles/4h-yes-science/" class="neon-lime" style="font-family:var(--font-mono);font-size:var(--text-xs);font-weight:700;">Read More →</a>
+                    </div>
+                </article>
+
+                <article class="card card--gold">
+                    <div class="card__content" style="padding:var(--space-6);">
+                        <span class="category-badge category-badge--arts" style="margin-bottom:var(--space-2);">Education</span>
+                        <h3 style="margin-block:var(--space-2);font-size:var(--text-base);font-weight:800;color:var(--color-text)!important;text-shadow:none!important;line-height:1.25;">My Money Camp Teaches Financial Literacy to Sacramento-Area Kids</h3>
+                        <p style="color:var(--color-text-dim)!important;font-size:var(--text-sm);margin-bottom:var(--space-4);">Three jars, 12 hours of lessons, and one very satisfying sketchbook purchase.</p>
+                        <a href="articles/my-money-camp/" class="neon-gold" style="font-family:var(--font-mono);font-size:var(--text-xs);font-weight:700;">Read More →</a>
+                    </div>
+                </article>
+
+                <article class="card card--pink">
+                    <div class="card__content" style="padding:var(--space-6);">
+                        <span class="category-badge category-badge--science" style="margin-bottom:var(--space-2);">Technology</span>
+                        <h3 style="margin-block:var(--space-2);font-size:var(--text-base);font-weight:800;color:var(--color-text)!important;text-shadow:none!important;line-height:1.25;">Coding Classes from Code Wizards HQ Expand Access for Pocket Students</h3>
+                        <p style="color:var(--color-text-dim)!important;font-size:var(--text-sm);margin-bottom:var(--space-4);">Live online classes, a star-collecting game, and dreams of selling virtual pets.</p>
+                        <a href="articles/code-wizards-hq/" class="neon-pink" style="font-family:var(--font-mono);font-size:var(--text-xs);font-weight:700;">Read More →</a>
+                    </div>
+                </article>
+
+                <article class="card card--violet">
+                    <div class="card__content" style="padding:var(--space-6);">
+                        <span class="category-badge category-badge--science" style="margin-bottom:var(--space-2);">Science</span>
+                        <h3 style="margin-block:var(--space-2);font-size:var(--text-base);font-weight:800;color:var(--color-text)!important;text-shadow:none!important;line-height:1.25;">Mad Science Workshops Bring STEM Fun to Pocket After-School Programs</h3>
+                        <p style="color:var(--color-text-dim)!important;font-size:var(--text-sm);margin-bottom:var(--space-4);">Glow-in-the-dark slime, self-inflating balloons, and wacky hats.</p>
+                        <a href="articles/mad-science-workshops/" class="neon-violet" style="font-family:var(--font-mono);font-size:var(--text-xs);font-weight:700;">Read More →</a>
+                    </div>
+                </article>
+
+                <article class="card card--cyan">
+                    <div class="card__content" style="padding:var(--space-6);">
+                        <span class="category-badge category-badge--science" style="margin-bottom:var(--space-2);">Environment</span>
+                        <h3 style="margin-block:var(--space-2);font-size:var(--text-base);font-weight:800;color:var(--color-text)!important;text-shadow:none!important;line-height:1.25;">New Sacramento River Trail Boosts Outdoor Science Learning for Pocket Kids</h3>
+                        <p style="color:var(--color-text-dim)!important;font-size:var(--text-sm);margin-bottom:var(--space-4);">Four miles of riverbank science classroom from Garcia Bend to Zacharias Park.</p>
+                        <a href="articles/sacramento-river-trail/" class="neon-cyan" style="font-family:var(--font-mono);font-size:var(--text-xs);font-weight:700;">Read More →</a>
+                    </div>
+                </article>
+
+                <article class="card card--lime">
+                    <div class="card__content" style="padding:var(--space-6);">
+                        <span class="category-badge category-badge--local" style="margin-bottom:var(--space-2);">Education</span>
+                        <h3 style="margin-block:var(--space-2);font-size:var(--text-base);font-weight:800;color:var(--color-text)!important;text-shadow:none!important;line-height:1.25;">Pocket Students Embrace Cell Phone Restrictions to Boost Focus</h3>
+                        <p style="color:var(--color-text-dim)!important;font-size:var(--text-sm);margin-bottom:var(--space-4);">Sacramento County schools put phones away — and many kids say it's a good call.</p>
+                        <a href="articles/cell-phone-restrictions/" class="neon-lime" style="font-family:var(--font-mono);font-size:var(--text-xs);font-weight:700;">Read More →</a>
+                    </div>
+                </article>
+
+                <article class="card card--gold">
+                    <div class="card__content" style="padding:var(--space-6);">
+                        <span class="category-badge category-badge--local" style="margin-bottom:var(--space-2);">Community</span>
+                        <h3 style="margin-block:var(--space-2);font-size:var(--text-base);font-weight:800;color:var(--color-text)!important;text-shadow:none!important;line-height:1.25;">Pocket Balances Million-Dollar Estates and Affordable Homes in Kids' Education</h3>
+                        <p style="color:var(--color-text-dim)!important;font-size:var(--text-sm);margin-bottom:var(--space-4);">Does every kid in the Pocket get the same shot at great programs?</p>
+                        <a href="articles/pocket-housing-education/" class="neon-gold" style="font-family:var(--font-mono);font-size:var(--text-xs);font-weight:700;">Read More →</a>
+                    </div>
+                </article>
+
+                <article class="card card--pink">
+                    <div class="card__content" style="padding:var(--space-6);">
+                        <span class="category-badge category-badge--science" style="margin-bottom:var(--space-2);">Environment</span>
+                        <h3 style="margin-block:var(--space-2);font-size:var(--text-base);font-weight:800;color:var(--color-text)!important;text-shadow:none!important;line-height:1.25;">Portuguese Community Park: Pocket's Informal Science Hub</h3>
+                        <p style="color:var(--color-text-dim)!important;font-size:var(--text-sm);margin-bottom:var(--space-4);">No lab required — one park quietly teaches bugs, birds, and botany.</p>
+                        <a href="articles/portuguese-community-park/" class="neon-pink" style="font-family:var(--font-mono);font-size:var(--text-xs);font-weight:700;">Read More →</a>
+                    </div>
+                </article>
+
+                <article class="card card--cyan">
+                    <div class="card__content" style="padding:var(--space-6);">
+                        <span class="category-badge category-badge--science" style="margin-bottom:var(--space-2);">Environment</span>
+                        <h3 style="margin-block:var(--space-2);font-size:var(--text-base);font-weight:800;color:var(--color-text)!important;text-shadow:none!important;line-height:1.25;">Salmon Fishing Along Sacramento River Teaches Environmental Stewardship</h3>
+                        <p style="color:var(--color-text-dim)!important;font-size:var(--text-sm);margin-bottom:var(--space-4);">When the fall salmon run begins, Sarai hits the river — and a lesson follows every catch.</p>
+                        <a href="articles/salmon-fishing-river/" class="neon-cyan" style="font-family:var(--font-mono);font-size:var(--text-xs);font-weight:700;">Read More →</a>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- ==================== DONATE CTA ==================== -->
+        <section style="margin-block: var(--space-20); text-align: center;">
+            <div style="
+                background: linear-gradient(135deg, rgba(255,45,120,0.06), rgba(191,95,255,0.06));
+                border: 2px solid rgba(255,214,0,0.3);
+                border-radius: var(--radius-xl);
+                padding: var(--space-12);
+                box-shadow: 0 0 40px rgba(255,214,0,0.08);
+                position: relative;
+                overflow: hidden;
+            ">
+                <!-- Background grid -->
+                <div style="position:absolute;inset:0;background:linear-gradient(rgba(255,214,0,0.03)1px,transparent 1px),linear-gradient(90deg,rgba(255,214,0,0.03)1px,transparent 1px);background-size:32px 32px;pointer-events:none;"></div>
+                <div style="position:relative;">
+                    <div style="font-size:2.5rem;margin-bottom:var(--space-4);">💛</div>
+                    <h2 class="neon-gold" style="font-size:var(--text-2xl);font-weight:900;margin-bottom:var(--space-4);">Keep Independent Youth Journalism Alive</h2>
+                    <p style="margin-inline:auto;margin-block:var(--space-6);color:var(--color-text-dim);max-width:52ch;">Every dollar helps us pay for server hosting and printing costs for our monthly digital edition. Real kids. Real news.</p>
+                    <a href="donate.html" class="btn btn--primary" style="background:var(--neon-gold);border-color:var(--neon-gold);color:var(--color-void);box-shadow:var(--glow-gold);font-size:var(--text-base);padding:var(--space-4) var(--space-10);">Donate Now ✦</a>
+                </div>
             </div>
         </section>
 
     </main>
 
+    <!-- ==================== FOOTER ==================== -->
     <footer class="footer">
         <div class="container footer__grid">
-            <div><h4 class="neon-magenta">The Kid Reporter</h4><p>Truth. Curiosity. Cookies.</p></div>
-            <div><h4 class="neon-cyan">Quick Links</h4><ul style="list-style: none; padding-top: var(--space-2);"><li><a href="crossword.html">Crossword</a></li><li><a href="horoscope.html">Horoscope</a></li><li><a href="thanks.html">Thank You Wall</a></li><li><a href="about.html">About</a></li></ul></div>
-            <div><h4 class="neon-lime">Contact</h4><p>newsroom@thekidreporter.com</p></div>
+            <div>
+                <h4 class="neon-pink">The Kid Reporter</h4>
+                <p style="margin-top:var(--space-2);">Truth. Curiosity. Cookies.</p>
+                <p style="margin-top:var(--space-2);font-size:var(--text-xs);color:var(--color-text-muted);">Sacramento's Pocket neighborhood — real stories by real kids.</p>
+            </div>
+            <div>
+                <h4 class="neon-cyan">Quick Links</h4>
+                <ul style="list-style:none;padding:0;margin-top:var(--space-3);display:flex;flex-direction:column;gap:var(--space-2);">
+                    <li><a href="crossword.html" style="color:var(--color-text-dim);">🧩 Crossword</a></li>
+                    <li><a href="horoscope.html" style="color:var(--color-text-dim);">✨ Horoscope</a></li>
+                    <li><a href="thanks.html" style="color:var(--color-text-dim);">💜 Thank You Wall</a></li>
+                    <li><a href="subscribe.html" style="color:var(--color-text-dim);">Subscribe</a></li>
+                    <li><a href="about.html" style="color:var(--color-text-dim);">About</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="neon-lime">Contact</h4>
+                <p style="margin-top:var(--space-3);">newsroom@thekidreporter.com</p>
+            </div>
         </div>
-        <div class="container" style="border-top: 1px solid var(--color-ink-border); margin-top: var(--space-12); padding-top: var(--space-8); text-align: center; font-family: var(--font-mono); font-size: var(--text-xs);">© 2026 THE KID REPORTER. ALL RIGHTS RESERVED. <br/>DESIGNED BY GOTHIC NEON SYSTEMS.</div>
+        <div class="container" style="border-top:1px solid var(--color-void-border);margin-top:var(--space-12);padding-top:var(--space-8);text-align:center;font-family:var(--font-mono);font-size:var(--text-xs);color:var(--color-text-muted);">
+            © 2026 THE KID REPORTER · ALL RIGHTS RESERVED · VIRES IN VERITATE
+        </div>
     </footer>
+
     <script src="js/main.js"></script>
     <script src="js/ticker.js"></script>
 </body>

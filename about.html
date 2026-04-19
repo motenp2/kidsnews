@@ -7,7 +7,7 @@
   <meta name="description" content="Meet Sarai and Alani — the young journalists, entrepreneurs, and softball players behind The Kid Reporter." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=UnifrakturMaguntia&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Plus+Jakarta+Sans:wght@400;500;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/tokens.css" />
   <link rel="stylesheet" href="css/base.css" />
   <link rel="stylesheet" href="css/style.css" />
@@ -16,7 +16,7 @@
     /* ── About page extras ── */
     .page-hero {
       padding-block: clamp(var(--space-12), 8vw, var(--space-24));
-      border-bottom: 1px solid var(--color-ink-border);
+      border-bottom: 1px solid var(--color-void-border);
       text-align: center;
     }
     .page-hero__kicker {
@@ -51,8 +51,8 @@
       margin-bottom: var(--space-16);
     }
     .owner-card {
-      background: var(--color-ink-mid);
-      border: 1px solid var(--color-ink-border);
+      background: var(--color-void-soft);
+      border: 1px solid var(--color-void-border);
       border-radius: var(--radius-md);
       padding: var(--space-8);
       position: relative;
@@ -74,7 +74,7 @@
       font-family: var(--font-display);
       font-size: var(--text-xl);
       font-weight: 900;
-      color: var(--color-ink);
+      color: var(--color-void);
       margin-bottom: var(--space-5);
       flex-shrink: 0;
     }
@@ -138,7 +138,7 @@
       font-family: var(--font-display);
       font-size: clamp(2rem, 8vw, 3.5rem);
       font-weight: 900;
-      color: var(--color-ink);
+      color: var(--color-void);
     }
     .owner-card--alani .owner-photo-placeholder {
       background: var(--neon-cyan);
@@ -177,8 +177,8 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
       gap: var(--space-4);
-      background: var(--color-ink-mid);
-      border: 1px solid var(--color-ink-border);
+      background: var(--color-void-soft);
+      border: 1px solid var(--color-void-border);
       border-top: 2px solid var(--neon-gold);
       border-radius: var(--radius-md);
       padding: var(--space-8) var(--space-6);
@@ -309,7 +309,7 @@
     <div class="container">
       <div class="masthead__logo">
         <div class="rule-ornament">EST. 2026</div>
-        <h1 class="neon-magenta">The Kid Reporter</h1>
+        <h1 class="neon-pink">The Kid Reporter</h1>
         <div class="rule-ornament">✦ Vires in Veritate ✦</div>
       </div>
     </div>
@@ -461,12 +461,12 @@
         </div>
 
         <!-- ── CTA Row ── -->
-        <div style="text-align: center; padding-block: var(--space-10); border-top: 1px solid var(--color-ink-border);">
+        <div style="text-align: center; padding-block: var(--space-10); border-top: 1px solid var(--color-void-border);">
           <p style="font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing:.18em; text-transform: uppercase; color: var(--neon-gold); text-shadow: var(--glow-gold); margin-bottom: var(--space-6);">Support the newsroom</p>
           <div class="cta-row">
             <a href="subscribe.html" class="btn btn--primary">Subscribe for $1/month</a>
             <a href="donate.html" class="btn btn--primary" style="background: transparent; border: 2px solid var(--neon-gold); color: var(--neon-gold); box-shadow: var(--glow-gold);">Make a Donation</a>
-            <a href="mailto:newsroom@thekidreporter.com" class="btn btn--primary" style="background: transparent; border: 2px solid var(--color-ink-border); color: var(--color-text-dim, #4a4035);">Contact Us</a>
+            <a href="mailto:newsroom@thekidreporter.com" class="btn btn--primary" style="background: transparent; border: 2px solid var(--color-void-border); color: var(--color-text-dim, #4a4035);">Contact Us</a>
           </div>
         </div>
 
@@ -477,7 +477,7 @@
   <!-- ════ FOOTER ════ -->
   <footer class="footer">
     <div class="container footer__grid">
-      <div><h4 class="neon-magenta">The Kid Reporter</h4><p>Truth. Curiosity. Cookies.</p></div>
+      <div><h4 class="neon-pink">The Kid Reporter</h4><p>Truth. Curiosity. Cookies.</p></div>
       <div><h4 class="neon-cyan">Quick Links</h4>
         <ul style="list-style: none; padding-top: var(--space-2);">
           <li><a href="subscribe.html">Newsletter</a></li>
@@ -487,7 +487,7 @@
       </div>
       <div><h4 class="neon-lime">Contact</h4><p>newsroom@thekidreporter.com</p></div>
     </div>
-    <div class="container" style="border-top: 1px solid var(--color-ink-border); margin-top: var(--space-12); padding-top: var(--space-8); text-align: center; font-family: var(--font-mono); font-size: var(--text-xs);">
+    <div class="container" style="border-top: 1px solid var(--color-void-border); margin-top: var(--space-12); padding-top: var(--space-8); text-align: center; font-family: var(--font-mono); font-size: var(--text-xs);">
       &copy; 2026 THE KID REPORTER. ALL RIGHTS RESERVED.<br/>OWNED &amp; OPERATED BY SARAI &amp; ALANI.
     </div>
   </footer>

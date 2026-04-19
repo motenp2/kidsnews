@@ -6,15 +6,15 @@
   <title>Daily Crossword — The Kid Reporter</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=UnifrakturMaguntia&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Plus+Jakarta+Sans:wght@400;500;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/tokens.css" />
   <link rel="stylesheet" href="css/base.css" />
   <link rel="stylesheet" href="css/style.css" />
   <style>
-    .crossword-grid { display:inline-grid; gap:2px; background:var(--color-ink-border); border:2px solid var(--color-ink-border); user-select:none; }
+    .crossword-grid { display:inline-grid; gap:2px; background:var(--color-void-border); border:2px solid var(--color-void-border); user-select:none; }
     .cell { width:40px; height:40px; background:#fff; position:relative; cursor:pointer; }
     .cell.black { background:#1a1612; cursor:default; }
-    .cell input { width:100%; height:100%; background:transparent; border:none; outline:none; text-align:center; font-family:var(--font-mono); font-size:1rem; font-weight:700; color:#1a1612; text-transform:uppercase; cursor:pointer; caret-color:transparent; padding:0; padding-top:10px; }
+    .cell input { width:100%; height:100%; background:transparent; border:none; outline:none; text-align:center; font-family:var(--font-mono); font-size:1rem; font-weight:700; color:var(--color-text,#f0eaff); text-transform:uppercase; cursor:pointer; caret-color:transparent; padding:0; padding-top:10px; }
     .cell .num { position:absolute; top:2px; left:3px; font-family:var(--font-mono); font-size:0.52rem; font-weight:700; color:#555; line-height:1; pointer-events:none; }
     .cell.word-active { background:#dff5ff; }
     .cell.active { background:#b2eeff; }
@@ -82,7 +82,7 @@
       <div><h4 class="neon-cyan">Quick Links</h4><ul style="list-style:none;padding-top:var(--space-2);"><li><a href="index.html">Home</a></li><li><a href="crossword.html">Crossword</a></li><li><a href="horoscope.html">Horoscope</a></li><li><a href="donate.html">Donate</a></li></ul></div>
       <div><h4 class="neon-lime">Contact</h4><p><a href="mailto:newsroom@thekidreporter.com" style="color:inherit;">newsroom@thekidreporter.com</a></p></div>
     </div>
-    <div class="container" style="border-top:1px solid var(--color-ink-border);margin-top:var(--space-12);padding-top:var(--space-8);text-align:center;font-family:var(--font-mono);font-size:var(--text-xs);">&#169; 2026 THE KID REPORTER. ALL RIGHTS RESERVED.</div>
+    <div class="container" style="border-top:1px solid var(--color-void-border);margin-top:var(--space-12);padding-top:var(--space-8);text-align:center;font-family:var(--font-mono);font-size:var(--text-xs);">&#169; 2026 THE KID REPORTER. ALL RIGHTS RESERVED.</div>
   </footer>
 
 <script>
