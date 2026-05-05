@@ -1,137 +1,138 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Donate – The Kid Reporter</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Plus+Jakarta+Sans:wght@400;500;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Donate &mdash; The Kid Reporter</title>
+  <meta name="description" content="One-time donations to keep The Kid Reporter alive. Independent youth journalism by real kids in Sacramento." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Plus+Jakarta+Sans:wght@400;500;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/style.css" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Source Sans 3', Arial, sans-serif; background: #fdfaf5; color: #1a1008; min-height: 100dvh; -webkit-font-smoothing: antialiased; }
-    nav { display: flex; align-items: center; justify-content: space-between; padding: 0.75rem 2rem; border-bottom: 2px solid #1a1008; background: #fdfaf5; position: sticky; top: 0; z-index: 100; gap: 1rem; }
-    .nav-logo { font-family: 'Playfair Display', Georgia, serif; font-weight: 900; font-size: 1.4rem; color: #d44000; text-decoration: none; }
-    .nav-links { display: flex; gap: 1.5rem; list-style: none; }
-    .nav-links a { font-size: 0.9rem; font-weight: 600; color: #1a1008; text-decoration: none; text-transform: uppercase; letter-spacing: 0.06em; }
-    .nav-links a:hover { color: #d44000; }
-
-    .hero { text-align: center; padding: 4rem 2rem 2rem; max-width: 700px; margin: 0 auto; }
-    .eyebrow { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: #d44000; margin-bottom: 1rem; }
-    h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 900; margin-bottom: 1.25rem; line-height: 1.1; }
-    .hero p { font-size: 1.05rem; color: #6b5c3e; max-width: 52ch; margin: 0 auto; line-height: 1.7; }
-
-    /* Donation tiers */
-    .tiers { max-width: 800px; margin: 3rem auto; padding: 0 2rem; display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 1rem; }
-    .tier-card { background: #0d0a14; border: 2px solid rgba(100,60,0,0.12); border-radius: 1rem; padding: 1.5rem 1rem; text-align: center; transition: border-color 0.2s, box-shadow 0.2s; }
-    .tier-card:hover { border-color: #d44000; box-shadow: 0 4px 16px rgba(212,64,0,0.12); }
-    .tier-amount { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 900; color: #d44000; }
-    .tier-label { font-size: 0.85rem; font-weight: 700; margin: 0.5rem 0 0.25rem; }
-    .tier-desc { font-size: 0.78rem; color: #6b5c3e; line-height: 1.4; }
-
-    /* Donate CTA */
-    .donate-cta { max-width: 540px; margin: 1rem auto 4rem; padding: 0 2rem; text-align: center; }
-    .donate-cta p { font-size: 1rem; color: #6b5c3e; margin-bottom: 1.75rem; line-height: 1.6; }
-
-    /* Stripe Payment Link buttons */
-    .donate-btns { display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; margin-bottom: 1.5rem; }
-    .btn-donate {
-      display: inline-block;
-      padding: 0.85rem 1.6rem;
-      border-radius: 0.5rem;
-      font-family: 'Source Sans 3', Arial, sans-serif;
-      font-size: 1rem;
-      font-weight: 700;
-      text-decoration: none;
-      cursor: pointer;
-      transition: background 0.18s, transform 0.12s;
-    }
-    .btn-donate.primary { background: #d44000; color: #fff; }
-    .btn-donate.primary:hover { background: #b33500; transform: translateY(-1px); }
-    .btn-donate.secondary { background: #0d0a14; color: #d44000; border: 2px solid #d44000; }
-    .btn-donate.secondary:hover { background: #ffe5d0; transform: translateY(-1px); }
-
-    .secure-note { font-size: 0.8rem; color: #9a8060; margin-top: 0.5rem; }
-
-    /* Testimonial */
-    .testimonial { max-width: 600px; margin: 0 auto 4rem; padding: 2rem; background: #0d0a14; border-left: 4px solid #d44000; border-radius: 0 1rem 1rem 0; font-style: italic; color: #6b5c3e; font-size: 1rem; line-height: 1.7; }
-    .testimonial cite { display: block; margin-top: 1rem; font-style: normal; font-weight: 700; color: #1a1008; font-size: 0.9rem; }
-
-    footer { border-top: 2px solid #1a1008; padding: 2rem; text-align: center; font-size: 0.85rem; color: #6b5c3e; }
-    footer a { color: #d44000; text-decoration: none; }
-    @media (max-width: 480px) { .nav-links { display: none; } nav { padding: 0.75rem 1rem; } }
+    .tiers { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: var(--space-4); margin-top: var(--space-8); }
+    .tier-card { background: rgba(255,45,120,0.04); border: 1px solid rgba(255,45,120,0.25); border-radius: 12px; padding: var(--space-6); text-align: center; transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s; cursor: pointer; }
+    .tier-card:hover { border-color: var(--neon-cyan, #00f0ff); box-shadow: 0 0 24px rgba(0,240,255,0.25); transform: translateY(-2px); }
+    .tier-card.selected { border-color: var(--neon-pink, #ff2d78); box-shadow: 0 0 24px rgba(255,45,120,0.35); background: rgba(255,45,120,0.08); }
+    .tier-amount { font-family: var(--font-sans); font-weight: 900; font-size: var(--text-2xl); background: linear-gradient(135deg,#ff2d78,#00f0ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .tier-label { font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: 0.15em; text-transform: uppercase; color: #a3ff2d; margin-top: var(--space-2); }
+    .tier-desc { font-size: var(--text-sm); color: var(--color-text-dim, #c0aee0); margin-top: var(--space-3); line-height: 1.5; }
+    .donate-cta { display: inline-block; padding: var(--space-4) var(--space-8); margin-top: var(--space-8); border-radius: 999px; font-family: var(--font-sans); font-weight: 800; font-size: var(--text-base); letter-spacing: 0.05em; text-transform: uppercase; color: #06040a; background: linear-gradient(135deg,#ff2d78 0%, #00f0ff 55%, #a3ff2d 100%); border: none; cursor: pointer; box-shadow: 0 0 24px rgba(255,45,120,0.4); transition: transform 0.2s, box-shadow 0.2s; text-decoration: none; }
+    .donate-cta:hover { transform: translateY(-2px); box-shadow: 0 0 32px rgba(0,240,255,0.5); }
+    .donate-hero { text-align: center; padding: var(--space-12) 0 var(--space-8); background: radial-gradient(ellipse at center, rgba(255,45,120,0.10), rgba(0,240,255,0.05) 50%, transparent 75%); border-radius: 12px; }
+    .donate-hero h2 { font-family: var(--font-sans); font-weight: 900; font-size: clamp(2rem, 6vw, 4rem); line-height: 0.95; letter-spacing: -0.02em; text-transform: uppercase; background: linear-gradient(135deg,#ff2d78 0%,#00f0ff 55%,#a3ff2d 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; filter: drop-shadow(0 0 14px rgba(255,45,120,0.45)); margin-block: var(--space-4); }
+    .donate-hero p { font-family: var(--font-serif); font-style: italic; font-size: var(--text-lg); color: var(--color-text-dim, #c0aee0); max-width: 60ch; margin: 0 auto; }
+    .custom-amount { margin-top: var(--space-8); display: flex; gap: var(--space-3); justify-content: center; align-items: center; flex-wrap: wrap; }
+    .custom-amount input { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,45,120,0.3); border-radius: 8px; padding: var(--space-3) var(--space-4); color: var(--color-text, #f0eaff); font-family: var(--font-mono); font-size: var(--text-base); width: 180px; }
+    .custom-amount input:focus { outline: none; border-color: #00f0ff; box-shadow: 0 0 12px rgba(0,240,255,0.3); }
+    .custom-amount label { font-family: var(--font-mono); font-size: var(--text-sm); color: var(--color-text-dim, #c0aee0); letter-spacing: 0.1em; text-transform: uppercase; }
   </style>
 </head>
-<body>
-  <nav>
-    <a href="index.html" class="nav-logo">&#128240; The Kid Reporter</a>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="crossword.html">Crossword</a></li>
-      <li><a href="horoscope.html">Horoscope</a></li>
-      <li><a href="subscribe.html">Subscribe</a></li>
-      <li><a href="donate.html">Donate</a></li>
-      <li><a href="about.html">About</a></li>
-    </ul>
-  </nav>
-
-  <div class="hero">
-    <p class="eyebrow">Support Young Journalists</p>
-    <h1>Help Kids Tell the Stories That Matter</h1>
-    <p>Every donation goes directly to supporting our young reporters — equipment, training, and the tools they need to do real journalism.</p>
-  </div>
-
-  <!-- Impact Tiers (visual only — all amounts go through the same Stripe link) -->
-  <div class="tiers">
-    <div class="tier-card">
-      <div class="tier-amount">$5</div>
-      <div class="tier-label">Reporter Starter</div>
-      <div class="tier-desc">Notebook, pens, and a press badge for one junior reporter</div>
+<body class="animate-flicker">
+  <header class="masthead">
+    <div class="masthead__topbar">
+      <div class="container masthead__topbar-inner">
+        <span class="neon-lime animate-flicker">Support</span>
+        <span class="masthead__date">Donate</span>
+      </div>
     </div>
-    <div class="tier-card">
-      <div class="tier-amount">$25</div>
-      <div class="tier-label">Photo Journalism</div>
-      <div class="tier-desc">One month of cloud storage for our photographers' work</div>
+    <div class="container">
+      <div class="masthead__logo">
+        <div class="rule-ornament">EST. 2026</div>
+        <h1 style="font-family:var(--font-sans);font-weight:900;font-size:clamp(1.8rem,5vw,3.5rem);letter-spacing:-0.03em;line-height:0.95;text-transform:uppercase;background:linear-gradient(135deg,#ff2d78 0%,#00f0ff 55%,#bf5fff 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 0 10px rgba(255,45,120,0.4));"><a href="index.html" style="background:inherit;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-decoration:none;">The Kid Reporter</a></h1>
+        <div class="rule-ornament">&#10022; Vires in Veritate &#10022;</div>
+      </div>
     </div>
-    <div class="tier-card">
-      <div class="tier-amount">$50</div>
-      <div class="tier-label">Workshop Sponsor</div>
-      <div class="tier-desc">Sponsors one student at our investigative journalism training day</div>
+    <nav class="nav" aria-label="Main navigation">
+      <ul class="nav__list container">
+        <li><a href="index.html" class="nav__link">Home</a></li>
+        <li><a href="index.html#sports" class="nav__link">Sports</a></li>
+        <li><a href="index.html#science" class="nav__link">Science</a></li>
+        <li><a href="subscribe.html" class="nav__link">Subscribe</a></li>
+        <li><a href="donate.html" class="nav__link active">Donate</a></li>
+        <li><a href="about.html" class="nav__link">About</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main class="container" style="padding-block: var(--space-12);">
+    <section class="donate-hero animate-slide-up">
+      <span class="neon-magenta animate-flicker" style="font-family: var(--font-mono); font-size: var(--text-sm); letter-spacing: 0.25em; text-transform: uppercase;">&#9733; Power the Newsroom &#9733;</span>
+      <h2>Fuel The Kid Reporter</h2>
+      <p>Every dollar keeps the lights on, the keyboards clicking, and real kids reporting real stories from the Pocket. Drop a one-time donation and we keep the press rolling.</p>
+    </section>
+    <section style="max-width: 800px; margin: 0 auto; text-align: center;">
+      <div class="tiers">
+        <div class="tier-card" data-amount="5" onclick="selectTier(this, 5)">
+          <div class="tier-amount">$5</div>
+          <div class="tier-label">Spark</div>
+          <div class="tier-desc">Buys a notebook for a kid reporter.</div>
+        </div>
+        <div class="tier-card" data-amount="15" onclick="selectTier(this, 15)">
+          <div class="tier-amount">$15</div>
+          <div class="tier-label">Glow</div>
+          <div class="tier-desc">Pays for a month of hosting.</div>
+        </div>
+        <div class="tier-card selected" data-amount="25" onclick="selectTier(this, 25)">
+          <div class="tier-amount">$25</div>
+          <div class="tier-label">Neon</div>
+          <div class="tier-desc">Funds a full reporting kit.</div>
+        </div>
+        <div class="tier-card" data-amount="50" onclick="selectTier(this, 50)">
+          <div class="tier-amount">$50</div>
+          <div class="tier-label">Supernova</div>
+          <div class="tier-desc">Sponsors a beat for a season.</div>
+        </div>
+      </div>
+      <div class="custom-amount">
+        <label for="custom">Custom $</label>
+        <input id="custom" type="number" min="1" step="1" placeholder="Other amount" oninput="clearTiers()" />
+      </div>
+      <a href="#" class="donate-cta" id="donateBtn" onclick="return startDonation(event)">Donate &rarr;</a>
+      <p style="margin-top: var(--space-6); font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-text-muted, #8a7aa6); letter-spacing: 0.05em;">
+        Secure checkout via Stripe &middot; The Kid Reporter is independent youth journalism.
+      </p>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div>
+        <h4 class="neon-pink">The Kid Reporter</h4>
+        <p>Truth. Curiosity. Cookies.</p>
+      </div>
+      <div>
+        <h4 class="neon-cyan">Quick Links</h4>
+        <ul style="list-style: none; padding-top: var(--space-2);">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="subscribe.html">Subscribe</a></li>
+          <li><a href="donate.html">Donate</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </div>
     </div>
-    <div class="tier-card">
-      <div class="tier-amount">$100+</div>
-      <div class="tier-label">Champion Donor</div>
-      <div class="tier-desc">Named in our annual Champions of Youth Journalism report</div>
-    </div>
-  </div>
-
-  <div class="donate-cta">
-    <p>Choose any amount. Every dollar makes a difference. You'll be taken to Stripe's secure checkout — no account required.</p>
-
-    <!--
-      STRIPE PAYMENT LINKS — replace the href values below with your real Stripe Payment Link URLs.
-      Create them at: https://dashboard.stripe.com/payment-links/create
-      Create one product called "Donation to The Kid Reporter" with a customer-chosen price (Tip Jar / Let customer decide amount).
-      You can also create fixed-amount links for $5, $25, $50, $100 if you prefer.
-
-      PLACEHOLDER LINKS BELOW — update before going live:
-    -->
-    <div class="donate-btns">
-      <a href="https://buy.stripe.com/00weVd8QZfTZ9EGb1k93y00" class="btn-donate primary" target="_blank" rel="noopener">Donate Now</a>
-      <a href="subscribe.html" class="btn-donate secondary">Subscribe $1/mo Instead</a>
-    </div>
-
-    <p class="secure-note">&#128274; Payments securely processed by Stripe. Your information is never stored on our servers.</p>
-  </div>
-
-  <blockquote class="testimonial">
-    "Mr. Davis donated a camera last year and now I take photos for every story. I want to be a photojournalist when I grow up."
-    <cite>— Lily Chen, Age 9, Photo Reporter</cite>
-  </blockquote>
-
-  <footer>
-    <p>&copy; 2026 The Kid Reporter &middot; <a href="about.html">About</a> &middot; <a href="subscribe.html">Subscribe</a> &middot; <a href="mailto:editor@thekidreporter.com">Contact</a></p>
-    <p style="margin-top:0.5rem;font-size:0.78rem;">Payments securely processed by Stripe.</p>
+    <div class="container" style="border-top: 1px solid var(--color-void-border); margin-top: var(--space-12); padding-top: var(--space-8); text-align: center; font-family: var(--font-mono); font-size: var(--text-xs);">&copy; 2026 THE KID REPORTER. ALL RIGHTS RESERVED.<br/>DESIGNED BY GOTHIC NEON SYSTEMS.</div>
   </footer>
+  <script>
+    let selectedAmount = 25;
+    function selectTier(el, amount) {
+      document.querySelectorAll('.tier-card').forEach(c => c.classList.remove('selected'));
+      el.classList.add('selected');
+      selectedAmount = amount;
+      document.getElementById('custom').value = '';
+    }
+    function clearTiers() {
+      document.querySelectorAll('.tier-card').forEach(c => c.classList.remove('selected'));
+      const v = parseInt(document.getElementById('custom').value, 10);
+      if (!isNaN(v) && v > 0) selectedAmount = v;
+    }
+    function startDonation(e) {
+      e.preventDefault();
+      const amt = selectedAmount;
+      alert('Thanks! Donation flow for $' + amt + ' will route through Stripe Payment Intents.');
+      return false;
+    }
+  </script>
+  <script src="js/main.js"></script>
 </body>
 </html>
