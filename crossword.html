@@ -386,5 +386,61 @@ function init() {
 }
 init();
 </script>
+<script>
+(function(){
+  // Crossword progress persistence (per-week localStorage save slot)
+  // Fixes: puzzle entries getting wiped on page reload / redeploy
+  function weekKey(){
+    // Mirror getWeekPuzzle()'s week index so save slot matches active puzzle
+    var wk = Math.floor((Date.now() - new Date(2026,0,1)) / (7*24*60*60*1000));
+    return 'pkn:crossword:w' + wk;
+  }
+  function inputs(){
+    return Array.prototype.slice.call(document.querySelectorAll('.crossword-grid .cell input'));
+  }
+  function save(){
+    try {
+      var data = inputs().map(function(inp){
+        var c = inp.closest('.cell');
+        return { r: c && c.dataset.r, col: c && c.dataset.c, v: inp.value || '' };
+      });
+      localStorage.setItem(weekKey(), JSON.stringify(data));
+    } catch(e){}
+  }
+  function restore(){
+    try {
+      var raw = localStorage.getItem(weekKey());
+      if(!raw) return;
+      var data = JSON.parse(raw);
+      var ins = inputs();
+      // positional restore (grid is deterministic for a given week)
+      data.forEach(function(item, i){
+        if(ins[i] && item && item.v) ins[i].value = item.v.toUpperCase();
+      });
+    } catch(e){}
+  }
+  function clearSave(){
+    try { localStorage.removeItem(weekKey()); } catch(e){}
+  }
+  function wire(){
+    var grid = document.querySelector('.crossword-grid');
+    if(grid){
+      grid.addEventListener('input', save, true);
+    }
+    // Hook the CLEAR button (label-based lookup so we don't depend on an id)
+    Array.prototype.forEach.call(document.querySelectorAll('.btn-puzzle'), function(btn){
+      if((btn.textContent||'').trim().toUpperCase() === 'CLEAR'){
+        btn.addEventListener('click', clearSave);
+      }
+    });
+  }
+  // init() in the prior script already ran synchronously, so the grid exists.
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', function(){ restore(); wire(); });
+  } else {
+    restore(); wire();
+  }
+})();
+</script>
 </body>
 </html>
