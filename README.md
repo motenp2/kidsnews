@@ -1,57 +1,124 @@
-# The Kid Reporter — Cloudflare Pages Starter
+# Pocket Kids News — Safe, Kid-Friendly Daily News for Kids Ages 8–12
 
-A complete kids-run digital newspaper template built for Cloudflare Pages.
+**Pocket Kids News** is a free, safe, kid-friendly **daily news for kids** website built for **elementary students ages 8–12**, their parents, teachers, and homeschool families. We turn the day's real **current events for kids** into **simple news articles for children** — calm, age-appropriate, ad-light, and easy to read.
+
+Live site: https://pocketkidsnews.saraiandalani.workers.dev/
+
+---
+
+## What is Pocket Kids News?
+
+Pocket Kids News is a **kids news website** that publishes **educational news for kids** every day. We cover **kid-friendly world events**, **science news for kids**, sports, animals, and **fun facts for kids** — all written at a grade 3–6 reading level so children can understand the world without scary headlines or clickbait.
+
+If you've been searching for any of these, you're in the right place:
+
+- news for kids ages 8-12
+- current events for elementary students
+- safe news for kids
+- daily news for kids
+- kid-friendly world events
+- simple news for children
+- educational news for kids
+- science news for kids
+- news articles for elementary school
+- weekly news for kids / breaking news for kids (explained simply)
+
+---
+
+## Who It's For
+
+- **Parents** asking "How do I explain the news to my child?" or "What news is safe for kids to watch?"
+- **Teachers** looking for free current events articles for elementary students (3rd, 4th, 5th, 6th grade)
+- **Homeschoolers** who need a reliable news for homeschoolers resource
+- **Kids ages 8–12** who want to know what's happening in the world today, explained in plain language
+
+---
+
+## Features
+
+- Daily news articles for kids — short, factual, age-appropriate
+- Science news for kids and tech stories every week
+- Kid-friendly world events and US current events
+- Fun facts for kids, quizzes, crossword, and horoscope sections
+- Live real-time date + rotating kids news ticker
+- Optional $1/month subscription + one-time donations (Stripe)
+- Mobile-first, fast (Cloudflare Pages / Workers)
+- No scary headlines, no creepy ads, no tracking pixels aimed at kids
+
+---
 
 ## Pages Included
-| File | Description |
-|------|-------------|
-| `index.html` | Homepage with feature hero + 6-article grid |
-| `article.html` | Article detail with sidebar |
-| `subscribe.html` | $1/month Stripe subscription page |
-| `donate.html` | One-time donation form |
-| `about.html` | Team page |
+
+| File | Purpose |
+|------|---------|
+| `index.html` | Homepage — feature hero + 6-article grid of daily news for kids |
+| `article.html` | Article detail page (simple news for children) |
+| `about.html` | About Pocket Kids News + the team |
+| `subscribe.html` | $1/month Stripe subscription |
 | `subscribe-success.html` | Post-checkout confirmation |
+| `donate.html` | One-time donation form |
+| `crossword.html` | Kids crossword puzzle |
+| `horoscope.html` | Fun kids horoscope |
+| `thanks.html` | Thank-you page |
+| `articles/` | All daily news articles for elementary students |
+
+---
+
+## Tech Stack
+
+- HTML / CSS / vanilla JavaScript — static, fast, lightweight
+- Cloudflare Pages + Workers hosting (`functions/api`)
+- Stripe for subscriptions and donations
+- `_headers` and `_redirects` for security + clean URLs
+
+---
 
 ## Deploy to Cloudflare Pages
 
-1. Push this repo to GitHub or GitLab
-2. Go to [Cloudflare Pages](https://pages.cloudflare.com/) → Create Application
-3. Connect your repo. Build settings:
-   - **Framework**: None (static)
-   - **Build command**: (leave blank)
-   - **Output directory**: `/` (root)
-4. Deploy — your site will be live at `your-project.pages.dev`
+1. Fork or clone this repo.
+2. Go to Cloudflare Pages (https://pages.cloudflare.com/) and Create Application.
+3. Connect the repo with build settings:
+   - Framework: None (static)
+   - Build command: (leave blank)
+   - Output directory: `/` (root)
+4. Add Stripe env vars (see `STRIPE_SETUP.md`).
+5. Deploy. Your kids news website is live.
 
-## Stripe Integration
+---
 
-### Subscription ($1/month)
-1. Create a product in your [Stripe Dashboard](https://dashboard.stripe.com/products) with a $1.00/month recurring price
-2. Copy the `price_...` ID into `functions/api/create-checkout-session.js`
-3. In Cloudflare Pages → Settings → Environment Variables, add:
-   - `STRIPE_SECRET_KEY` = `sk_live_...` (or `sk_test_...` for testing)
-4. In `subscribe.html`, replace the demo submit handler with a `fetch('/api/create-checkout-session', ...)` call and redirect to the returned URL
+## SEO / Keyword Focus
 
-### One-Time Donations
-1. In `donate.html`, load Stripe.js and initialize the Payment Element
-2. Call `POST /api/create-payment-intent` with the selected amount
-3. Confirm payment using the returned `clientSecret`
+This project targets high-intent, low-difficulty kid-news keywords:
 
-**Stripe docs:**
-- [Subscription Checkout](https://stripe.com/docs/billing/subscriptions/build-subscriptions)
-- [Payment Intents](https://stripe.com/docs/payments/payment-intents)
-- [Payment Element](https://stripe.com/docs/payments/payment-element)
+**Primary:** news for kids, daily news for kids, current events for kids, safe news for kids, news for kids ages 8-12
 
-## Customization Checklist
-- [ ] Replace "The Kid Reporter" with your newspaper's name throughout
-- [ ] Update contact email (`editor@kidreporter.example.com`)
-- [ ] Add real reporter names and bios to `about.html`
-- [ ] Connect a CMS (Contentful, Sanity, or Cloudflare D1) for article management
-- [ ] Set up a mailing list (Mailchimp / ConvertKit) for the weekly newsletter
-- [ ] Add Google Analytics or Cloudflare Web Analytics for traffic
-- [ ] Replace demo articles with real kid-written content
+**Secondary:** kid-friendly world events, simple news for children, educational news for kids, science news for kids, news articles for elementary school, current events for elementary students, fun facts for kids
 
-## Tech Stack
-- **Hosting**: Cloudflare Pages (free tier)
-- **Payments**: Stripe (via Cloudflare Pages Functions)
-- **Fonts**: Google Fonts (Playfair Display + Plus Jakarta Sans)
-- **No frameworks** — pure HTML, CSS, and vanilla JS
+**Long-tail (parent + teacher voice search):**
+- How do kids learn about world events?
+- Easy explanations of news for 10-year-olds
+- How do I explain the news to my child?
+- Free current events articles for 4th grade / 5th grade
+- Best news website for elementary students
+- Kid-friendly alternative to BBC Newsround / Time for Kids / DOGOnews
+- News for homeschoolers
+- Lexile-leveled news articles free
+
+---
+
+## Roadmap
+
+- RSS feed for daily kids news
+- Lexile / grade-level toggle per article
+- Read-aloud audio for every article
+- Printable PDF worksheets for teachers
+- Spanish-language edition (noticias para niños)
+- Weekly newsletter for parents and teachers
+
+---
+
+## License
+
+Content © Pocket Kids News. Code released under MIT.
+
+*Pocket Kids News — daily news for kids, made safe and simple.*
