@@ -1,0 +1,17 @@
+# robots.txt for Pocket Kids News
+# https://pocketkidsnews.saraiandalani.workers.dev/
+
+User-agent: *
+Allow: /
+Disallow: /functions/
+Disallow: /subscribe-success.html
+Disallow: /thanks.html
+
+# Block known bad/AI scraper bots (optional)
+User-agent: GPTBot
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+Sitemap: https://pocketkidsnews.saraiandalani.workers.dev/sitemap.xml
